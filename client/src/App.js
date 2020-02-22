@@ -27,7 +27,7 @@ function App() {
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/team" component={Team} />
           <Route exact path="/details" component={Details} />
-          <Route exact path="/Newsfeed" component={Newsfeed} />
+          <Route exact path="/newsfeed" component={Newsfeed} />
 
         {/* </Wrapper> */}
         {/* <Footer /> */}
