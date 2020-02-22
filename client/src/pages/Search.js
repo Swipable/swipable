@@ -7,6 +7,9 @@ import API from "../utils/API";
 import CardContainer from "../components/CardContainer";
 import Row from "../components/Row";
 import axios from "axios";
+import SearchBar from "../components/SearchBar/searchbar";
+import Dropdown from "../components/Dropdown/dropdown";
+
 
 function Search() {
   const [restaurant, setRestaurant] = useState({});
@@ -65,19 +68,31 @@ function Search() {
   }
 
   return (
-    <div>
-      <Header/>
-      <Row>
-        <CardContainer
-          name={restaurant.name}
-          image={restaurant.image}
-          profileUrl={restaurant.profileUrl}
-          handleBtnClick={handleBtnClick}
-        />
-      </Row>
-      <Footer/>
-    </div>
-  );
+    <Wrapper>
+      <Header></Header>
+      <div className="filter-container">
+        <div className="row d-inline-flex">
+        <SearchBar></SearchBar>
+          </div>
+          <br></br>
+          <div className="row d-inline-flex">
+          <div className="col-lg-3">
+          <Dropdown></Dropdown>
+          </div>
+          <div className="col-lg-3">
+            <Dropdown></Dropdown>
+          </div>
+          <div className="col-lg-3">
+            <Dropdown></Dropdown>
+          </div>
+          <div className="col-lg-3">
+            <Dropdown></Dropdown>
+          </div>
+        </div>
+      </div>
+    <Footer></Footer>
+      </Wrapper >
+    );
 }
 
 export default Search;

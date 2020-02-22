@@ -9,4 +9,18 @@
 
   .link{
       padding-right:20px;
+      text-decoration: none;
+      color:white;
   }
+
+  .link:active{
+    padding-right:20px;
+    /* text-decoration: none; */
+    color:white;
+}
+
+.link:hover{
+    padding-right:20px;
+    /* text-decoration: none; */
+    color:white;
+}

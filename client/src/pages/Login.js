@@ -28,9 +28,10 @@ function Login() {
                 <input type="password" id="inputPassword" className="form-control" placeholder="Password" required />
                 <label for="inputPassword">Password</label>
               </div>
-             
+   
               <button className="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign In</button>
               <a className="d-block text-center mt-2 small" href="http://localhost:3000/signup">Sign Up</a>
+
              </form>
           </div>
         </div>

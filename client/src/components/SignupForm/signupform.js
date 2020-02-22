@@ -1,4 +1,5 @@
 import React from "react";
+import "../Form/form.css"
 
 function SignupForm() {
     return (
@@ -39,11 +40,12 @@ function SignupForm() {
                 <label for="inputConfirmPassword">Confirm password</label>
             </div>
 
-            <button id = 'registerBtn' className="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
-            <a className="d-block text-center mt-2 small" href="http://localhost:3000/login">Sign In</a> 
+            <button id = 'registerBtn' class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+            <a className="d-block text-center mt-2 small" href="/login">Sign In</a> 
             <hr className="my-4"></hr>
             <button className="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i className="fab fa-google mr-2"></i> Sign up with Google</button>
             <button className="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i className="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
+
         </form>
         </div>
 );
