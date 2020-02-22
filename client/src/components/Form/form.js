@@ -4,13 +4,13 @@ import SignupForm from "../SignupForm/signupform";
 
 function Form() {
     return (  
-<div class="container">
-<div class="row">
-  <div class="col-lg-10 col-xl-9 mx-auto">
-    <div class="card card-signin flex-row my-5">
-      <div class="card-img-left d-none d-md-flex">
+<div className="container">
+<div className="row">
+  <div className="col-lg-10 col-xl-9 mx-auto">
+    <div className="card card-signin flex-row my-5">
+      <div className="card-img-left d-none d-md-flex">
       </div>
-      <div class="card-body">
+      <div className="card-body">
        <SignupForm></SignupForm>
       </div>
     </div>
