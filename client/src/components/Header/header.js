@@ -4,9 +4,9 @@ import "./header.css";
 function Header() {
   return (
     <div className="header">
-      <div class="row">
-      <div class="col-lg-6">Icon</div>
-      <div class="col-lg-6"><a class="link">Profile</a><a class="link">Team</a><a class="link">Favourites</a><a class="link">Newsfeed</a><a class="link">Logout</a></div>
+      <div className="row">
+      <div className="col-lg-6">Icon</div>
+      <div className="col-lg-6"><a className="link">Profile</a><a className="link">Team</a><a className="link">Favourites</a><a className="link">Newsfeed</a><a className="link">Logout</a></div>
       </div>
     </div>
   );
