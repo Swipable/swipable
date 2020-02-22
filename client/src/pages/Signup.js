@@ -10,6 +10,7 @@ function Signup() {
     <Wrapper>
     <Header></Header>
       <Form></Form>
+      <br></br>
       <Footer></Footer>
     </Wrapper>
   );

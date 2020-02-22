@@ -1,6 +1,6 @@
 import React from "react";
 import "./form.css"
-import Card from "../Card/card";
+import SignupForm from "../SignupForm/signupform";
 
 function Form() {
     return (  
@@ -11,7 +11,7 @@ function Form() {
       <div class="card-img-left d-none d-md-flex">
       </div>
       <div class="card-body">
-       <Card></Card>
+       <SignupForm></SignupForm>
       </div>
     </div>
   </div>

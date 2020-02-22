@@ -30,7 +30,7 @@ function Login() {
               </div>
              
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign In</button>
-              <a class="d-block text-center mt-2 small" href="#">Sign Up</a>
+              <a class="d-block text-center mt-2 small" href="http://localhost:3000/signup">Sign Up</a>
              </form>
           </div>
         </div>
