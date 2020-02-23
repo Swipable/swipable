@@ -88,7 +88,8 @@ function Search() {
       rating={restaurant.rating} 
       price={restaurant.price}
       link={restaurant.link}
-      image={restaurant.image} />
+      image={restaurant.image}
+      handleBtnClick={handleBtnClick} />
     <Footer></Footer>
       </Wrapper >
     );
