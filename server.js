@@ -27,16 +27,16 @@ if (process.env.NODE_ENV === "production") {
 
 // Send every other request to the React app
 // Define any API routes before this runs
-app.post("/restaurants", (req, res) => {
+app.get("/restaurants", (req, res) => {
   console.log("Hitting the correct route.");
   axios
       .get("https://api.yelp.com/v3/businesses/search?location=chicago", 
       { 'headers': { 'Authorization': 'Bearer Y9M86BBstf-ATStxC6Y9r0Tq-0A1JDp5xGMAFki4cFeW8TgBeznAmQtOuFAPqtAgZsEnI2GfBQPJ4FelB7hyc3Ovb4DDVgoUgajUXr0NTHpydudR54iU2gm0AkJMXnYx',
      'Access-Control-Allow-Origin': '*'} } )
      .then((response) => {
-      console.log(response);
-      res.json(response);
-     }).catch(e => e);
+      console.log("Yelp response received");
+      res.json(response.data);
+     }).catch(e => console.log(e));
   // res.json(response)
 });
 

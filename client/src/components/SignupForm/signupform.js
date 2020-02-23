@@ -16,7 +16,7 @@ function SignupForm() {
                 <label for="inputZipCode">Last Name</label>
             </div>
             <div className="form-label-group">
-                <input type="text" id="inputUserame" className="form-control" placeholder="Username" required autofocus />
+                <input type="text" id="inputUserame" className="form-control" placeholder="Username" required focus />
                 <label for="inputUserame">Username</label>
             </div>
             <div className="form-label-group">
@@ -40,7 +40,7 @@ function SignupForm() {
                 <label for="inputConfirmPassword">Confirm password</label>
             </div>
 
-            <button id = 'registerBtn' class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+            <button id = 'registerBtn' className="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
             <a className="d-block text-center mt-2 small" href="/login">Sign In</a> 
             <hr className="my-4"></hr>
             <button className="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i className="fab fa-google mr-2"></i> Sign up with Google</button>

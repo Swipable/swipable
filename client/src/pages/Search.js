@@ -53,9 +53,10 @@ function Search() {
 
   function loadRestaurants() {
     console.log("calling the right function");
-    axios.post("http://localhost:3001/restaurants", {})
+    axios.get("http://localhost:3001/restaurants")
     .then((restaurants) => {
-        console.log(restaurants.businesses[0].name);
+      console.log(restaurants);
+        setRestaurants(restaurants.data.businesses);
         return restaurants;
     })
     .catch(err => console.log(err));
@@ -89,6 +90,16 @@ function Search() {
             <Dropdown></Dropdown>
           </div>
         </div>
+        <Row>
+      
+        <CardContainer
+            name={restaurant.name}
+            image={restaurant.image}
+            profileUrl={restaurant.profileUrl}
+            handleBtnClick={handleBtnClick}
+          />       
+      </Row>
+
       </div>
     <Footer></Footer>
       </Wrapper >
