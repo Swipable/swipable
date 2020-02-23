@@ -36,6 +36,7 @@ app.get("/restaurants", (req, res) => {
      .then((response) => {
       console.log("Yelp response received");
       res.json(response.data);
+      // console.log(response.data)
      }).catch(e => console.log(e));
   // res.json(response)
 });
