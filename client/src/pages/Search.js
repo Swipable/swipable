@@ -4,12 +4,9 @@ import Header from "../components/Header/header";
 import Footer from "../components/Footer/footer";
 import Wrapper from "../components/Wrapper/wrapper";
 import API from "../utils/API";
-import CardContainer from "../components/CardContainer";
-import Row from "../components/Row";
-import axios from "axios";
 import SearchBar from "../components/SearchBar/searchbar";
 import Dropdown from "../components/Dropdown/dropdown";
-
+import RestaurantCard from "../components/RestaurantCard/restaurantcard";
 
 function Search() {
   const [restaurant, setRestaurant] = useState({});
@@ -18,7 +15,7 @@ function Search() {
 
   // When the component mounts, a call will be made to get random restaurants.
   useEffect(() => {
-   const restaurant = loadRestaurants();//axios catch request to an express route before loadRestaurants(); in backend express route make the call to the api
+   loadRestaurants();//axios catch request to an express route before loadRestaurants(); in backend express route make the call to the api
   }, []);
 
   function nextRestaurant(restaurantIndex) {
@@ -52,20 +49,15 @@ function Search() {
   }
 
   function loadRestaurants() {
-    console.log("calling the right function");
-    axios.get("http://localhost:3001/restaurants")
+    // console.log("calling the right function");
+    API.fetchRestaurants()
     .then((restaurants) => {
       console.log(restaurants);
-        setRestaurants(restaurants.data.businesses);
+        setRestaurants(restaurants);
+        setRestaurant(restaurants[0])
         return restaurants;
     })
     .catch(err => console.log(err));
-    // API.fetchRestaurants()
-    //   .then(restaurants => {
-    //     setRestaurants(restaurants);
-    //     setRestaurant(restaurants[0]);
-    //   })
-    //   .catch(err => console.log(err));
   }
 
   return (
@@ -90,17 +82,13 @@ function Search() {
             <Dropdown></Dropdown>
           </div>
         </div>
-        <Row>
-      
-        <CardContainer
-            name={restaurant.name}
-            image={restaurant.image}
-            profileUrl={restaurant.profileUrl}
-            handleBtnClick={handleBtnClick}
-          />       
-      </Row>
-
       </div>
+      <RestaurantCard 
+      name={restaurant.name} 
+      rating={restaurant.rating} 
+      price={restaurant.price}
+      link={restaurant.link}
+      image={restaurant.image} />
     <Footer></Footer>
       </Wrapper >
     );

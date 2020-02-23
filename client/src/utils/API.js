@@ -6,12 +6,15 @@ export default {
     return axios
       .get("http://localhost:3000/restaurants")
       .then(res => {
-        const restaurants = res.data;
-        return restaurants.map(restaurants => {
+        const restaurants = res.data.businesses;
+        return restaurants.map(restaurant => {
           return {
-            name: restaurants.name,
-            image: restaurants.image_url,
-            restaurantUrl: restaurants.image_url
+            name: restaurant.name,
+            rating: restaurant.rating,
+            price: restaurant.price,
+            image: restaurant.image_url,
+            link: restaurant.url,
+            closed: restaurant.is_closed
           };
         });
       });
