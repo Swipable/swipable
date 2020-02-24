@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize('swipable_db', 'root', 'DebbieDoo', {
+const sequelize = new Sequelize('swipable_db', 'root', '', {
     host: "localhost",
     port: 3306,
     dialect: 'mysql',
