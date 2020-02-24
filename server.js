@@ -2,10 +2,12 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
-
+const morgan = require("morgan");
 
 //req package to hide environment variables
 require('dotenv').config()
+// set morgan to log info about our requests for development use.
+app.use(morgan('dev'));
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -16,6 +18,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
+app.get('./client/src/routes/users-routes.js');
 
 // Send every other request to the React app
 // Define any API routes before this runs
@@ -26,3 +29,4 @@ app.get("*", (req, res) => {
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
+
