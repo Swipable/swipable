@@ -20,6 +20,16 @@ module.exports = (sequelize, DataTypes) => {
         },
         zip_code: {
             type: DataTypes.INTEGER
+        },
+        createdAt: {
+            allowNull: true,
+            defaultValue: new Date(),
+            type: DataTypes.DATE
+        },
+        updatedAt: {
+            allowNull: true,
+            defaultValue: new Date(),
+            type: DataTypes.DATE
         }
 
     });

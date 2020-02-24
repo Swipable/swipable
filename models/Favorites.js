@@ -28,9 +28,19 @@ module.exports = (sequelize, DataTypes) => {
         is_closed: {
             type: DataTypes.BOOLEAN
         },
+        createdAt: {
+            allowNull: true,
+            defaultValue: new Date(),
+            type: DataTypes.DATE
+        },
+        updatedAt: {
+            allowNull: true,
+            defaultValue: new Date(),
+            type: DataTypes.DATE
+        }
     });
 
-    Favorites.associate = (models) => {
+    Favorites.associate = function (models) {
         Favorites.belongsTo(models.Users, {
             foreignKey: {
                 allowNull: false
