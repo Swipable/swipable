@@ -5,7 +5,9 @@ import Form from "../components/Form/form";
 import Footer from "../components/Footer/footer";
 import Wrapper from "../components/Wrapper/wrapper";
 
+
 function Signup() {
+  
   return (
     <Wrapper>
     <Header></Header>

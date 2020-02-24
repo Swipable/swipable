@@ -10,14 +10,13 @@ function SignupForm() {
                     <input type="text" id="inputFirstName" className="form-control" />
                     <label for="inputFirstName">First Name</label>
                 </div>
-
-            <div className="form-label-group">
-                <input type="text" id="inputZipCode" className="form-control"  />
-                <label for="inputZipCode">Last Name</label>
+            <div class="form-label-group">
+                <input type="text" id="inputLastName" class="form-control"  />
+                <label for="inputLastName">Last Name</label>
             </div>
-            <div className="form-label-group">
-                <input type="text" id="inputUserame" className="form-control" placeholder="Username" required focus />
-                <label for="inputUserame">Username</label>
+            <div class="form-label-group">
+                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus />
+                <label for="inputUsername">Username</label>
             </div>
             <div className="form-label-group">
                 <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required />

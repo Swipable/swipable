@@ -4,6 +4,9 @@ import Header from "../components/Header/header"
 import Footer from "../components/Footer/footer"
 import Wrapper from "../components/Wrapper/wrapper"
 
+// after successful signup, redirected to login
+// if unsuccessful, show error and reload signup
+// after signup and login, redirected to search page
 
 function Login() {
 
