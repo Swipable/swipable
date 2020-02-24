@@ -8,51 +8,51 @@ function Profile() {
   return (
     <Wrapper>
       <Header></Header>
-      <div class="container">
-      <div class="row">
-        <div class="col-lg-9 mx-auto">
-          <div class="card card-signin flex-row my-5">
-            <div class="card-img d-none d-md-flex">
-                <div class="card-img-profile d-none d-md-flex">
+      <div className="container">
+      <div className="row">
+        <div className="col-lg-9 mx-auto">
+          <div className="card card-signin flex-row my-5">
+            <div className="card-img d-none d-md-flex">
+                <div className="card-img-profile d-none d-md-flex">
               
               </div>
             </div>
-            <div class="card-body">
-              <h5 class="card-title text-center">Profile</h5>
-              {/* <div class="col-md-4 col-lg-4" align="center"><img
+            <div className="card-body">
+              <h5 className="card-title text-center">Profile</h5>
+              {/* <div className="col-md-4 col-lg-4" align="center"><img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeAsIELBimVGoQSn3Ht_eU6V164uIBSUzQWe9zjc9G3FuyWQCQhg&s"
-                class="img-circle" alt="team" 
+                className="img-circle" alt="team" 
                 // style="padding-top: 5px; padding-right:35px;  width:280px;height:280px;" 
                 />
               </div> */}
-              <table class="table">
+              <table className="table">
                 <tbody>
                   <tr>
-                    <td class="entry">First Name:</td>
+                    <td className="entry">First Name:</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td class="entry">Last Name:</td>
+                    <td className="entry">Last Name:</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td class="entry">Mobile Number:</td>
+                    <td className="entry">Mobile Number:</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td class="entry">First Name:</td>
+                    <td className="entry">First Name:</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td class="entry">Last Name:</td>
+                    <td className="entry">Last Name:</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td class="entry">Mobile Number:</td>
+                    <td className="entry">Mobile Number:</td>
                     <td></td>
                   </tr>
                 </tbody>
-               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Edit</button>
+               <button className="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Edit</button>
               </table>
             </div>
           </div>

@@ -13,27 +13,28 @@ function Login() {
   return (
     <Wrapper>
       <Header></Header>
-    <div class="container">
-    <div class="row">
-      <div class="col-lg-10 col-xl-9 mx-auto">
-        <div class="card card-signin flex-row my-5">
-          <div class="card-img-left d-none d-md-flex">
+    <div className="container">
+    <div className="row">
+      <div className="col-lg-10 col-xl-9 mx-auto">
+        <div className="card card-signin flex-row my-5">
+          <div className="card-img-left d-none d-md-flex">
           </div>
-          <div class="card-body">
-            <h5 class="card-title text-center">Login</h5>
-            <form class="form-signin">
-              <div class="form-label-group">
-                <input type="text" id="inputUserame" class="form-control" placeholder="Username" required autofocus />
+          <div className="card-body">
+            <h5 className="card-title text-center">Login</h5>
+            <form className="form-signin">
+              <div className="form-label-group">
+                <input type="text" id="inputUserame" className="form-control" placeholder="Username" required autofocus />
                 <label for="inputUserame">Username</label>
               </div>
 
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
+              <div className="form-label-group">
+                <input type="password" id="inputPassword" className="form-control" placeholder="Password" required />
                 <label for="inputPassword">Password</label>
               </div>
-             
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign In</button>
-              <a class="d-block text-center mt-2 small" href="http://localhost:3000/signup">Sign Up</a>
+   
+              <button className="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign In</button>
+              <a className="d-block text-center mt-2 small" href="http://localhost:3000/signup">Sign Up</a>
+
              </form>
           </div>
         </div>
