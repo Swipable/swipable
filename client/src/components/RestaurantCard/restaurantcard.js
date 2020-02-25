@@ -18,7 +18,7 @@ function RestaurantCard( {name, image, rating, price, link, handleBtnClick }) {
       />
         <ul>
           <li>
-          <a href={link} target="_blank"> {name} Website </a>
+          <a href={link}> {name} Website </a>
           </li>
           <li>
             <strong>Name:</strong> {name}

@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === "production") {
 
 // Send every other request to the React app
 // Define any API routes before this runs
-app.get("/restaurants", (req, res) => {
+app.get("/api/restaurants", (req, res) => {
   console.log("Hitting the correct route.");
   axios
       .get("https://api.yelp.com/v3/businesses/search?location=chicago", 
