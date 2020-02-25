@@ -4,7 +4,7 @@ import axios from "axios";
 export default {
   fetchRestaurants: function() {
     return axios
-      .get("http://swipable.herokuapp.com/restaurants")
+      .get("api/restaurants")
       .then(res => {
         const restaurants = res.data.businesses;
         return restaurants.map(restaurant => {
