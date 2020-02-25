@@ -1,8 +1,12 @@
+const express = require('express').Router();
+const usersController = require('../controllers/usersController');
 
-const express = require('express');
-const Users = require('../models/Users');
-const router = express.Router();
+router.route('/')
+    .get(usersController.test)
+    .get(usersController.findAll)
+    .post(usersController.create)
 
+/*
 // route for user signup
 router
     .get('/signup', (req, res, next) => {
@@ -27,6 +31,7 @@ router
             res.redirect('/signup');
         });
     });
+    */
 
 //PUT to update user's profile
 
