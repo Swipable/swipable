@@ -14,7 +14,11 @@ export default {
             price: restaurant.price,
             image: restaurant.image_url,
             link: restaurant.url,
-            closed: restaurant.is_closed
+            closed: restaurant.is_closed,
+            id: restaurant.id,
+            display_phone: restaurant.phone,
+            display_address: restaurant.location.display_address,
+            catagory: restaurant.catagories,
           };
         });
       });
