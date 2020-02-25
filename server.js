@@ -34,8 +34,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-const userRoutes = require('./routes/users-routes')
-app.use(userRoutes);
+
 
 // Send every other request to the React app
 // Define any API routes before this runs
@@ -63,4 +62,5 @@ db.sequelize.sync({force: false}).then(()=> {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });
 });
+
 
