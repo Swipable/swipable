@@ -1,8 +1,6 @@
 import React from "react";
 import "../index.css";
-import Header from "../components/Header/header"
-import Footer from "../components/Footer/footer"
-import Wrapper from "../components/Wrapper/wrapper"
+import Wrapper from "../components/Wrapper"
 
 // after successful signup, redirected to login
 // if unsuccessful, show error and reload signup
@@ -12,7 +10,6 @@ function Login() {
 
   return (
     <Wrapper>
-      <Header></Header>
     <div className="container">
     <div className="row">
       <div className="col-lg-10 col-xl-9 mx-auto">
@@ -41,7 +38,6 @@ function Login() {
       </div>
     </div>
   </div>
-  <Footer></Footer>
   </Wrapper>
 
   );

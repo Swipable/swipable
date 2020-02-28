@@ -1,11 +1,9 @@
 import React,{ Component } from "react";
 // import "../components/Form/form.css";
-import Header from "../components/Header/header";
-import Footer from "../components/Footer/footer";
-import Wrapper from "../components/Wrapper/wrapper";
+import Wrapper from "../components/Wrapper";
 
-import UserCard from "../components/UserCard/usercard";
-import Title from "../components/Title/title";
+import UserCard from "../components/UserCard";
+import Title from "../components/Title";
 import friends from "../friends.json";
 
 class Team extends Component {
@@ -24,7 +22,6 @@ class Team extends Component {
   render() {
     return (
       <Wrapper>
-        <Header></Header>
         <Title>Team</Title>
       <div className="team-container">
         {this.state.friends.map(friend => (
@@ -39,7 +36,6 @@ class Team extends Component {
           />
         ))}
         </div>
-        <Footer></Footer>
       </Wrapper>
     );
   }

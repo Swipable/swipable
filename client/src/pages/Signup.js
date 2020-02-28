@@ -1,19 +1,15 @@
 import React from "react";
 import "../index.css";
-import Header from "../components/Header/header"
-import Form from "../components/Form/form";
-import Footer from "../components/Footer/footer";
-import Wrapper from "../components/Wrapper/wrapper";
+import Form from "../components/Form";
+import Wrapper from "../components/Wrapper";
 
 
 function Signup() {
   
   return (
     <Wrapper>
-    <Header></Header>
       <Form></Form>
       <br></br>
-      <Footer></Footer>
     </Wrapper>
   );
 }

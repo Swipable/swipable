@@ -38,10 +38,10 @@ if (process.env.NODE_ENV === "production") {
 
 
 require("./routes/api-routes")(app);
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+require("./routes/users-routes")(app);
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 
 db.sequelize.sync({force: false}).then(()=> {
