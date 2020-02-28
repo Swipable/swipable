@@ -1,16 +1,12 @@
 import React from "react";
 import "../components/Form/form.css";
-import Header from "../components/Header/header";
-import Footer from "../components/Footer/footer";
-import Wrapper from "../components/Wrapper/wrapper";
+import Wrapper from "../components/Wrapper";
 
 
 function Newsfeed() {
   return (
     <Wrapper>
-      <Header></Header>
       Newsfeed
-      <Footer></Footer>
     </Wrapper>
   );
 }

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../components/Form/form.css";
-import Header from "../components/Header/header";
-import Footer from "../components/Footer/footer";
-import Wrapper from "../components/Wrapper/wrapper";
+import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
-import SearchBar from "../components/SearchBar/searchbar";
-import Dropdown from "../components/Dropdown/dropdown";
-import RestaurantCard from "../components/RestaurantCard/restaurantcard";
+import SearchBar from "../components/SearchBar";
+import Dropdown from "../components/Dropdown";
+import RestaurantCard from "../components/RestaurantCard";
 
 function Search() {
   const [restaurant, setRestaurant] = useState({});
@@ -62,7 +60,6 @@ function Search() {
 
   return (
     <Wrapper>
-      <Header></Header>
       <div className="filter-container">
         <div className="row d-inline-flex">
         <SearchBar></SearchBar>
@@ -90,7 +87,6 @@ function Search() {
       link={restaurant.link}
       image={restaurant.image}
       handleBtnClick={handleBtnClick} />
-    <Footer></Footer>
       </Wrapper >
     );
 }

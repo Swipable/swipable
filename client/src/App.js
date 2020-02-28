@@ -9,16 +9,16 @@ import Team from "./pages/Team";
 import Details from "./pages/Details";
 import Newsfeed from "./pages/Newsfeed";
 
-// import Navbar from "./components/Navbar";
-// import Footer from "./components/Footer";
-// import Wrapper from "./components/Wrapper";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Wrapper from "./components/Wrapper";
 
 function App() {
   return (
     <Router>
       <div>
-        {/* <Navbar /> */}
-        {/* <Wrapper> */}
+        <Navbar />
+          <Wrapper>
           <Route exact path="/" component={Search} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
@@ -29,8 +29,8 @@ function App() {
           <Route exact path="/details" component={Details} />
           <Route exact path="/newsfeed" component={Newsfeed} />
 
-        {/* </Wrapper> */}
-        {/* <Footer /> */}
+</Wrapper>
+<Footer />
       </div>
     </Router>
   );
