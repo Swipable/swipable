@@ -5,7 +5,7 @@ function SignupForm() {
     return (
         <div>
         <h5 className="card-title text-center">Register</h5>
-        <form className="form-signin" action="/signup" method="post">
+        <form className="form-signin">
             <div className="form-label-group">
                     <input type="text" id="inputFirstName" name="inputFirstName" className="form-control" />
                     <label for="inputFirstName">First Name</label>
@@ -39,7 +39,7 @@ function SignupForm() {
                 <label for="inputConfirmPassword">Confirm password</label>
             </div>
 
-            <button id ='registerBtn' className="btn btn-lg btn-primary btn-block text-uppercase" type="submit" >Register</button>
+            <button id ='registerBtn' className="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
             <a className="d-block text-center mt-2 small" href="/login">Sign In</a> 
             <hr className="my-4"></hr>
             <button className="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i className="fab fa-google mr-2"></i> Sign up with Google</button>

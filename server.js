@@ -37,8 +37,8 @@ if (process.env.NODE_ENV === "production") {
 // Define API routes here
 
 
-require("./routes/api-routes")(app);
-require("./routes/users-routes")(app);
+require("./routes/api/api-routes")(app);
+require("./routes/api/users-routes")(app);
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });

@@ -1,36 +1,24 @@
 const express = require('express').Router();
-//const usersController = require('../controllers/usersController');
-const Users = require ('../models/users');
+const usersController = require('../../controllers/usersController');
+//const Users = require ('../../models/Users');
+const db = require('../../models');
 
 /*
   USER ROUTES
 */
 
 module.exports = function(app) {
-    app.get('/signup', (req, res, next) => {
-        console.log('get method for signup')
-        res.redirect('/signup')
-    });
+    // app.get('/api/get/signup', (req, res, next) => {
+    //     console.log('get method for signup')
+    //     res.json(data);
+    // });
 
-    app.post('/signup', (req, res) => {
-        console.log(req.body)
-        Users.create({
-            first_name: req.body.inputFirstName,
-            last_name: req.body.inputLastName,
-            username: req.body.inputUsername,
-            email: req.body.inputEmail,
-            password: req.body.inputPassword,
-            zip_code: req.body.inputZipCode
-        })
-        .then(user => {
-            console.log('signup werk')
-            console.log(user)
-        })
-        .catch(error => {
-            console.log(error)
-            res.redirect('/signup');
-        });
-    });
+app.route('/signup')
+    .post(usersController.create)
+    .get(usersController.findAll)
+
+
+
 
 /*
   RESTAURANT API CALLS
@@ -56,6 +44,30 @@ module.exports = function(app) {
 
 
 /*
+
+    app.post('/api/signup', (req, res) => {
+        db.Users.create({
+            first_name: req.body.inputFirstName,
+            last_name: req.body.inputLastName,
+            username: req.body.inputUsername,
+            email: req.body.inputEmail,
+            password: req.body.inputPassword,
+            zip_code: req.body.inputZipCode
+        })
+        .then(user => {
+            console.log('signup werk')
+            console.log(user)
+            res.json(user)
+        })
+        .catch(error => {
+            console.log(error)
+          //  res.redirect('/signup');
+        });
+    });
+
+
+
+
 router.route('/')
     .get(usersController.test)
     .get(usersController.findAll)
