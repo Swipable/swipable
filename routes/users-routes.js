@@ -1,13 +1,16 @@
 const express = require('express').Router();
 //const usersController = require('../controllers/usersController');
-const Users = require ('../models/Users');
+const Users = require ('../models/users');
+
+/*
+  USER ROUTES
+*/
 
 module.exports = function(app) {
     app.get('/signup', (req, res, next) => {
         console.log('get method for signup')
         res.redirect('/signup')
     });
-
 
     app.post('/signup', (req, res) => {
         console.log(req.body)
@@ -28,6 +31,11 @@ module.exports = function(app) {
             res.redirect('/signup');
         });
     });
+
+/*
+  RESTAURANT API CALLS
+*/
+
     app.get("/api/restaurants", (req, res) => {
         console.log("Hitting the correct route.");
         axios
