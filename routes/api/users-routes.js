@@ -44,7 +44,6 @@ app.route('/signup')
 
 
 /*
-
     app.post('/api/signup', (req, res) => {
         db.Users.create({
             first_name: req.body.inputFirstName,
@@ -64,17 +63,12 @@ app.route('/signup')
           //  res.redirect('/signup');
         });
     });
-
-
-
-
 router.route('/')
     .get(usersController.test)
     .get(usersController.findAll)
     .post(usersController.create)
     */
 
-    
 // route for user signup
 // router
 //     .get('/signup', (req, res, next) => {
