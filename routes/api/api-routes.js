@@ -1,6 +1,7 @@
 const axios = require("axios");
 var db = require("../../models");
 
+
 module.exports = function(app) {
   app.get("/api/restaurants", (req, res) => {
     console.log("Hitting the correct route.");
