@@ -35,6 +35,17 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/get/userprofile", function(req, res) {
+    db.Users.findOne({
+      where: {
+        username: "adumbledor"
+      }
+    }).then(function(data) {
+      console.log(data);
+      res.json(data);
+      // res.render("team", { users: data });
+    });
+  });
   // axios.get('/api/get/otheruserprofilefromdb',
   // {params: {username: username}} )
   // .then(res =>  setProfile({...res.data} ))
