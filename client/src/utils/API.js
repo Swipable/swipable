@@ -22,14 +22,5 @@ export default {
           };
         });
       });
-  },
-
-  saveUser:(userData) => {
-    return axios.post('/signup', userData);
-  },
-  getUsers:() => {
-    return axios.get('/users')
   }
-
-
 };
