@@ -15,7 +15,7 @@ function Signup() {
   function loadUsers() {
     API.getUsers()
     .then(res =>
-      setUser(res),
+      setUser(res.data),
       console.log('loadUser call and API req')
       )
       .catch(err => console.log(err))
@@ -40,12 +40,13 @@ function Signup() {
         zip_code: formObject.inputZipCode,
         password: formObject.inputPassword
       })
-        .then(data => 
+        .then(res => 
           console.log('saveUser call'),
           loadUsers()
+        )
         .catch(err => console.log(err))
-        )}
-  };
+     };
+  }
 
   return (
     <Wrapper>
