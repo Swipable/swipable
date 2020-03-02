@@ -24,6 +24,11 @@ module.exports = function(app) {
   });
 
 
+  app.get('/', (req, res) => {
+    console.log('root route hit')
+    res.redirect('login');
+  })
+
 
   //    app.get("/stuff", (req, res) => {
   //        console.log("Stuff received")

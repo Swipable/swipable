@@ -1,6 +1,5 @@
 const express = require('express').Router();
 const usersController = require('../../controllers/usersController');
-//const Users = require ('../../models/Users');
 const db = require('../../models');
 
 /*
@@ -14,16 +13,17 @@ module.exports = function(app) {
     // });
 
 app.route('/signup')
-    .post(usersController.create)
     .get(usersController.findAll)
+    .post(usersController.create)
 
-
+//LOGIN ROUTING -- CURRENTLY NOT IMPLEMENTED
+app.route('/login')
+    .get(usersController.findOne)
 
 
 /*
   RESTAURANT API CALLS
 */
-
     app.get("/api/restaurants", (req, res) => {
         console.log("Hitting the correct route.");
         axios
@@ -36,10 +36,6 @@ app.route('/signup')
            //   console.log(response.data)
            }).catch(e => console.log(e));
       });
-   
-   //    app.get("/stuff", (req, res) => {
-   //        console.log("Stuff received")
-   //    })
    }
 
 
@@ -63,36 +59,8 @@ app.route('/signup')
           //  res.redirect('/signup');
         });
     });
-router.route('/')
-    .get(usersController.test)
-    .get(usersController.findAll)
-    .post(usersController.create)
-    */
 
-// route for user signup
-// router
-//     .get('/signup', (req, res, next) => {
-//         console.log('get method for signup')
-//         // next()
-//     })
-//     .post('/signup', (req, res) => {
-//         Users.create({
-//             first_name: req.body.inputFirstName,
-//             last_name: req.body.inputLastName,
-//             username: req.body.inputUsername,
-//             email: req.body.inputEmail,
-//             password: req.body.inputPassword,
-//             zip_code: req.body.inputZipCode
-//         })
-//         .then(user => {
-//             console.log('signup werk')
-//             console.log(user)
-//         })
-//         .catch(error => {
-//             console.log(error)
-//             res.redirect('/signup');
-//         });
-//     });
+    */
 
 
 // //PUT to update user's profile
