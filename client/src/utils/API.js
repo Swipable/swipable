@@ -29,6 +29,9 @@ export default {
   },
   getUsers:() => {
     return axios.get('/users')
+  },
+  getOneUser:(userData) => {
+    return axios.get('/login', userData);
   }
 
 

@@ -41,15 +41,15 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     //creates encrypted password
-    // Users.beforeCreate((users, options)=> {
-    //     const salt = bcrypt.genSaltSync();
-    //     users.password = bcrypt.hashSync(users.password, salt);
-    // });
+    Users.beforeCreate((users, options)=> {
+        const salt = bcrypt.genSaltSync();
+        users.password = bcrypt.hashSync(users.password, salt);
+    });
 
-    // //password validation
-    // Users.prototype.validPassword = (password) => {
-    //     return bcrypt.compareSync(password, this.password)
-    // };
+    //password validation
+    Users.prototype.validPassword = (password) => {
+        return bcrypt.compareSync(password, this.password)
+    };
     
     return Users;
 };
