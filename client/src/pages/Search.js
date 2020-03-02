@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../components/Form/form.css";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
@@ -13,7 +14,7 @@ function Search() {
 
   // When the component mounts, a call will be made to get random restaurants.
   useEffect(() => {
-   loadRestaurants();//axios catch request to an express route before loadRestaurants(); in backend express route make the call to the api
+    loadRestaurants(); //axios catch request to an express route before loadRestaurants(); in backend express route make the call to the api
   }, []);
 
   function nextRestaurant(restaurantIndex) {
@@ -21,6 +22,9 @@ function Search() {
     if (restaurantIndex >= restaurants.length) {
       restaurantIndex = 0;
     }
+    axios
+      .post("/api/post/favoritestodb", restaurants[restaurantIndex])
+      .then(res => console.log(res.data));
     setRestaurant(restaurants[restaurantIndex]);
     setRestaurantIndex(restaurantIndex);
   }
@@ -49,25 +53,25 @@ function Search() {
   function loadRestaurants() {
     // console.log("calling the right function");
     API.fetchRestaurants()
-    .then((restaurants) => {
-      console.log(restaurants);
+      .then(restaurants => {
+        console.log(restaurants);
         setRestaurants(restaurants);
-        setRestaurant(restaurants[0])
+        setRestaurant(restaurants[0]);
         return restaurants;
-    })
-    .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
   }
 
   return (
     <Wrapper>
       <div className="filter-container">
         <div className="row d-inline-flex">
-        <SearchBar></SearchBar>
-          </div>
-          <br></br>
-          <div className="row d-inline-flex">
+          <SearchBar></SearchBar>
+        </div>
+        <br></br>
+        <div className="row d-inline-flex">
           <div className="col-lg-3">
-          <Dropdown></Dropdown>
+            <Dropdown></Dropdown>
           </div>
           <div className="col-lg-3">
             <Dropdown></Dropdown>
@@ -80,17 +84,16 @@ function Search() {
           </div>
         </div>
       </div>
-      <RestaurantCard 
-      name={restaurant.name} 
-      rating={restaurant.rating} 
-      price={restaurant.price}
-      link={restaurant.link}
-      image={restaurant.image}
-      handleBtnClick={handleBtnClick} />
-      </Wrapper >
-    );
+      <RestaurantCard
+        name={restaurant.name}
+        rating={restaurant.rating}
+        price={restaurant.price}
+        link={restaurant.link}
+        image={restaurant.image}
+        handleBtnClick={handleBtnClick}
+      />
+    </Wrapper>
+  );
 }
 
 export default Search;
-
-  

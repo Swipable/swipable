@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Wrapper from "../components/Wrapper";
-import axios from "axios";
 import API from "../utils/API";
 import UserCard from "../components/UserCard";
 import Title from "../components/Title";
 
 const Team = () => {
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   const [users, setUsers] = useState([]);
-  const [userIndex, setUserIndex] = useState(0);
-  // const [team, setTeam] = useState({ teamMembers: [] });
+  // const [userIndex, setUserIndex] = useState(0);
   useEffect(() => {
     loadUsers();
   }, []);
@@ -18,11 +16,11 @@ const Team = () => {
     API.fetchUsers()
       .then(users => {
         setUsers(users);
-        setUser(users[0]);
         return users;
       })
       .catch(err => console.log(err));
   }
+
   return (
     <Wrapper>
       <Title>Team</Title>

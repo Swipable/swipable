@@ -1,6 +1,7 @@
 const axios = require("axios");
 var db = require("../../models");
 
+//michelle's change
 module.exports = function(app) {
   app.get("/api/restaurants", (req, res) => {
     console.log("Hitting the correct route.");
@@ -23,41 +24,60 @@ module.exports = function(app) {
       .catch(e => console.log(e));
   });
 
+  //debra's change
+  app.get("/", (req, res) => {
+    console.log("root route hit");
+    res.redirect("login");
+  });
 
+  //poorva's change
 
-  //    app.get("/stuff", (req, res) => {
-  //        console.log("Stuff received")
-  //    })
-
-  /* TESTING OUT ROUTES W/DB INTERACTION
+  // Getting Team details from db
   app.get("/api/get/otheruserprofilefromdb", function(req, res) {
     db.Users.findAll({}).then(function(data) {
-      console.log(data);
+      //   console.log(data);
       res.json(data);
-      // res.render("team", { users: data });
     });
   });
-  app.post('/api/post/posttodb', (req, res) => {
-    db.Users.create(req.body)
-    .then(function(data){
-      console.log(data)
-    })
-  })
-{
-             first_name: req.body.inputFirstName,
-             last_name: req.body.inputLastName,
-             username: req.body.inputUsername,
-             email: req.body.inputEmail,
-             password: req.body.inputPassword,
-             zip_code: req.body.inputZipCode
-         }
-*/
 
+  // getting user profile details from db
+  app.get("/api/get/userprofile", function(req, res) {
+    db.Users.findOne({
+      where: {
+        //needs updation with implementation of authentication
+        username: "adumbledor"
+      }
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
 
-  // axios.get('/api/get/otheruserprofilefromdb',
-  // {params: {username: username}} )
-  // .then(res =>  setProfile({...res.data} ))
-  //  .catch(function (error) {
-  //  console.log(error);
-  // })
+  app.get("/api/get/favoritesfromdb", function(req, res) {
+    db.Favorites.findAll({}).then(function(data) {
+      console.log(data);
+      res.json(data);
+    });
+  });
+
+  app.post("/api/post/favoritestodb", (req, res) => {
+    db.Favorites.create({
+      name: req.body.name,
+      rating: req.body.rating,
+      price: req.body.price,
+      image: req.body.image,
+      link: req.body.link,
+      is_closed: req.body.is_closed,
+      restaurant_id: req.body.restaurant_id,
+      display_phone: req.body.display_phone,
+      // display_address: req.body.location.display_address,
+      // category: req.body.categories,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+      distance: req.body.distance
+      // transactions: req.body.transactions
+    }).then(function(dbUsers) {
+      res.json(dbUsers);
+      console.log("db users send");
+    });
+  });
 };
