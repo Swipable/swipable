@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 import FavoriteCard from "../components/FavoriteCard/favouritecard";
@@ -22,12 +23,27 @@ const Favorites = () => {
       .catch(err => console.log(err));
   }
 
+  function deleteFavorites(id) {
+    return axios
+      .delete(`/api/delete/favorite/${id}`)
+      .then(res => {
+        console.log(res.data);
+        if (res.data === 1) {
+          loadFavorites();
+        }
+      })
+      .catch(error => {
+        throw error.res.data;
+      });
+  }
+
   return (
     <Wrapper>
       <Title>Favorites</Title>
       {favorites.map(favorite => (
         <FavoriteCard
-          name={favorite.name}
+          deleteFavorites={deleteFavorites}
+          id={favorite.id}
           image={favorite.image}
           rating={favorite.rating}
           price={favorite.price}

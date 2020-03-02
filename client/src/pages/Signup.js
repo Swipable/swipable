@@ -11,7 +11,6 @@ function Signup() {
   const [formObject, setFormObject] = useState({});
 
   //function to grab all users and console.log
- 
   function loadUsers() {
     API.getUsers()
     .then(res =>

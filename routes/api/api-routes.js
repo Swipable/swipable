@@ -52,13 +52,14 @@ module.exports = function(app) {
     });
   });
 
+  //get favorites list from db
   app.get("/api/get/favoritesfromdb", function(req, res) {
     db.Favorites.findAll({}).then(function(data) {
-      console.log(data);
       res.json(data);
     });
   });
 
+  //add to favourites on swipe right
   app.post("/api/post/favoritestodb", (req, res) => {
     db.Favorites.create({
       name: req.body.name,
@@ -77,7 +78,20 @@ module.exports = function(app) {
       // transactions: req.body.transactions
     }).then(function(dbUsers) {
       res.json(dbUsers);
-      console.log("db users send");
     });
+  });
+
+  app.delete("/api/delete/favorite/:id", (req, res) => {
+    console.log(req.params.id);
+    db.Favorites.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(response) {
+      res.json(response);
+    }),
+      function(err) {
+        console.log(err);
+      };
   });
 };

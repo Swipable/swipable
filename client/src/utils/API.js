@@ -5,7 +5,6 @@ export default {
   fetchRestaurants: function() {
     return axios.get("api/restaurants").then(res => {
       const restaurants = res.data.businesses;
-      console.log(res.data);
       return restaurants.map(restaurant => {
         return {
           name: restaurant.name,
@@ -78,11 +77,9 @@ export default {
   saveUser: userData => {
     return axios.post("/signup", userData);
   },
-
   getUsers: () => {
     return axios.get("/users");
   },
-
   getOneUser: userData => {
     return axios.get("/login", userData);
   }
