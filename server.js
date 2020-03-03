@@ -7,7 +7,7 @@ const axios = require("axios");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
-const passport = require("./passport");
+const passport = require("passport");
 
 //local files
 const sequelize = require("./config/database");
