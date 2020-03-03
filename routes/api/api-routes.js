@@ -70,12 +70,12 @@ module.exports = function(app) {
       is_closed: req.body.is_closed,
       restaurant_id: req.body.restaurant_id,
       display_phone: req.body.display_phone,
-      // display_address: req.body.location.display_address,
+      display_address: req.body.display_address,
       // category: req.body.categories,
       latitude: req.body.latitude,
       longitude: req.body.longitude,
-      distance: req.body.distance
-      // transactions: req.body.transactions
+      distance: req.body.distance,
+      transactions: req.body.transactions
     }).then(function(dbUsers) {
       res.json(dbUsers);
     });
