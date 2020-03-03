@@ -7,17 +7,14 @@ const db = require('../../models');
 */
 
 module.exports = function(app) {
-    // app.get('/api/get/signup', (req, res, next) => {
-    //     console.log('get method for signup')
-    //     res.json(data);
-    // });
 
-app.route('/signup')
+app.route('/api/signup')
     .get(usersController.findAll)
     .post(usersController.create)
+    
 
 //LOGIN ROUTING -- CURRENTLY NOT IMPLEMENTED
-app.route('/login')
+app.route('/api/login')
     .get(usersController.findOne)
 
 

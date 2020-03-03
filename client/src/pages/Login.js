@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../index.css";
-import Wrapper from "../components/Wrapper"
-import API from '../utils/API';
-import { Input, FormBtn } from '../components/PageComponents';
+import Wrapper from "../components/Wrapper";
+import API from "../utils/API";
+import { Input, FormBtn } from "../components/PageComponents";
 
 //PAGE IS SETUP TO HANDLE LOG IN
 
@@ -12,73 +12,63 @@ import { Input, FormBtn } from '../components/PageComponents';
 
 function Login() {
   //set initial state
-  const [user, setUser] = useState([])
-  const [formLogin, setFormLogin] = useState({})
-
+  const [user, setUser] = useState([]);
+  const [formLogin, setFormLogin] = useState({});
+  const [loading, setLoading] = useState(false);
 
   //executes loadUser and populates array w/res data
   useEffect(() => {
-    loadUser()
-  }, [])
+    loadUser();
+  }, []);
 
   //finds one user where username in DB === username entered
   //loads and sets user state to data
   function loadUser() {
     API.getOneUser()
-    .then(res =>
-      setUser(res.data),
-      console.log('Login/loadUser called')
-      )
-    .catch(err => console.log(err));
-  };
+      .then(res => setUser(res.data), console.log("Login/loadUser called"))
+      .catch(err => console.log(err));
+  }
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { name, value } = event.target;
-    setFormLogin({...formLogin, [name]: value})
-  };
+    setFormLogin({ ...formLogin, [name]: value });
+  }
 
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formLogin.title && formLogin.author) {
       if (!formLogin.username || !formLogin.password) {
-        console.log('no username or password entered')
+        console.log("no username or password entered");
       }
 
-      loadUser()
-
+      loadUser();
     }
-  };
-
-
+  }
 
   return (
     <Wrapper>
       <form>
         <Input
-        onChange = {handleInputChange}
-        name = "inputUsername"
-        placeholder = "Username"
-          />
+          onChange={handleInputChange}
+          name="inputUsername"
+          placeholder="Username"
+        />
         <Input
-        onChange = {handleInputChange}
-        name = "inputPassword"
-        placeholder = "Password"
-          />
-        <FormBtn
-        onClick= {handleFormSubmit}>
-        Log in
-        </FormBtn>
+          onChange={handleInputChange}
+          name="inputPassword"
+          placeholder="Password"
+        />
+        <FormBtn onClick={handleFormSubmit}>Log in</FormBtn>
       </form>
-  </Wrapper>
-
+    </Wrapper>
   );
 }
 
 export default Login;
 
-
-{/* 
+{
+  /* 
     <div className="container">
     <div className="row">
       <div className="col-lg-10 col-xl-9 mx-auto">
@@ -107,4 +97,5 @@ export default Login;
       </div>
     </div>
   </div>
-  */}
+  */
+}

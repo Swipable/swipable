@@ -83,12 +83,12 @@ export default {
 
   //debra's change
   saveUser: userData => {
-    return axios.post("/signup", userData);
+    return axios.post("/api/signup", userData);
   },
   getUsers: () => {
-    return axios.get("/users");
+    return axios.get("/api/signup");
   },
   getOneUser: userData => {
-    return axios.get("/login", userData);
+    return axios.get("/api/login", userData);
   }
 };

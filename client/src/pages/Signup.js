@@ -39,10 +39,13 @@ function Signup() {
         zip_code: formObject.inputZipCode,
         password: formObject.inputPassword
       })
-        .then(res => 
-          console.log('saveUser call'),
-          loadUsers()
-        )
+        .then(res => {
+           if (res.data) {
+             console.log ('user posted to DB')
+             
+           }
+          loadUsers(user)
+        })
         .catch(err => console.log(err))
      };
   }
