@@ -15,12 +15,12 @@ export default {
           is_closed: restaurant.is_closed,
           restaurant_id: restaurant.id,
           display_phone: restaurant.phone,
-          //display_address: restaurant.location.display_address,
-          //category: restaurant.categories,
+          display_address: restaurant.location.display_address,
+          category: restaurant.categories,
           latitude: restaurant.coordinates.latitude,
           longitude: restaurant.coordinates.longitude,
-          distance: restaurant.distance
-          //transactions: restaurant.transactions
+          distance: restaurant.distance,
+          transactions: restaurant.transactions
         };
       });
     });
@@ -64,6 +64,14 @@ export default {
             price: favorite.price,
             display_phone: favorite.display_phone,
             distance: favorite.distance,
+            transactions: favorite.transactions,
+            link: favorite.link,
+            is_closed: favorite.is_closed,
+            restaurant_id: favorite.restaurant_id,
+            display_address: favorite.display_address,
+            // category: favorite.categories,
+            latitude: favorite.latitude,
+            longitude: favorite.longitude,
             key: favorite.id
           };
         });

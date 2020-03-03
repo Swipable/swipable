@@ -44,6 +44,7 @@ const Favorites = () => {
         <FavoriteCard
           deleteFavorites={deleteFavorites}
           id={favorite.id}
+          name={favorite.name}
           image={favorite.image}
           rating={favorite.rating}
           price={favorite.price}
