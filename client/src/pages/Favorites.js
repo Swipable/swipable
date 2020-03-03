@@ -1,44 +1,59 @@
-import React,{ Component } from "react";
-// import "../components/Form/form.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Wrapper from "../components/Wrapper";
-
-import UserCard from "../components/UserCard";
+import API from "../utils/API";
+import FavoriteCard from "../components/FavoriteCard/favouritecard";
 import Title from "../components/Title";
-import friends from "../friends.json";
 
-class Favorites extends Component {
-  // Setting this.state.friends to the friends json array
-  state = {
-    friends
-  };
+const Favorites = () => {
+  // const [favorite, setFavorite] = useState({});
+  const [favorites, setFavorites] = useState([]);
+  // const [favoriteIndex, setfavoriteIndex] = useState(0);
 
-  removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
-  };
+  useEffect(() => {
+    loadFavorites();
+  }, []);
 
-  render() {
-    return (
-      <Wrapper>
-        <Title>Favorites</Title>
-      <div className="team-container">
-        {this.state.friends.map(friend => (
-          <UserCard
-            removeFriend={this.removeFriend}
-            id={friend.id}
-            key={friend.id}
-            name={friend.name}
-            image={friend.image}
-            occupation={friend.occupation}
-            location={friend.location}
-          />
-        ))}
-        </div>
-      </Wrapper>
-    );
+  function loadFavorites() {
+    API.fetchFavorites()
+      .then(favorites => {
+        setFavorites(favorites);
+        return favorites;
+      })
+      .catch(err => console.log(err));
   }
-}
+
+  function deleteFavorites(id) {
+    return axios
+      .delete(`/api/delete/favorite/${id}`)
+      .then(res => {
+        console.log(res.data);
+        if (res.data === 1) {
+          loadFavorites();
+        }
+      })
+      .catch(error => {
+        throw error.res.data;
+      });
+  }
+
+  return (
+    <Wrapper>
+      <Title>Favorites</Title>
+      {favorites.map(favorite => (
+        <FavoriteCard
+          deleteFavorites={deleteFavorites}
+          id={favorite.id}
+          image={favorite.image}
+          rating={favorite.rating}
+          price={favorite.price}
+          display_phone={favorite.display_phone}
+          distance={favorite.distance}
+          key={favorite.id}
+        />
+      ))}
+    </Wrapper>
+  );
+};
 
 export default Favorites;
