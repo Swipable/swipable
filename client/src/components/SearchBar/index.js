@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Form/form.css";
 import "./searchbar.css";
 
-function SearchBar() {
+function SearchBar(props) {
+    const [location, setInput] = useState("");
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        console.log(`searching in ${location}`)
+    }
     return (
-        <div>
-            <form className="form-inline form-label-group my-2 my-lg-0">
-                <input type="text" id="searchBox" className="form-control" placeholder="Search" required autofocus />
-                <label for="searchBox" id="search-label">Enter City or Zipcode ......</label>
-            </form>
-        </div>
+      <form onSubmit={handleSubmit}>
+      
+          <input id="searchBox"
+            type="text"
+            placeholder= 'address, neighborhood, city, state, or zip'
+            value={location}
+            onChange={e => setInput(e.target.value)}
+          />
+        <input type="submit" value="Submit" />
+      </form>
     );
-}
+  }
 
 export default SearchBar;

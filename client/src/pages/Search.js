@@ -4,7 +4,8 @@ import "../components/Form/form.css";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 import SearchBar from "../components/SearchBar";
-import Dropdown from "../components/Dropdown";
+import Prices from "../components/Prices";
+import Category from "../components/Categories";
 import RestaurantCard from "../components/RestaurantCard";
 
 function Search() {
@@ -71,17 +72,17 @@ function Search() {
         <br></br>
         <div className="row d-inline-flex">
           <div className="col-lg-3">
-            <Dropdown></Dropdown>
+            <Prices></Prices>
           </div>
           <div className="col-lg-3">
-            <Dropdown></Dropdown>
+            <Category></Category>
+          </div>
+          {/* <div className="col-lg-3">
+            <Categories></Categories>
           </div>
           <div className="col-lg-3">
-            <Dropdown></Dropdown>
-          </div>
-          <div className="col-lg-3">
-            <Dropdown></Dropdown>
-          </div>
+            <Categories></Categories>
+          </div> */}
         </div>
       </div>
       <RestaurantCard
