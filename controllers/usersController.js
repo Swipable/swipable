@@ -18,8 +18,15 @@ module.exports = {
         console.log('create in user-routes hit')
         db.Users
             .create(req.body)
-            .then(data => res.json(data))
-            .catch(err => res.status(422).json(err));
+            .then((data) => { 
+                req.session.data = data.dataValues;
+                console.log(req.session.data.username);
+                res.json(data);
+            })
+            .catch(err => {
+                res.status(422).json(err)
+                res.redirect('/signup');
+            })
     },
     //Below are set up for handling login
     findOne: function(req, res) {
