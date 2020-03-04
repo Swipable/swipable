@@ -1,86 +1,173 @@
-import React, { useState } from "react";
-import "../Form/form.css";
-
-function Category() {
-
-  const [category, setCategory] = React.useState('');
-
-  const handleCategoryChange = (category) => {
-     setCategory(category);
-     console.log(category);
- }
-
-  return (
-    <select name="category" value={category} onChange={event => handleCategoryChange(event.target.value)}>
-      <option value=""> Categories </option>
-      <option value="American"> American </option>
-      <option value="Breakfast"> Breakfast </option>
-      <option value="Sandwiches"> Sandwiches </option>
-      <option value="Italian"> Italian </option>
-      <option value="Cafes"> Cafes </option>
-      <option value="Coffee"> Coffee </option>
-      <option value="Fast Food"> Fast Food </option>
-      <option value="Seafood"> Seafood </option>
-      <option value="Steakhouses"> Steakhouses </option>
-      <option value="Salad"> Salad </option>
-      <option value="Cocktail Bars"> Cocktail Bars </option>
-      <option value="Pizza"> Pizza </option>
-      <option value="Burgers"> Burgers </option>
-      <option value="Delis"> Delis </option>
-      <option value="Mexican"> Mexican </option>
-      <option value="Wine Bars"> Wine Bars </option>
-      <option value="French"> French </option>
-      <option value="Mediterranean"> Mediterranean </option>
-      <option value="Desserts"> Desserts </option>
-      <option value="Sushi"> Sushi </option>
-      <option value="Chinese"> Chinese </option>
-      <option value="Juice Bars"> Juice Bars </option>
-      <option value="Lounges"> Lounges </option>
-      <option value="Vegetarian"> Vegetarian </option>
-      <option value="Bakeries"> Bakeries </option>
-      <option value="Japanese"> Japanese </option>
-      <option value="Asian Fusion"> Asian Fusion </option>
-      <option value="Barbeque"> Barbeque </option>
-      <option value="Sports Bars"> Sports Bars </option>
-      <option value="Hot Dogs"> Hot Dogs </option>
-      <option value="Specialty Food"> Specialty Food </option>
-      <option value="Donuts"> Donuts </option>
-      <option value="Thai"> Thai </option>
-      <option value="Tours"> Tours </option>
-      <option value="Bagels"> Bagels </option>
-      <option value="Chicken Shop"> Chicken Shop </option>
-      <option value="Food Court"> Food Court </option>
-      <option value="Gastropubs"> Gastropubs </option>
-      <option value="Gluten-Free"> Gluten-Free </option>
-      <option value="Grocery"> Grocery </option>
-      <option value="Indian"> Indian </option>
-      <option value="Pop-Up Restaurants"> Pop-Up Restaurants </option>
-      <option value="Tapas/Small Plates"> Tapas/Small Plates </option>
-      <option value="Vegan"> Vegan </option>
-      <option value="Wraps"> Wraps </option>
-      <option value="Bowling"> Bowling </option>
-      <option value="Buffets"> 	Buffets </option>
-      <option value="Cafeteria"> 	Cafeteria </option>
-      <option value="Cantonese"> Cantonese </option>
-      <option value="Chicken Wings"> 	Chicken Wings </option>
-      <option value="Coffee Roasteries"> Coffee Roasteries </option>
-      <option value="Dim Sum"> Dim Sum </option>
-      <option value="Dinner Theater"> Dinner Theater </option>
-      <option value="Falafel"> Falafel </option>
-      <option value="Gelato"> Gelato </option>
-      <option value="Ice Cream"> Ice Cream </option>
-      <option value="Irish Pub"> Irish Pub </option>
-      <option value="Middle Eastern"> Middle Eastern </option>
-      <option value="Soup"> Soup </option>
-      <option value="Southern"> Southern </option>
-      <option value="Tacos"> Tacos </option>
-      <option value="Vietnamese"> Vietnamese </option>
-    </select>
- 
-
-  );
+export default class Categories extends React.Component{
+  render(){
+    const categories  = [
+      {
+        title: "Afghan",
+        alias: 'afghani',
+      },
+      {
+        id: "African",
+        title: 'african',
+      }
+    ]
+    return categories
+  }
 }
 
-
-export default Category;
-
+// Afghan (afghani)
+// African (african)
+// Senegalese (senegalese)
+// South African (southafrican)
+// American (New) (newamerican)
+// American (Traditional) (tradamerican)
+// Arabian (arabian)
+// Argentine (argentine)
+// Armenian (armenian)
+// Asian Fusion (asianfusion)
+// Australian (australian)
+// Austrian (austrian)
+// Bangladeshi (bangladeshi)
+// Barbeque (bbq)
+// Basque (basque)
+// Belgian (belgian)
+// Brasseries (brasseries)
+// Brazilian (brazilian)
+// Breakfast & Brunch (breakfast_brunch)
+// Pancakes (pancakes)
+// British (british)
+// Buffets (buffets)
+// Bulgarian (bulgarian)
+// Burgers (burgers)
+// Burmese (burmese)
+// Cafes (cafes)
+// Themed Cafes (themedcafes)
+// Cafeteria (cafeteria)
+// Cajun/Creole (cajun)
+// Cambodian (cambodian)
+// Caribbean (caribbean)
+// Dominican (dominican)
+// Haitian (haitian)
+// Puerto Rican (puertorican)
+// Trinidadian (trinidadian)
+// Catalan (catalan)
+// Cheesesteaks (cheesesteaks)
+// Chicken Shop (chickenshop)
+// Chicken Wings (chicken_wings)
+// Chinese (chinese)
+// Cantonese (cantonese)
+// Dim Sum (dimsum)
+// Hainan (hainan)
+// Shanghainese (shanghainese)
+// Szechuan (szechuan)
+// Comfort Food (comfortfood)
+// Creperies (creperies)
+// Cuban (cuban)
+// Czech (czech)
+// Delis (delis)
+// Diners (diners)
+// Dinner Theater (dinnertheater)
+// Eritrean (eritrean)
+// Ethiopian (ethiopian)
+// Fast Food (hotdogs)
+// Filipino (filipino)
+// Fish & Chips (fishnchips)
+// Fondue (fondue)
+// Food Court (food_court)
+// Food Stands (foodstands)
+// French (french)
+// Mauritius (mauritius)
+// Reunion (reunion)
+// Game Meat (gamemeat)
+// Gastropubs (gastropubs)
+// Georgian (georgian)
+// German (german)
+// Gluten-Free (gluten_free)
+// Greek (greek)
+// Guamanian (guamanian)
+// Halal (halal)
+// Hawaiian (hawaiian)
+// Himalayan/Nepalese (himalayan)
+// Honduran (honduran)
+// Hong Kong Style Cafe (hkcafe)
+// Hot Dogs (hotdog)
+// Hot Pot (hotpot)
+// Hungarian (hungarian)
+// Iberian (iberian)
+// Indian (indpak)
+// Indonesian (indonesian)
+// Irish (irish)
+// Italian (italian)
+// Calabrian (calabrian)
+// Sardinian (sardinian)
+// Sicilian (sicilian)
+// Tuscan (tuscan)
+// Japanese (japanese)
+// Conveyor Belt Sushi (conveyorsushi)
+// Izakaya (izakaya)
+// Japanese Curry (japacurry)
+// Ramen (ramen)
+// Teppanyaki (teppanyaki)
+// Kebab (kebab)
+// Korean (korean)
+// Kosher (kosher)
+// Laotian (laotian)
+// Latin American (latin)
+// Colombian (colombian)
+// Salvadoran (salvadoran)
+// Venezuelan (venezuelan)
+// Live/Raw Food (raw_food)
+// Malaysian (malaysian)
+// Mediterranean (mediterranean)
+// Falafel (falafel)
+// Mexican (mexican)
+// Tacos (tacos)
+// Middle Eastern (mideastern)
+// Egyptian (egyptian)
+// Lebanese (lebanese)
+// Modern European (modern_european)
+// Mongolian (mongolian)
+// Moroccan (moroccan)
+// New Mexican Cuisine (newmexican)
+// Nicaraguan (nicaraguan)
+// Noodles (noodles)
+// Pakistani (pakistani)
+// Pan Asian (panasian)
+// Persian/Iranian (persian)
+// Peruvian (peruvian)
+// Pizza (pizza)
+// Polish (polish)
+// Polynesian (polynesian)
+// Pop-Up Restaurants (popuprestaurants)
+// Portuguese (portuguese)
+// Poutineries (poutineries)
+// Russian (russian)
+// Salad (salad)
+// Sandwiches (sandwiches)
+// Scandinavian (scandinavian)
+// Scottish (scottish)
+// Seafood (seafood)
+// Singaporean (singaporean)
+// Slovakian (slovakian)
+// Somali (somali)
+// Soul Food (soulfood)
+// Soup (soup)
+// Southern (southern)
+// Spanish (spanish)
+// Sri Lankan (srilankan)
+// Steakhouses (steak)
+// Supper Clubs (supperclubs)
+// Sushi Bars (sushi)
+// Syrian (syrian)
+// Taiwanese (taiwanese)
+// Tapas Bars (tapas)
+// Tapas/Small Plates (tapasmallplates)
+// Tex-Mex (tex-mex)
+// Thai (thai)
+// Turkish (turkish)
+// Ukrainian (ukrainian)
+// Uzbek (uzbek)
+// Vegan (vegan)
+// Vegetarian (vegetarian)
+// Vietnamese (vietnamese)
+// Waffles (waffles)
+// Wraps (wraps)

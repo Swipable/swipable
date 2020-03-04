@@ -15,7 +15,9 @@ const Team = () => {
   function loadUsers() {
     API.fetchUsers()
       .then(users => {
-        setUsers(users);
+        if (users.length > 0) {
+          setUsers(users);
+        }
         return users;
       })
       .catch(err => console.log(err));

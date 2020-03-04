@@ -4,25 +4,34 @@ import "../components/Form/form.css";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 import SearchBar from "../components/SearchBar";
-import Prices from "../components/Prices";
-import Category from "../components/Categories";
 import RestaurantCard from "../components/RestaurantCard";
 
 function Search() {
   const [restaurant, setRestaurant] = useState({});
   const [restaurants, setRestaurants] = useState([]);
   const [restaurantIndex, setRestaurantIndex] = useState(0);
+  const [price, setPrice] = React.useState('2');
+  const [category, setCategory] = React.useState('Italian');
+  const categories = ["bbq", "burgers", "cajun", "chinese", "french", "greek", "halal", "italian"]
 
   // When the component mounts, a call will be made to get random restaurants.
   useEffect(() => {
-    loadRestaurants(); //axios catch request to an express route before loadRestaurants(); in backend express route make the call to the api
-  }, []);
+    if (restaurants.length === 0) {
+      console.log("I'm being run a shit load maybe still")
+      loadRestaurants();
+    }
+  });
 
-  function nextRestaurant(restaurantIndex) {
+  useEffect(() => {
+    loadRestaurants();
+  }, [price, category]);
+
+  const nextRestaurant = (restaurantIndex) => {
     // Ensure that the restaurant index stays within our range of restaurants
     if (restaurantIndex >= restaurants.length) {
       restaurantIndex = 0;
     }
+
     axios
       .post("/api/post/favoritestodb", restaurants[restaurantIndex])
       .then(res => console.log(res.data));
@@ -30,7 +39,7 @@ function Search() {
     setRestaurantIndex(restaurantIndex);
   }
 
-  function previousRestaurant(restaurantIndex) {
+  const previousRestaurant = (restaurantIndex) => {
     // Ensure that the Restaurant index stays within our range of Restaurants
     if (restaurantIndex < 0) {
       restaurantIndex = restaurants.length - 1;
@@ -39,7 +48,7 @@ function Search() {
     setRestaurantIndex(restaurantIndex);
   }
 
-  function handleBtnClick(event) {
+  const handleBtnClick = (event) => {
     // Get the title of the clicked button
     const btnName = event.target.getAttribute("data-value");
     if (btnName === "next") {
@@ -51,13 +60,11 @@ function Search() {
     }
   }
 
-  function loadRestaurants() {
-    // console.log("calling the right function");
-    API.fetchRestaurants()
-      .then(restaurants => {
-        console.log(restaurants);
-        setRestaurants(restaurants);
-        setRestaurant(restaurants[0]);
+  const loadRestaurants = () => {
+    API.fetchRestaurants(price, category)
+      .then(r => {
+        setRestaurants(r);
+        setRestaurant(r[0]);
         return restaurants;
       })
       .catch(err => console.log(err));
@@ -69,20 +76,24 @@ function Search() {
         <div className="row d-inline-flex">
           <SearchBar></SearchBar>
         </div>
-        <br></br>
+        <br/>
         <div className="row d-inline-flex">
           <div className="col-lg-3">
-            <Prices></Prices>
+            <select name="price" value={price} onChange={event => setPrice(event.target.value)}>
+              <option value=""> Price </option>
+              <option value="1"> $ </option>
+              <option value="2"> $$ </option>
+              <option value="3"> $$$ </option>
+              <option value="4"> $$$$ </option>
+            </select>
           </div>
           <div className="col-lg-3">
-            <Category></Category>
+            <select name="category" value={category} onChange={event => setCategory(event.target.value)}>
+              {categories.map((c) => {
+                return (<option value={c}> {c} </option>);
+              })}
+            </select>
           </div>
-          {/* <div className="col-lg-3">
-            <Categories></Categories>
-          </div>
-          <div className="col-lg-3">
-            <Categories></Categories>
-          </div> */}
         </div>
       </div>
       <RestaurantCard

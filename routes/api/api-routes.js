@@ -1,6 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import SearchBar from "../client/src/components/SearchBar"
-
 const axios = require('axios');
 
 module.exports = function(app //,SearchBar
@@ -8,9 +5,10 @@ module.exports = function(app //,SearchBar
   
    
 app.get("/api/restaurants", (req, res) => {
-    console.log("Hitting the correct route.");
-    axios
-    .get(
+    const price = req.query.price ? req.query.price : 'italian';
+    const categories = req.query.category ? req.query.category : '2';
+
+    axios.get(
        "https://api.yelp.com/v3/businesses/search?&limit=50",
        {
          headers: {
@@ -20,10 +18,10 @@ app.get("/api/restaurants", (req, res) => {
          },
          params: {
            location: "chicago",
-           categories: 'italian',
+           categories,
            hours: "is_open_now",
            rating: '5',
-           price: '2',
+           price,
            transactions: 'delivery'
          }
        }
@@ -32,7 +30,9 @@ app.get("/api/restaurants", (req, res) => {
         console.log("Yelp response received");
         res.json(response.data);
        //   console.log(response.data)
-       }).catch(e => console.log(e));
+       }).catch(e => {
+           console.log(e.message)
+    });
   });
 
   app.get("/stuff", (req, res) => {

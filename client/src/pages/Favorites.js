@@ -17,7 +17,9 @@ const Favorites = () => {
   function loadFavorites() {
     API.fetchFavorites()
       .then(favorites => {
-        setFavorites(favorites);
+        if (favorites.length > 0) {
+          setFavorites(favorites);
+        }
         return favorites;
       })
       .catch(err => console.log(err));
