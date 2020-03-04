@@ -4,8 +4,7 @@ var db = require("../../models");
 
 //michelle's change
 
-module.exports = function(app //,SearchBar
-   ) {
+module.exports = function(app) {
   
    
 app.get("/api/restaurants", (req, res) => {
@@ -39,10 +38,7 @@ app.get("/api/restaurants", (req, res) => {
     });
   });
 
-  app.get("/stuff", (req, res) => {
-      console.log("Stuff received")
-  })
-}
+
 
  //debra's change
  app.get("/", (req, res) => {
@@ -114,4 +110,4 @@ app.delete("/api/delete/favorite/:id", (req, res) => {
       console.log(err);
     };
 });
-};
+}
