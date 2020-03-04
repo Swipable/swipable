@@ -39,3 +39,75 @@ app.get("/api/restaurants", (req, res) => {
       console.log("Stuff received")
   })
 }
+
+ //debra's change
+ app.get("/", (req, res) => {
+  console.log("root route hit");
+  res.redirect("login");
+});
+
+//poorva's change
+
+// Getting Team details from db
+app.get("/api/get/otheruserprofilefromdb", function(req, res) {
+  db.Users.findAll({}).then(function(data) {
+    //   console.log(data);
+    res.json(data);
+  });
+});
+
+// getting user profile details from db
+app.get("/api/get/userprofile", function(req, res) {
+  db.Users.findOne({
+    where: {
+      //needs updation with implementation of authentication
+      username: "adumbledor"
+    }
+  }).then(function(data) {
+    res.json(data);
+  });
+});
+
+//get favorites list from db
+app.get("/api/get/favoritesfromdb", function(req, res) {
+  db.Favorites.findAll({}).then(function(data) {
+    res.json(data);
+  });
+});
+
+//add to favourites on swipe right
+app.post("/api/post/favoritestodb", (req, res) => {
+  db.Favorites.create({
+    name: req.body.name,
+    rating: req.body.rating,
+    price: req.body.price,
+    image: req.body.image,
+    link: req.body.link,
+    is_closed: req.body.is_closed,
+    restaurant_id: req.body.restaurant_id,
+    display_phone: req.body.display_phone,
+    display_address: req.body.display_address,
+    // category: req.body.categories,
+    latitude: req.body.latitude,
+    longitude: req.body.longitude,
+    distance: req.body.distance,
+    transactions: req.body.transactions
+  }).then(function(dbUsers) {
+    res.json(dbUsers);
+  });
+});
+
+app.delete("/api/delete/favorite/:id", (req, res) => {
+  console.log(req.params.id);
+  db.Favorites.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(response) {
+    res.json(response);
+  }),
+    function(err) {
+      console.log(err);
+    };
+});
+};
