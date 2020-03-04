@@ -1,4 +1,8 @@
 const axios = require('axios');
+var db = require("../../models");	
+
+
+//michelle's change
 
 module.exports = function(app //,SearchBar
    ) {
