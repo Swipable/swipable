@@ -9,6 +9,7 @@ import RestaurantCard from "../components/RestaurantCard";
 function Search() {
   const [restaurant, setRestaurant] = useState({});
   const [restaurants, setRestaurants] = useState([]);
+  const [location, setInput] = useState("");
   const [restaurantIndex, setRestaurantIndex] = useState(0);
   const [price, setPrice] = React.useState('2');
   const [category, setCategory] = React.useState('');
@@ -23,7 +24,7 @@ function Search() {
 
   useEffect(() => {
     loadRestaurants();
-  }, [price, category]);
+  }, [price, category, location]);
 
   const nextRestaurant = (restaurantIndex) => {
     // Ensure that the restaurant index stays within our range of restaurants
@@ -62,11 +63,15 @@ function Search() {
 
   }
 
-  const loadRestaurants = () => {
-    API.fetchRestaurants(price, category)
+  const loadRestaurants = (e) => {
+    if (e){
+    e.preventDefault()}
+    console.log(location)
+    API.fetchRestaurants(price, category, location)
       .then(r => {
         setRestaurants(r);
         setRestaurant(r[0]);
+        console.log(r)
         return restaurants;
       })
       .catch(err => console.log(err));
@@ -74,9 +79,15 @@ function Search() {
 
   return (
     <Wrapper>
+
       <div className="filter-container">
+      <form onSubmit={loadRestaurants}>
         <div className="row d-inline-flex">
-          <SearchBar></SearchBar>
+          <SearchBar
+            location={location} 
+            setInput={setInput}
+            >
+          </SearchBar>
         </div>
         <br/>
         <div className="row d-inline-flex">
@@ -97,6 +108,7 @@ function Search() {
             </select>
           </div>
         </div>
+        </form>
       </div>
       <RestaurantCard
         name={restaurant.name}
