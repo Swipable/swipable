@@ -15,11 +15,11 @@
 .back {
   top: 50%;
   left: 20%;
-  background: #43a047;
+  background: red;
 }
 
 .back::after {
-  content: "\f0a8";
+  content: "\f00d";
 }
 
 .next {
@@ -29,7 +29,7 @@
 }
 
 .next::after {
-  content: "\f0a9";
+  content: "\f004";
 }
 
 .next:hover::after,

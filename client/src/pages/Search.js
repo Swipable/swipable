@@ -11,13 +11,12 @@ function Search() {
   const [restaurants, setRestaurants] = useState([]);
   const [restaurantIndex, setRestaurantIndex] = useState(0);
   const [price, setPrice] = React.useState('2');
-  const [category, setCategory] = React.useState('Italian');
+  const [category, setCategory] = React.useState('');
   const categories = ["bbq", "burgers", "cajun", "chinese", "french", "greek", "halal", "italian"]
 
   // When the component mounts, a call will be made to get random restaurants.
   useEffect(() => {
     if (restaurants.length === 0) {
-      console.log("I'm being run a shit load maybe still")
       loadRestaurants();
     }
   });
@@ -54,10 +53,13 @@ function Search() {
     if (btnName === "next") {
       const newRestaurantIndex = restaurantIndex + 1;
       nextRestaurant(newRestaurantIndex);
+      console.log(restaurantIndex)
     } else {
-      const newRestaurantIndex = restaurantIndex - 1;
+      const newRestaurantIndex = restaurantIndex + 1;
       previousRestaurant(newRestaurantIndex);
+      console.log(restaurantIndex)
     }
+
   }
 
   const loadRestaurants = () => {
