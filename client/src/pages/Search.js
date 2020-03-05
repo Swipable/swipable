@@ -11,16 +11,10 @@ function Search() {
   const [restaurants, setRestaurants] = useState([]);
   const [location, setInput] = useState("");
   const [restaurantIndex, setRestaurantIndex] = useState(0);
-  const [price, setPrice] = React.useState('2');
-  const [category, setCategory] = React.useState('');
-  const categories = ["bbq", "burgers", "cajun", "chinese", "french", "greek", "halal", "italian"]
+  const [price, setPrice] = React.useState('');
+  const [category, setCategory] = React.useState('Categories');
+  const categories = ["Categories", "bbq", "burgers", "cajun", "chinese", "french", "greek", "halal", "italian"]
 
-  // When the component mounts, a call will be made to get random restaurants.
-  useEffect(() => {
-    if (restaurants.length === 0) {
-      loadRestaurants();
-    }
-  });
 
   useEffect(() => {
     loadRestaurants();
@@ -28,25 +22,32 @@ function Search() {
 
   const nextRestaurant = (restaurantIndex) => {
     // Ensure that the restaurant index stays within our range of restaurants
-    if (restaurantIndex >= restaurants.length) {
-      restaurantIndex = 0;
-    }
-
+    if (restaurantIndex <= 49) {
     axios
-      .post("/api/post/favoritestodb", restaurants[restaurantIndex])
-      .then(res => console.log(res.data));
-    setRestaurant(restaurants[restaurantIndex]);
-    setRestaurantIndex(restaurantIndex);
+      .post("/api/post/favoritestodb", restaurants[restaurantIndex -1])
+      .then(res => alert(res.data.name + " has been added to your favorites <3"))
+      .then(setRestaurant(restaurants[restaurantIndex]))
+      .then(setRestaurantIndex(restaurantIndex + 1));
   }
+  else {
+    axios
+      .post("/api/post/favoritestodb", restaurants[restaurantIndex -1])
+      .then(res => alert(res.data.name + " has been added to your favorites <3"))
+      .then(alert("There are no more results! Please refine your search."));
+  }
+} 
 
-  const previousRestaurant = (restaurantIndex) => {
-    // Ensure that the Restaurant index stays within our range of Restaurants
-    if (restaurantIndex < 0) {
-      restaurantIndex = restaurants.length - 1;
-    }
+  const dislikeRestaurant = (restaurantIndex) => {
+    if (restaurantIndex <= 49) {
+  
     setRestaurant(restaurants[restaurantIndex]);
     setRestaurantIndex(restaurantIndex);
+  } 
+  else {
+    alert("There are no more results! Please refine your search.")
   }
+} 
+
 
   const handleBtnClick = (event) => {
     // Get the title of the clicked button
@@ -57,11 +58,13 @@ function Search() {
       console.log(restaurantIndex)
     } else {
       const newRestaurantIndex = restaurantIndex + 1;
-      previousRestaurant(newRestaurantIndex);
-      console.log(restaurantIndex)
+      dislikeRestaurant(newRestaurantIndex);
     }
 
   }
+
+  
+
 
   const loadRestaurants = (e) => {
     if (e){
@@ -69,13 +72,18 @@ function Search() {
     console.log(location)
     API.fetchRestaurants(price, category, location)
       .then(r => {
-        setRestaurants(r);
-        setRestaurant(r[0]);
-        console.log(r)
-        return restaurants;
+        if (r[0].name !== 'undefined') {
+          console.log(r[0].name)
+          setRestaurants(r);
+          setRestaurant(r[0]);
+          console.log(r)
+          return restaurants;          
+        }
       })
-      .catch(err => console.log(err));
+      .catch(err => 
+        alert("Sorry, there are no results! Please change your search."));
   }
+
 
   return (
     <Wrapper>
@@ -111,12 +119,15 @@ function Search() {
         </form>
       </div>
       <RestaurantCard
+        
         name={restaurant.name}
         rating={restaurant.rating}
         price={restaurant.price}
         link={restaurant.link}
         image={restaurant.image}
         handleBtnClick={handleBtnClick}
+        
+    
       />
     </Wrapper>
   );
