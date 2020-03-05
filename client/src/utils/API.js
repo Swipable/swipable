@@ -9,7 +9,7 @@ export default {
             {
                 params: {
                     price,
-                    category
+                    category,
                 }
             }).then(res => {
                 console.log("Returning from call with price=" + price)
