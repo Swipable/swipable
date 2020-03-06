@@ -93,13 +93,13 @@ export default {
     },
 
    //debra's change
-   saveUser: userData => {
+saveUser: userData => {
     return axios.post("/api/signup", userData);
 },
 getUsers: () => {
     return axios.get("/api/signup");
 },
-getOneUser: userData => {
-    return axios.get("/api/login", userData);
+getOneUser: function (userData) {
+    return axios.post("/api/login", userData);
 }
-};
+ };
