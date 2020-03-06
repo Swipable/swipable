@@ -8,8 +8,9 @@ module.exports = function(app) {
   
    
 app.get("/api/restaurants", (req, res) => {
-    const price = req.query.price ? req.query.price : 'italian';
-    const categories = req.query.category ? req.query.category : '2';
+    const price = req.query.price || '2';
+    const categories = req.query.category || '';
+    const location = req.query.location || 'usa'
 
     axios.get(
        "https://api.yelp.com/v3/businesses/search?&limit=50",
@@ -20,7 +21,7 @@ app.get("/api/restaurants", (req, res) => {
            "Access-Control-Allow-Origin": "*"
          },
          params: {
-           location: "chicago",
+           location,
            categories,
            hours: "is_open_now",
            rating: '5',
