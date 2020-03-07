@@ -87,8 +87,9 @@ function Search() {
 
   return (
     <Wrapper>
-
+  <br></br>
       <div className="d-flex justify-content-center">
+      
       <form onSubmit={loadRestaurants}>
         {/* <div className="row d-inline-flex"> */}
           <SearchBar

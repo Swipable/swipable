@@ -6,17 +6,17 @@ function SearchBar(props) {
 
     return (
  
-      <>
-          <input class="form-control d-flex justify-content-center w-200" 
+      <div class="searchContainer">
+          <input class="form-control form-control-lg d-flex justify-content-center " 
             id="cssform"
             type="text"
-            placeholder= 'address, neighborhood, city, state, or zip'
+            placeholder= 'City, state, or zip code'
             value={props.location}
             onChange={e => props.setInput(e.target.value)}
           />
         {/* <input type="submit" value="Submit" /> */}
 
-        </>
+        </div>
 
     );
   }
