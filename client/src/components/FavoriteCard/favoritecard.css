@@ -7,6 +7,8 @@
   padding-top: 50px;
   height: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
   /* width:1200px; */
   flex-flow: row wrap;
   padding: 20px;
@@ -15,51 +17,66 @@
   overflow: auto;
 }
 
-.user-card {
+.favorite-wrapper{
+  margin-right: auto; /* 1 */
+  margin-left:  auto; /* 1 */
+
+  max-width: 960px; /* 2 */
+
+  padding-right: 10px; /* 3 */
+  padding-left:  10px; /* 3 */
+}
+
+.favorite-card {
   background: #fff;
   border-radius: 2px;
   height: 325px;
   margin: 1rem;
   position: relative;
-  width: 325px;
+  width: 250px;
   box-shadow: 0 3px 6px #999, 0 3px 6px #999;
   text-align: left;
   border-radius: 1rem;
+  float: left;
+  
 }
 
-.user-card > .img-container {
+.favorite-card > .img-container {
   height: 60%;
   overflow: hidden;
   text-align: center;
   border-radius: 1rem;
 }
-.user-card > .img-container > img {
-  width: 60%;
+.favorite-card > .img-container > img {
+  width: 100%;
 }
 
-.user-card > .content {
-  padding-left: 1rem;
+.favorite-card > .content {
   padding-right: 1rem;
   font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.user-card > .content > ul {
+.favorite-card > .content > ul {
   list-style-type: none;
 }
 
-.user-card > .content > ul > li {
+.favorite-card > .content > ul > li {
   margin-top: 10px;
 }
 
-.user-card > .remove {
-  color: #0967cb;
+.favorite-card > .remove {
+  color: #F68E29;
   font-size: 48px;
   position: absolute;
   top: -20px;
-  right: 5px;
+  right: 10px;
   cursor: pointer;
+  
 }
 
-.user-card > .remove:hover {
+.favorite-card > .remove:hover {
   color: #d50000;
 }

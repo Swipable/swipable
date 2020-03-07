@@ -1,9 +1,4 @@
-#searchBox{
-    width: 500px;   
-    margin:20px;
-};
-
-#cssform{
+#searchContainer {
     width: 100%;
-    text-align:center;
+    margin-top: 10px;
 }

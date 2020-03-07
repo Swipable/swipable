@@ -6,7 +6,7 @@ import CardBtn from "../CardBtn";
 
 function RestaurantCard( {name, image, rating, price, link, handleBtnClick }) {
   return (
-    <div className="user-card">
+    <div className="restaurant-card">
       <div className="img-container">
         <img alt={name} src={image} />
       </div>
@@ -18,7 +18,7 @@ function RestaurantCard( {name, image, rating, price, link, handleBtnClick }) {
       />
         <ul>
           <li>
-          <a href={link}> {name} Website </a>
+          <strong><a href={link}> {name} </a></strong>
           </li>
           <li>
             <strong>Name:</strong> {name}
