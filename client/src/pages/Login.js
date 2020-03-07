@@ -3,22 +3,23 @@ import "../index.css";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/PageComponents";
-import { defer } from "rxjs";
-
+//import { defer } from "rxjs";
+import MainCard from "../components/MainCard";
+import Title from "../components/Title";
 //PAGE IS SETUP TO HANDLE LOG IN
 
 // after successful signup, redirected to login
 // if unsuccessful, show error and reload signup
 // after signup and login, redirected to search page
 
-const Login = (props) => {
+const Login = props => {
   //set initial state
   const [user, setUser] = useState([]);
   const [formLogin, setFormLogin] = useState(null);
 
   //executes loadUser and populates array w/res data
   useEffect(() => {
-    console.log("Login - useEffect")
+    console.log("Login - useEffect");
   }, [user]);
 
   // Handles updating component state when the user types into the input field
@@ -31,7 +32,7 @@ const Login = (props) => {
     event.preventDefault();
 
     if (formLogin && formLogin.username && formLogin.password) {
-      console.log('handleFormSubmit in Login.js')
+      console.log("handleFormSubmit in Login.js");
       if (!formLogin.username || !formLogin.password) {
         console.log("no username or password entered");
       }
@@ -40,38 +41,45 @@ const Login = (props) => {
         password: formLogin.password
       })
         .then(res => {
-          console.log({res: res.data})
+          console.log({ res: res.data });
           if (res.data) {
-          console.log('searched for one user')
+            console.log("searched for one user");
           }
         })
-      .catch(err => console.log(err))
+        .catch(err => console.log(err));
     } else {
-      console.log("there is no formLogin info")
+      console.log("there is no formLogin info");
     }
   }
 
   return (
     <Wrapper>
-      <form>
-        <Input
-          onChange={handleInputChange}
-          id = 'username'
-          name="username"
-          placeholder="Username"
-        />
-        <Input
-          onChange={handleInputChange}
-          id = 'password'
-          name="password"
-          placeholder="Password"
-        />
-        <FormBtn onClick={handleFormSubmit}>Log in</FormBtn>
-      </form>
+      <Title>Login</Title>
+      <MainCard
+        form={
+          <form>
+            <Input
+              label="Username"
+              onChange={handleInputChange}
+              id="username"
+              name="username"
+              placeholder="Username"
+            />
+            <Input
+              label="Password"
+              onChange={handleInputChange}
+              id="password"
+              name="password"
+              placeholder="Password"
+            />
+            <FormBtn onClick={handleFormSubmit}>Log in</FormBtn>
+            <a href="/signup">Sign Up</a>
+          </form>
+        }
+      />
     </Wrapper>
   );
-
-}
+};
 
 export default Login;
 
