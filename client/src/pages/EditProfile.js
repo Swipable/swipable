@@ -8,7 +8,6 @@ import axios from "axios";
 
 function EditProfile() {
   const [user, setUser] = useState({});
-  const [formObject, setFormObject] = useState({});
 
   //function to grab one authenticated user and console.log
   useEffect(() => {
@@ -43,10 +42,10 @@ function EditProfile() {
       //.then(res => console.log(" has been updated in your db"));
       .then(res => {
         console.log(res);
-        if (res.data == 0) {
+        if (res.data === 0) {
           alert("No updates were made to profile");
           window.location = "/profile";
-        } else if (res.data == 1) {
+        } else if (res.data === 1) {
           console.log("user successfully updated");
           window.location = "/profile";
         }
