@@ -40,6 +40,10 @@ function Signup() {
         .then(res => {
           if (res.data) {
             console.log("user posted to DB");
+            window.location = '/search';
+          } else if (!res.data) {
+            alert('no user found')
+            window.location.reload()
           }
           loadUsers(user);
         })

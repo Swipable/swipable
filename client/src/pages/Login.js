@@ -42,11 +42,17 @@ const Login = props => {
       })
         .then(res => {
           console.log({ res: res.data });
-          if (res.data) {
+          if (res.data.username) {
+            window.location = '/search'
             console.log("searched for one user");
-          }
+          } else if (!res.data.username) {
+            alert('No user found - check credentials or sign up')
+            window.location.reload()
+          } 
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log("Sucker. " + err.response.status)
+        });
     } else {
       console.log("there is no formLogin info");
     }

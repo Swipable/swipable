@@ -7,10 +7,11 @@ const axios = require("axios");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
-const passport = require("passport");
+const passport = require("./passport/localStrategy");
+//const passport = require('passport')
 
 //local files
-const sequelize = require("./config/database");
+// const sequelize = require("./config/database");
 const db = require("./models");
 
 //req package to hide environment variables
@@ -32,7 +33,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(cookieParser());
 app.use(
   session({
-    key: "user_sid",
+    // key: "user_sid",
     secret: "swipable_db",
     resave: false,
     saveUninitialized: false,
@@ -41,6 +42,11 @@ app.use(
     }
   })
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 // Define API routes here
 require("./routes/api/api-routes")(app);
