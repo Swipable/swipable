@@ -8,7 +8,7 @@ import Signup from "./pages/Signup";
 import Team from "./pages/Team";
 import Details from "./pages/Details";
 import Newsfeed from "./pages/Newsfeed";
-
+import EditProfile from "./pages/EditProfile";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
@@ -18,7 +18,7 @@ function App() {
     <Router>
       <div>
         <Navbar />
-          <Wrapper>
+        <Wrapper>
           <Route exact path="/" component={Search} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
@@ -28,9 +28,9 @@ function App() {
           <Route exact path="/team" component={Team} />
           <Route exact path="/details" component={Details} />
           <Route exact path="/newsfeed" component={Newsfeed} />
-
-</Wrapper>
-<Footer />
+          <Route exact path="/editprofile" component={EditProfile} />
+        </Wrapper>
+        <Footer />
       </div>
     </Router>
   );
