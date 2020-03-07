@@ -105,4 +105,20 @@ module.exports = function(app) {
         console.log(err);
       };
   });
+
+  app.put("/api/put/userprofile/:id", (req, res) => {
+    console.log("req body");
+    console.log(req.body);
+    db.Users.update(req.body, {
+      where: { id: req.params.id }
+      // returning: true
+    }).then(function(response) {
+      console.log("updated user");
+      console.log(response);
+      res.json(response);
+    }),
+      function(err) {
+        console.log(err);
+      };
+  });
 };

@@ -26,7 +26,7 @@ const Profile = () => {
       <MainCard
         form={
           <form>
-            <InputReadOnly label="User Name" value={props.profile.first_name} />
+            <InputReadOnly label="User Name" value={props.profile.username} />
             <InputReadOnly
               label="First Name"
               value={props.profile.first_name}
