@@ -16,11 +16,12 @@ const Login = props => {
   //set initial state
   const [user, setUser] = useState([]);
   const [formLogin, setFormLogin] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   //executes loadUser and populates array w/res data
   useEffect(() => {
-    console.log("Login - useEffect");
-  }, [user]);
+    setIsLoggedIn(true)
+  }, [user])            
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -43,14 +44,20 @@ const Login = props => {
         .then(res => {
           console.log({ res: res.data });
           if (res.data.username) {
+
             window.location = '/search'
             console.log("searched for one user");
+
+            console.log(isLoggedIn)
           } else if (!res.data.username) {
             alert('No user found - check credentials or sign up')
             window.location.reload()
           } 
         })
         .catch(err => {
+          if (err.response.status === 401) {
+            alert('Incorrect credentials')
+          }
           console.log("Sucker. " + err.response.status)
         });
     } else {

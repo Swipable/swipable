@@ -12,7 +12,7 @@ function Navbar() {
         <a href="/team" className="link">Team</a>
         <a href="/favorites" className="link">Favourites</a>
         <a href="/newsfeed" className="link">Newsfeed</a>
-        <a href="/login" className="link">Logout</a></div>
+        <a href="/login" className="link">Login</a></div>
       </div>
     </div>
   );
