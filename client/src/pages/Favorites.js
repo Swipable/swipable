@@ -51,6 +51,7 @@ const Favorites = () => {
           display_phone={favorite.display_phone}
           distance={favorite.distance}
           key={favorite.id}
+          link={favorite.link}
         />
       ))}
     </Wrapper>

@@ -1,4 +1,9 @@
 #searchBox{
     width: 500px;   
     margin:20px;
+};
+
+#cssform{
+    width: 100%;
+    text-align:center;
 }
