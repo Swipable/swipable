@@ -88,17 +88,17 @@ function Search() {
   return (
     <Wrapper>
 
-      <div className="filter-container">
+      <div className="d-flex justify-content-center">
       <form onSubmit={loadRestaurants}>
-        <div className="row d-inline-flex">
+        {/* <div className="row d-inline-flex"> */}
           <SearchBar
             location={location} 
             setInput={setInput}
             >
           </SearchBar>
-        </div>
+        {/* </div> */}
         <br/>
-        <div className="row d-inline-flex">
+        <div className="d-flex justify-content-center">
           <div className="col-lg-3">
             <select name="price" value={price} onChange={event => setPrice(event.target.value)}>
               <option value=""> Price </option>
@@ -118,6 +118,7 @@ function Search() {
         </div>
         </form>
       </div>
+      <div className="d-flex justify-content-center">
       <RestaurantCard
         
         name={restaurant.name}
@@ -129,6 +130,7 @@ function Search() {
         
     
       />
+      </div>
     </Wrapper>
   );
 }

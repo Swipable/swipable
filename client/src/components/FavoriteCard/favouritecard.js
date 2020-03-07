@@ -10,7 +10,7 @@ function FavoriteCard(props) {
       <div className="content">
         <ul>
           <li>
-            <strong>Name:</strong> {props.name}
+          <strong>Name:</strong> <a href={props.link}> {props.name} </a>
           </li>
           <li>
             <strong>rating:</strong> {props.rating}
