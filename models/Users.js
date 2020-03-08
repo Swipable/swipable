@@ -6,8 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         last_name: DataTypes.STRING(30),
         username: {
             type: DataTypes.STRING(30),
-            allowNull: false,
-            // unique: true
+            allowNull : false
            // unique: true --incorporate later when not in development
         },
         email: {
@@ -47,19 +46,12 @@ module.exports = (sequelize, DataTypes) => {
         users.password = bcrypt.hashSync(users.password, salt);
     });
 
-    // Users.beforeCreate(function (user, options, done) {
-    //     console.log('werk')
-    // })
-
     //password validation
-    // Users.prototype.validPassword = (password, saltedPassword) => {
-    //     console.log({ passedInPassword: password })
-    //     console.log({ saltedPassword });
-    //     return bcrypt.compareSync(password, saltedPassword)
-    // };
-    Users.prototype.validPassword = function (password) {
-        return bcrypt.compareSync(password, this.password);
-    }
+    Users.prototype.validPassword = (password, saltedPassword) => {
+        console.log({ passedInPassword: password })
+        console.log({ saltedPassword });
+        return bcrypt.compareSync(password, saltedPassword)
+    };
     
     return Users;
 };

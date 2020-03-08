@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import Title from "../components/Title";
 import { InputReadOnly } from "../components/PageComponents";
@@ -35,9 +34,9 @@ const Profile = () => {
             <InputReadOnly label="Last Name" value={props.profile.last_name} />
             <InputReadOnly label="Email" value={props.profile.email} />
             <InputReadOnly label="Zip Code" value={props.profile.zip_code} />
-            <Link to="/editprofile" className="btn btn-primary">
+            <a href="/editprofile" className="btn btn-primary">
               Edit Profile
-            </Link>
+            </a>
           </form>
         }
       />

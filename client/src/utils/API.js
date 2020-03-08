@@ -111,8 +111,7 @@ export default {
   getUsers: () => {
     return axios.get("/api/signup");
   },
-  getOneUser: function (userData) {
-    console.log(userData);
+  getOneUser: function(userData) {
     return axios.post("/api/login", userData);
   }
 };
