@@ -1,12 +1,12 @@
 const Sequelize = require("sequelize");
-// const caching_sha2_password = require('mysql2/lib/auth_plugins/caching_sha2_password');
+const caching_sha2_password = require('mysql2/lib/auth_plugins/caching_sha2_password');
 
 require('dotenv').config();
 
 const sequelize = new Sequelize(process.env.MYSQL_DATABASE, process.env.MYSQL_USER, process.env.MYSQL_PASS, {
-    // authPlugins: {
-        // sha256_password: caching_sha2_password({})
-    // },
+    authPlugins: {
+        sha256_password: caching_sha2_password({})
+    },
     host: process.env.MYSQL_HOST,
     port: 3306,
     dialect: 'mysql',

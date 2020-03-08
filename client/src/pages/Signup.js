@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import "../index.css";
 //import Form from "../components/Form";
 import Wrapper from "../components/Wrapper";
@@ -41,10 +40,6 @@ function Signup() {
         .then(res => {
           if (res.data) {
             console.log("user posted to DB");
-            window.location = '/login';
-          } else if (!res.data) {
-            alert('no user found')
-            window.location.reload()
           }
           loadUsers(user);
         })
@@ -102,7 +97,7 @@ function Signup() {
               placeholder="Confirm Password"
             />
             <FormBtn onClick={handleFormSubmit}>Sign up</FormBtn>
-            <Link to="/login">Sign in</Link>
+            <a href="/login">Sign in</a>
           </form>
         }
       />

@@ -1,8 +1,6 @@
 import React from "react";
 import "../Form/form.css"
 
-//**********DO NOT USE THIS PAGE FOR SIGN UP**********/
-
 function SignupForm() {
     return (
         <div>
