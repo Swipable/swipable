@@ -9,20 +9,49 @@ function Navbar(props) {
   const { isLoggedIn } = useContext(UserContext);
   console.log({isLoggedIn})
   return (
-      <div className="header">
-        <div className="row">
-        <div className="col-lg-6">Icon</div>
-        <div className="col-lg-6">
-          <Link to="/profile" className="link">Profile</Link>
-          <Link to="/search" className="link">Home</Link>
-          <Link to="/team" className="link">Team</Link>
-          <Link to="/favorites" className="link">Favourites</Link>
-          <Link to="/newsfeed" className="link">Newsfeed</Link>
-          <Link to="/login" className="link">Login</Link>
-        </div>
-        </div>
-      </div>
+     <>
+
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a className="navbar-brand" href="#">
+    <img src="https://github.com/Swipable/swipable/blob/development/client/src/components/Navbar/logo.png?raw=true" width="130" alt="cravings"/>
+    </a>
+
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+
+  <div className="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul className="navbar-nav mr-auto">
+      <li className="nav-item active">
+        <Link to="/search" className="nav-link"> Search <span class="sr-only">(current)</span></Link>
+      </li>
+      <li className="nav-item active">
+        <Link to="/profile" className="nav-link"> Profile <span class="sr-only">(current)</span></Link>
+      </li>
+      <li className="nav-item active">
+        <Link to="/favorites" className="nav-link"> Favorites <span class="sr-only">(current)</span></Link>
+      </li>
+      <li className="nav-item active">
+        <Link to="/newsfeed" class="nav-link" > Newsfeed <span class="sr-only">(current)</span></Link>
+      </li>
+      <li className="nav-item active">
+        <Link to="/team" className="nav-link"> Team <span class="sr-only">(current)</span></Link>
+      </li>
+    </ul>
+
+    <form className="form-inline my-2 my-lg-0">
+      <Link to="/logout"><button className="btn btn-outline-light my-2 my-sm-0" >Logout</button></Link>
+    </form>
+   
+  </div>
+</nav>
+
+</>
+
   );
+
 }
 
 export default Navbar;
+

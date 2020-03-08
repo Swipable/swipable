@@ -16,10 +16,10 @@
   }
   
 
-.user-card {
+.restaurant-card {
     background: #fff;
     border-radius: 2px;
-    height: 325px;
+    height: 450px;
     margin: 1rem;
     position: relative;
     width: 325px;
@@ -28,41 +28,30 @@
     border-radius: 1rem;
   }
   
-  .user-card > .img-container {
+  .restaurant-card > .img-container {
     height: 60%;
     overflow: hidden;
     text-align: center;
     border-radius: 1rem;
     
   }
-  .user-card > .img-container > img {
-    width: 60%
+  .restaurant-card > .img-container > img {
+    width: 100%
   }
   
-  .user-card > .content {
+  .restaurant-card > .content {
     padding-left: 1rem;
     padding-right: 1rem;
     font-size: 15px;
   }
   
-  .user-card > .content > ul {
+  .restaurant-card > .content > ul {
     list-style-type: none;
   }
   
-  .user-card > .content > ul > li {
+  .restaurant-card > .content > ul > li {
     margin-top: 18px;
   }
   
-  .user-card > .remove {
-    color: #0967cb;
-    font-size: 48px;
-    position: absolute;
-    top: -20px;
-    right: 5px;
-    cursor: pointer;
-  }
-  
-  .user-card > .remove:hover {
-    color: #d50000;
-  }
+
   

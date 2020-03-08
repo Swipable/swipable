@@ -15,7 +15,7 @@
 .back {
   top: 50%;
   left: 20%;
-  background: red;
+  background: #F58E29;
 }
 
 .back::after {
@@ -25,7 +25,7 @@
 .next {
   top: 50%;
   right: 20%;
-  background: #43a047;
+  background: #21704F;
 }
 
 .next::after {

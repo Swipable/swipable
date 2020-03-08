@@ -3,17 +3,19 @@ import "./favoritecard.css";
 
 function FavoriteCard(props) {
   return (
-    <div className="user-card">
+    
+    <div className="favorite-wrapper">
+    <div className="favorite-card">
       <div className="img-container">
         <img alt={props.name} src={props.image} />
       </div>
       <div className="content">
         <ul>
           <li>
-            <strong>Name:</strong> {props.name}
+          <strong>Name:</strong> <a href={props.link}> {props.name} </a>
           </li>
           <li>
-            <strong>rating:</strong> {props.rating}
+            <strong>rating:</strong> {props.rating} Stars
           </li>
           <li>
             <strong>price:</strong> {props.price}
@@ -26,6 +28,7 @@ function FavoriteCard(props) {
       <span onClick={() => props.deleteFavorites(props.id)} className="remove">
         𝘅
       </span>
+    </div>
     </div>
   );
 }
