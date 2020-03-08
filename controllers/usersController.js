@@ -1,5 +1,7 @@
 const db = require('../models');
 const bcrypt = require('bcrypt');
+//const passport = require('../passport/localStrategy');
+//const isAuthenticated = require('../passport/middleware/isAuthenticated');
 
 module.exports = {
     test: (req, res) => {
@@ -23,10 +25,10 @@ module.exports = {
                 req.session.data = data.dataValues;
                 console.log(req.session.data.username);
                 res.json(data);
+                return;
             })
             .catch(err => {
                 res.status(422).json(err)
-                res.redirect('/signup');
             })
     },
     //Below are set up for handling login
@@ -41,19 +43,24 @@ module.exports = {
                 console.log({user})
                 if (user) {
                     console.log('got user data back from findOne call')
-                    console.log(user.username)
-                    console.log(user.password)
                     if (user.validPassword(password, user.password)) {
                         console.log('we have a valid user')
+                        req.session.user = user.dataValues;
+                        console.log(req.session)
+                        res.json(user)
                         //  send response back telling front end that we have a valid user
                         return;
-                    } else {
-                        //  send redirect to login page
-                        console.log("not a valid user")
-                        return;
                    }
+                } else if (!user) {
+                    console.log('no user')
+                    res.json('no user found')
+                    return;
+                } else {
+                    console.log("no user exists")
+                    res.json('no user exists') 
+                    return;
                 }
-                console.log("there is no user")
+                
                 
             })
             .catch(err => console.log(err));
