@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 import FavoriteCard from "../components/FavoriteCard/favouritecard";
 import Title from "../components/Title";
+import UserContext from "../context/UserContext";
 
 const Favorites = () => {
+  const { isLoggedIn } = useContext(UserContext);
+  console.log({isLoggedIn})
   // const [favorite, setFavorite] = useState({});
   const [favorites, setFavorites] = useState([]);
   // const [favoriteIndex, setfavoriteIndex] = useState(0);
 
   useEffect(() => {
     loadFavorites();
+    console.log({ FavoritesPage: isLoggedIn });
   }, []);
 
   function loadFavorites() {
