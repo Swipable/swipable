@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Link, Redirect } from "react-router-dom";
 import "../index.css";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/PageComponents";
-//import { defer } from "rxjs";
 import MainCard from "../components/MainCard";
 import Title from "../components/Title";
+import UserContext from '../context/UserContext';
+
+
 //PAGE IS SETUP TO HANDLE LOG IN
 
 // after successful signup, redirected to login
@@ -14,13 +17,15 @@ import Title from "../components/Title";
 
 const Login = props => {
   //set initial state
-  const [user, setUser] = useState([]);
   const [formLogin, setFormLogin] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(UserContext)
 
   //executes loadUser and populates array w/res data
   useEffect(() => {
-    setIsLoggedIn(true)
+    console.log({ LoginPage: isLoggedIn }) //initially is false, true after correct credentials
+
+    console.log(user); //Initially empty array, user data after correct credentials
   }, [user])            
 
   // Handles updating component state when the user types into the input field
@@ -44,14 +49,14 @@ const Login = props => {
         .then(res => {
           console.log({ res: res.data });
           if (res.data.username) {
-
-            window.location = '/search'
-            console.log("searched for one user");
-
-            console.log(isLoggedIn)
+            setIsLoggedIn(true);
+            setUser(res.data)
+            // window.location = '/search'
+            console.log("searched for one user")
+            props.history.push("/search")
           } else if (!res.data.username) {
             alert('No user found - check credentials or sign up')
-            window.location.reload()
+            // window.location.reload()
           } 
         })
         .catch(err => {
@@ -66,31 +71,31 @@ const Login = props => {
   }
 
   return (
-    <Wrapper>
-      <Title>Login</Title>
-      <MainCard
-        form={
-          <form>
-            <Input
-              label="Username"
-              onChange={handleInputChange}
-              id="username"
-              name="username"
-              placeholder="Username"
-            />
-            <Input
-              label="Password"
-              onChange={handleInputChange}
-              id="password"
-              name="password"
-              placeholder="Password"
-            />
-            <FormBtn onClick={handleFormSubmit}>Log in</FormBtn>
-            <a href="/signup">Sign Up</a>
-          </form>
-        }
-      />
-    </Wrapper>
+      <Wrapper>
+        <Title>Login</Title>
+        <MainCard
+          form={
+            <form>
+              <Input
+                label="Username"
+                onChange={handleInputChange}
+                id="username"
+                name="username"
+                placeholder="Username"
+              />
+              <Input
+                label="Password"
+                onChange={handleInputChange}
+                id="password"
+                name="password"
+                placeholder="Password"
+              />
+              <FormBtn onClick={handleFormSubmit}>Log in</FormBtn>
+              <Link to="/signup">Sign Up</Link>
+            </form>
+          }
+        />
+      </Wrapper>
   );
 };
 

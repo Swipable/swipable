@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./restaurantcard.css";
 import CardBtn from "../CardBtn";
 
@@ -11,14 +12,14 @@ function RestaurantCard( {name, image, rating, price, link, handleBtnClick }) {
         <img alt={name} src={image} />
       </div>
       <div className="content">
-      <CardBtn
-        style={{ opacity: image ? 1 : 0 }}
-        onClick={handleBtnClick}
-        data-value="back"
-      />
+        <CardBtn
+          style={{ opacity: image ? 1 : 0 }}
+          onClick={handleBtnClick}
+          data-value="back"
+        />
         <ul>
           <li>
-          <a href={link}> {name} Website </a>
+            <a href={link} target="_blank">Website</a>
           </li>
           <li>
             <strong>Name:</strong> {name}
@@ -33,7 +34,7 @@ function RestaurantCard( {name, image, rating, price, link, handleBtnClick }) {
         onClick={handleBtnClick}
         data-value="next"
       />
-{/* //add in buttons */}
+      {/* //add in buttons */}
     </div>
   );
 }
