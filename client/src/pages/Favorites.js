@@ -10,7 +10,7 @@ const Favorites = () => {
 
   const { isLoggedIn, user } = useContext(UserContext);
   console.log({ isLoggedIn })
-  console.log({user: user})
+  console.log({ user: user })
 
   // const [favorite, setFavorite] = useState({});
   const [favorites, setFavorites] = useState([]);

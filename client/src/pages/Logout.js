@@ -5,7 +5,7 @@ const Logout = () => {
     const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(UserContext)
     setUser('')
     setIsLoggedIn(false);
-    console.log(`Logout page: ${user, isLoggedIn}`)
+    console.log(`Logout page: ${user && isLoggedIn}`)
 
     return (
         <div>

@@ -33,6 +33,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(cookieParser());
 app.use(
   session({
+    key: 'user_sid',
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
