@@ -4,10 +4,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    activity_type: {
+    username: {
       type: DataTypes.STRING
     },
-    restaurant_id: {
+    activity_type: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    restaurant_name: {
       type: DataTypes.STRING
     },
     createdAt: {

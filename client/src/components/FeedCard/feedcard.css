@@ -3,27 +3,77 @@
   font-family: sans-serif;
 }
 
-.restaurant-card > .img-container {
-  height: 60%;
-  overflow: hidden;
-  text-align: right;
-  border-radius: 1rem;
+/* .team-container {
+  padding-top: 50px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:1200px; 
+  flex-flow: row wrap;
+  padding: 20px;
+  justify-content: center;
+  align-content: stretch;
+  overflow: auto;
+} */
+
+.feedcard-wrapper {
+  margin-right: auto; /* 1 */
+  margin-left: auto; /* 1 */
+  max-width: 960px; /* 2 */
+  padding-right: 10px; /* 3 */
+  padding-left: 10px; /* 3 */
 }
 
-.restaurant-card > .img-container > img {
+.feedcard-card {
+  background: #fff;
+  border-radius: 2px;
+  height: 150px;
+  margin: 1rem;
+  position: relative;
+  width: 700px;
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  text-align: left;
+  border-radius: 1rem;
+  float: left;
+}
+
+.feedcard-card > .img-container {
+  height: 100%;
+  padding: 10px;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 1rem;
+}
+.feedcard-card > .img-container > img {
   width: 100%;
 }
 
-.restaurant-card > .content {
-  padding-left: 1rem;
+.feedcard-card > .content {
   padding-right: 1rem;
-  font-size: 15px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.restaurant-card > .content > ul {
+.feedcard-card > .content > ul {
   list-style-type: none;
 }
 
-.restaurant-card > .content > ul > li {
-  margin-top: 18px;
+.feedcard-card > .content > ul > li {
+  margin-top: 10px;
+}
+
+.feedcard-card > .remove {
+  color: #f68e29;
+  font-size: 48px;
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.feedcard-card > .remove:hover {
+  color: #d50000;
 }

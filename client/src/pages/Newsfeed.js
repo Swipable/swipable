@@ -5,9 +5,7 @@ import FeedCard from "../components/FeedCard/FeedCard";
 import Title from "../components/Title/index";
 
 const Newsfeed = () => {
-  // const [favorite, setFavorite] = useState({});
   const [feeds, setFeeds] = useState([]);
-  // const [favoriteIndex, setfavoriteIndex] = useState(0);
 
   useEffect(() => {
     loadFeeds();
@@ -17,35 +15,22 @@ const Newsfeed = () => {
     API.fetchFeeds()
       .then(feeds => {
         setFeeds(feeds);
+        console.log(feeds);
         return feeds;
       })
       .catch(err => console.log(err));
   }
-
-  // function deleteFavorites(id) {
-  //   return axios
-  //     .delete(`/api/delete/favorite/${id}`)
-  //     .then(res => {
-  //       console.log(res.data);
-  //       if (res.data === 1) {
-  //         loadFavorites();
-  //       }
-  //     })
-  //     .catch(error => {
-  //       throw error.res.data;
-  //     });
-  // }
 
   return (
     <Wrapper>
       <Title>News Feeds</Title>
       {feeds.map(feed => (
         <FeedCard
-          //deleteFavorites={deleteFavorites}
           id={feed.id}
           user_id={feed.user_id}
+          username={feed.username}
           activity_type={feed.activity_type}
-          //restaurant_id={feed.restaurant_id}
+          restaurant_name={feed.restaurant_name}
           key={feed.id}
         />
       ))}

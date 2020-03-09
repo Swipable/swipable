@@ -89,8 +89,6 @@ export default {
     return axios
       .get("/api/get/favoritesfromdb", {})
       .then(res => {
-        // console.log("Res.data");
-        // console.log(res.data);
         const favorites = res.data;
         return favorites.map(favorite => {
           return {
@@ -101,11 +99,11 @@ export default {
             price: favorite.price,
             display_phone: favorite.display_phone,
             distance: favorite.distance,
-            transactions: favorite.transactions,
+            //transactions: favorite.transactions,
             link: favorite.link,
             is_closed: favorite.is_closed,
             restaurant_id: favorite.restaurant_id,
-            display_address: favorite.display_address,
+            //display_address: favorite.display_address,
             // category: favorite.categories,
             latitude: favorite.latitude,
             longitude: favorite.longitude,
@@ -127,8 +125,9 @@ export default {
           return {
             id: feed.id,
             user_id: feed.user_id,
+            username: feed.username,
             activity_type: feed.activity_type,
-            restaurant_id: feed.restaurant_id
+            restaurant_name: feed.restaurant_name
           };
         });
       })
