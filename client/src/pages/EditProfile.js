@@ -28,6 +28,7 @@ function EditProfile() {
   // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
+    console.log("user");
     console.log({
       user
     });

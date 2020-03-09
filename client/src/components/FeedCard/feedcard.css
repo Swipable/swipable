@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.restaurant-card > .img-container {
+  height: 60%;
+  overflow: hidden;
+  text-align: right;
+  border-radius: 1rem;
+}
+
+.restaurant-card > .img-container > img {
+  width: 100%;
+}
+
+.restaurant-card > .content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 15px;
+}
+
+.restaurant-card > .content > ul {
+  list-style-type: none;
+}
+
+.restaurant-card > .content > ul > li {
+  margin-top: 18px;
+}

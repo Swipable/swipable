@@ -8,7 +8,7 @@ import UserContext from "../context/UserContext";
 
 const Favorites = () => {
   const { isLoggedIn } = useContext(UserContext);
-  console.log({isLoggedIn})
+  console.log({ isLoggedIn });
   // const [favorite, setFavorite] = useState({});
   const [favorites, setFavorites] = useState([]);
   // const [favoriteIndex, setfavoriteIndex] = useState(0);
@@ -31,13 +31,13 @@ const Favorites = () => {
     return axios
       .delete(`/api/delete/favorite/${id}`)
       .then(res => {
-        console.log(res.data);
-        if (res.data === 1) {
+        console.log(res.data.response);
+        if (res.data.response === 1) {
           loadFavorites();
         }
       })
       .catch(error => {
-        throw error.res.data;
+        throw error.res.data.response;
       });
   }
 
