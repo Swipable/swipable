@@ -50,7 +50,12 @@ function Navbar(props) {
             <form className="form-inline my-2 my-lg-0">
             { isLoggedIn === true ? ( 
               <Link to="/logout"><button className="btn btn-outline-light my-2 my-sm-0" >Logout</button></Link>
-            ) : <Link to='/login'><button className= 'btn btn-outline-light my-2 my-sm-0'>Login</button></Link>}
+            ) : (
+              <>
+                <Link to='/signup'><button className='btn btn-outline-light my-2 my-sm-0'>Sign Up</button></Link>
+                <Link to='/login'><button className='btn btn-outline-light my-2 my-sm-0'>Login</button></Link>
+              </>
+              )}
       </form>
      
   </div>

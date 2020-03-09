@@ -7,6 +7,9 @@ const sequelize = new Sequelize(process.env.MYSQL_DATABASE, process.env.MYSQL_US
     // authPlugins: {
         // sha256_password: caching_sha2_password({})
     // },
+    define: {
+        timestamps: false
+    },
     host: process.env.MYSQL_HOST,
     port: 3306,
     dialect: 'mysql',

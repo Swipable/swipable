@@ -13,11 +13,7 @@ function Search() {
   const [location, setInput] = useState("");
   const [restaurantIndex, setRestaurantIndex] = useState(0);
 
-  const [price, setPrice] = React.useState('');
-  const [category, setCategory] = React.useState('Categories');
-  const categories = ["Categories", "bbq", "burgers", "cajun", "chinese", "french", "greek", "halal", "italian"];
   const { isLoggedIn, user } = useContext(UserContext);
-
 
   const [price, setPrice] = React.useState("");
   const [category, setCategory] = React.useState("Categories");
@@ -32,7 +28,6 @@ function Search() {
     "halal",
     "italian"
   ];
-
 
   useEffect(() => {
     loadRestaurants();
@@ -102,10 +97,11 @@ function Search() {
 
   return (
     <Wrapper>
-  
-      <h1 className= 'd-flex justify-content-center'>Welcome {user.first_name}! </h1>
-      
-  <br></br>
+      <h1 className="d-flex justify-content-center">
+        Welcome {user.first_name}!{" "}
+      </h1>
+
+      <br></br>
 
       <div className="d-flex justify-content-center">
         <form onSubmit={loadRestaurants}>
@@ -150,7 +146,6 @@ function Search() {
           link={restaurant.link}
           image={restaurant.image}
           handleBtnClick={handleBtnClick}
-
         />
       </div>
     </Wrapper>

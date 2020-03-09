@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "../index.css";
 //import Form from "../components/Form";
 import Wrapper from "../components/Wrapper";
@@ -44,7 +44,8 @@ function Signup() {
             window.location = '/login';
           } else if (!res.data) {
             alert('no user found')
-            window.location.reload()
+            //This redirect does not work
+            return <Redirect to='/login'></Redirect>
           }
           loadUsers(user);
         })

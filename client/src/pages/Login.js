@@ -38,7 +38,6 @@ const Login = props => {
     event.preventDefault();
 
     if (formLogin && formLogin.username && formLogin.password) {
-      console.log("handleFormSubmit in Login.js");
       if (!formLogin.username || !formLogin.password) {
         console.log("no username or password entered");
       }
