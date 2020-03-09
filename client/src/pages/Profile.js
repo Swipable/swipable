@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import Title from "../components/Title";
@@ -6,20 +6,24 @@ import { InputReadOnly } from "../components/PageComponents";
 import MainCard from "../components/MainCard";
 import API from "../utils/API";
 import "../components/Form/form.css";
+import UserContext from "../context/UserContext";
 
 //import EditProfile from "./EditProfile";
 
 const Profile = () => {
+  const { isLoggedIn, user } = useContext(UserContext);
+  console.log({ isLoggedIn })
+  console.log({ user: user })
   const [profile, setProfile] = useState({});
 
   useEffect(() => {
-    API.fetchUser()
+    API.fetchUser(user)
       .then(profile => {
         setProfile(profile);
         return profile;
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [user]);
 
   const RenderProfile = props => (
     <Wrapper>

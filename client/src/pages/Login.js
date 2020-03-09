@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../index.css";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
@@ -100,76 +100,3 @@ const Login = props => {
 };
 
 export default Login;
-
-{
-  /* 
-
-
-
-
-
-  //const [user, setUser] = useState();
-  const [formLogin, setFormLogin] = useState(null);
-
-
-  useEffect(() => {
-    if (!formLogin) {
-      console.log('formLogin is null')
-      return;
-    }
-    const subscription = defer(() => findUser(formLogin)).subscribe(setFormLogin);
-    
-    return () => {
-      subscription.unsubscribe();
-    }
-  },[formLogin]);
-
-  async function findUser() {
-    await API.getOneUser({
-      username: formLogin.username
-    })  
-    .then(data => console.log(data))
-  }
-  
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormLogin({ ...formLogin, [name]: value });
-  };
-
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    if (formLogin.username && formLogin.password) {
-      console.log('handleFormSubmit in Login.js')
-      //findUser();
-      if (!formLogin.username || !formLogin.password) {
-        console.log("no username or password entered");
-      }
-    }
-  };
-
-  
-   return (
-     <Wrapper>
-       <form>
-         <Input
-           onChange={handleInputChange}
-           id="username"
-           name="username"
-           placeholder="Username"
-         />
-         <Input
-           onChange={handleInputChange}
-           id="password"
-           name="password"
-           placeholder="Password"
-         />
-         <FormBtn onClick={handleFormSubmit}>Log in</FormBtn>
-       </form>
-     </Wrapper>
-   );
-
-
-
-
-  */
-}

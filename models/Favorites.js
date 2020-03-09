@@ -55,13 +55,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  //   Favorites.associate = function(models) {
-  //     Favorites.belongsTo(models.Users, {
-  //       foreignKey: {
-  //         allowNull: false
-  //       }
-  //     });
-  //   };
+    Favorites.associate = function(models) {
+      Favorites.belongsTo(models.Users, {
+        foreignKey: {
+          allowNull: true
+        }
+      });
+    };
 
   return Favorites;
 };

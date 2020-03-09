@@ -25,25 +25,34 @@ function Navbar(props) {
     <ul className="navbar-nav mr-auto">
       <li className="nav-item active">
         <Link to="/search" className="nav-link"> Search <span class="sr-only">(current)</span></Link>
-      </li>
-      <li className="nav-item active">
-        <Link to="/profile" className="nav-link"> Profile <span class="sr-only">(current)</span></Link>
-      </li>
-      <li className="nav-item active">
-        <Link to="/favorites" className="nav-link"> Favorites <span class="sr-only">(current)</span></Link>
-      </li>
-      <li className="nav-item active">
-        <Link to="/newsfeed" class="nav-link" > Newsfeed <span class="sr-only">(current)</span></Link>
-      </li>
-      <li className="nav-item active">
-        <Link to="/team" className="nav-link"> Team <span class="sr-only">(current)</span></Link>
-      </li>
-    </ul>
+            </li>
+            {/*TERNARY OPERATOR TO SHOW NAV LINKS ONLY IF A USER IS LOGGED IN -- NO ACCESSING PROFILE/TEAM IF NOT LOGGED IN*/}
+            {isLoggedIn === true ? ([
+          <>
+            <li className="nav-item active">
+                <Link to="/profile" className="nav-link"> Profile <span class="sr-only">(current)</span></Link>
+                  </li>  
+            <li className="nav-item active">
+              <Link to="/favorites" className="nav-link"> Favorites <span class="sr-only">(current)</span></Link>
+                  </li>
+            <li className="nav-item active">
+              <Link to="/newsfeed" class="nav-link" > Newsfeed <span class="sr-only">(current)</span></Link>
+                  </li>
+            <li className="nav-item active">
+              <Link to="/team" className="nav-link"> Team <span class="sr-only">(current)</span></Link>
+                  </li> 
+          </>    
+        ]) : (null) }     
 
-    <form className="form-inline my-2 my-lg-0">
-      <Link to="/logout"><button className="btn btn-outline-light my-2 my-sm-0" >Logout</button></Link>
-    </form>
-   
+
+    </ul>
+    
+            <form className="form-inline my-2 my-lg-0">
+            { isLoggedIn === true ? ( 
+              <Link to="/logout"><button className="btn btn-outline-light my-2 my-sm-0" >Logout</button></Link>
+            ) : <Link to='/login'><button className= 'btn btn-outline-light my-2 my-sm-0'>Login</button></Link>}
+      </form>
+     
   </div>
 </nav>
 

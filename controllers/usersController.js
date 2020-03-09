@@ -45,7 +45,7 @@ module.exports = {
                     console.log('got user data back from findOne call')
                     if (user.validPassword(password, user.password)) {
                         console.log('we have a valid user')
-                        req.session.user = user.dataValues;
+                   //     req.session.user = user.dataValues;
                         console.log(req.session)
                         res.json(user)
                         //  send response back telling front end that we have a valid user
@@ -62,8 +62,9 @@ module.exports = {
                 }
                 
                 
-            })
-            .catch(err => console.log(err));
+   }
+            )
+           .catch(err => console.log(err));
 },
     // **Set up to find a user, whose id is the current logged in session id, and display their saved favorites**
     findOneWithAssociations: function(req, res) {

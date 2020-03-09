@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "../components/Form/form.css";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 import SearchBar from "../components/SearchBar";
 import RestaurantCard from "../components/RestaurantCard";
+import UserContext from "../context/UserContext";
 
 function Search() {
   const [restaurant, setRestaurant] = useState({});
   const [restaurants, setRestaurants] = useState([]);
   const [location, setInput] = useState("");
   const [restaurantIndex, setRestaurantIndex] = useState(0);
+
+  const [price, setPrice] = React.useState('');
+  const [category, setCategory] = React.useState('Categories');
+  const categories = ["Categories", "bbq", "burgers", "cajun", "chinese", "french", "greek", "halal", "italian"];
+  const { isLoggedIn, user } = useContext(UserContext);
+
+
   const [price, setPrice] = React.useState("");
   const [category, setCategory] = React.useState("Categories");
   const categories = [
@@ -24,6 +32,7 @@ function Search() {
     "halal",
     "italian"
   ];
+
 
   useEffect(() => {
     loadRestaurants();
@@ -93,7 +102,11 @@ function Search() {
 
   return (
     <Wrapper>
-      <br></br>
+  
+      <h1 className= 'd-flex justify-content-center'>Welcome {user.first_name}! </h1>
+      
+  <br></br>
+
       <div className="d-flex justify-content-center">
         <form onSubmit={loadRestaurants}>
           {/* <div className="row d-inline-flex"> */}
@@ -128,6 +141,7 @@ function Search() {
           </div>
         </form>
       </div>
+
       <div className="d-flex justify-content-center">
         <RestaurantCard
           name={restaurant.name}
@@ -136,6 +150,7 @@ function Search() {
           link={restaurant.link}
           image={restaurant.image}
           handleBtnClick={handleBtnClick}
+
         />
       </div>
     </Wrapper>
