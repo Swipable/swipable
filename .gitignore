@@ -2,4 +2,3 @@ node_modules
 .env
 package-lock.json
 client/package-lock.json
-config/config.json
