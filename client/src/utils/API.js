@@ -59,9 +59,9 @@ export default {
       });
   },
 
-  fetchUser: function() {
+  fetchUser: function(user) {
     return axios
-      .get("/api/get/userprofile", {})
+      .get("/api/get/userprofile", user)
       .then(res => {
         console.log(res);
         return res.data;

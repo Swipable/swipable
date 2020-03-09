@@ -7,8 +7,9 @@ import Title from "../components/Title";
 import UserContext from "../context/UserContext";
 
 const Favorites = () => {
-  const { isLoggedIn } = useContext(UserContext);
-  console.log({isLoggedIn})
+  const { isLoggedIn, user } = useContext(UserContext);
+  console.log({ isLoggedIn })
+  console.log({user: user})
   // const [favorite, setFavorite] = useState({});
   const [favorites, setFavorites] = useState([]);
   // const [favoriteIndex, setfavoriteIndex] = useState(0);

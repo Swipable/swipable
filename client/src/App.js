@@ -9,10 +9,12 @@ import Team from "./pages/Team";
 import Details from "./pages/Details";
 import Newsfeed from "./pages/Newsfeed";
 import EditProfile from "./pages/EditProfile";
+import Logout from './pages/Logout';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import UserContext from './context/UserContext';
+
 
 function App() {
 
@@ -28,6 +30,7 @@ function App() {
           <Wrapper>
             <Route exact path="/" component={Search} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/logout" component={Logout} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/profile" component={Profile} />

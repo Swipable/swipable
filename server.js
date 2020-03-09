@@ -33,8 +33,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(cookieParser());
 app.use(
   session({
-    // key: "user_sid",
-    secret: "swipable_db",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {

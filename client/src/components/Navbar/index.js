@@ -39,11 +39,13 @@ function Navbar(props) {
         <Link to="/team" className="nav-link"> Team <span class="sr-only">(current)</span></Link>
       </li>
     </ul>
-
-    <form className="form-inline my-2 my-lg-0">
-      <Link to="/logout"><button className="btn btn-outline-light my-2 my-sm-0" >Logout</button></Link>
-    </form>
-   
+    
+            <form className="form-inline my-2 my-lg-0">
+            { isLoggedIn === true ? ( 
+              <Link to="/logout"><button className="btn btn-outline-light my-2 my-sm-0" >Logout</button></Link>
+            ) : <Link to='/login'><button className= 'btn btn-outline-light my-2 my-sm-0'>Login</button></Link>}
+      </form>
+     
   </div>
 </nav>
 

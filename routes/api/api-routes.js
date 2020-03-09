@@ -1,5 +1,6 @@
 const axios = require("axios");
 var db = require("../../models");
+const isAuthenticated = require('../../passport/middleware/isAuthenticated');
 
 //michelle's change
 
@@ -35,14 +36,6 @@ module.exports = function(app) {
       });
   });
 
-  //debra's change
-  app.get("/", (req, res) => {
-    console.log("root route hit");
-    res.redirect("login");
-  });
-
-  //poorva's change
-
   // Getting Team details from db
   app.get("/api/get/otheruserprofilefromdb", function(req, res) {
     db.Users.findAll({}).then(function(data) {
@@ -52,8 +45,8 @@ module.exports = function(app) {
   });
 
   // getting user profile details from db
-  app.get("/api/get/userprofile", function(req, res) {
-    db.Users.findOne({
+  app.get("/api/get/userprofile", function (req, res) {
+      db.Users.findOne({
       where: {
         //needs updation with implementation of authentication
         username: "poorva"
@@ -61,6 +54,7 @@ module.exports = function(app) {
     }).then(function(data) {
       res.json(data);
     });
+
   });
 
   //get favorites list from db
