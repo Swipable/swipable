@@ -1,6 +1,6 @@
 body {
     /* background: #007bff; */
-    background: linear-gradient(#278B8C, #21704F);
+    background: linear-gradient(#278B8C, #32C3C6);
     background-repeat: no-repeat;
     height: 400px;
     /* background: radial-gradient(to right, #0062E6, #33AEFF) */
@@ -10,4 +10,16 @@ body {
   font-family: "Fugaz One", cursive;
 }
 
+.dropdown {
+  margin: .5rem;
+}
+
+.dropdown-content {
+  border-radius: 25px;
+  background: #F78E29;
+  padding: .5rem;
+  color: beige;
+  float: left;
+  width: 9rem;
+}
 

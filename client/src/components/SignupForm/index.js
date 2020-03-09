@@ -12,12 +12,12 @@ function SignupForm() {
                     <input type="text" id="inputFirstName" name="inputFirstName" className="form-control" />
                     <label for="inputFirstName">First Name</label>
                 </div>
-            <div class="form-label-group">
-                <input type="text" id="inputLastName" class="form-control"  />
+            <div className="form-label-group">
+                <input type="text" id="inputLastName" className="form-control"  />
                 <label for="inputLastName">Last Name</label>
             </div>
-            <div class="form-label-group">
-                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autoFocus />
+            <div className="form-label-group">
+                <input type="text" id="inputUsername" className="form-control" placeholder="Username" required autoFocus />
                 <label for="inputUsername">Username</label>
             </div>
             <div className="form-label-group">

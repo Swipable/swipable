@@ -2,14 +2,15 @@ import axios from "axios";
 
 // Export an object containing methods we'll use for accessing the random user API
 export default {
-  fetchRestaurants: (price, category, location) => {
+  fetchRestaurants: (price, category, location, transactions) => {
     console.log("Fetching restaurants...");
     return axios
       .get("api/restaurants", {
         params: {
           price,
           category,
-          location
+          location,
+          transactions,
         }
       })
       .then(res => {

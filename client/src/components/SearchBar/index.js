@@ -6,8 +6,8 @@ function SearchBar(props) {
 
     return (
  
-      <div class="searchContainer">
-          <input class="form-control form-control-lg d-flex justify-content-center " 
+      <div className="searchContainer">
+          <input className="form-control form-control-lg d-flex justify-content-center " 
             id="cssform"
             type="text"
             placeholder= 'City, state, or zip code'
