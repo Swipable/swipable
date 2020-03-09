@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../index.css";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
