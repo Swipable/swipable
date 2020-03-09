@@ -10,4 +10,16 @@ body {
   font-family: "Fugaz One", cursive;
 }
 
+.dropdown {
+  margin: .5rem;
+}
+
+.dropdown-content {
+  border-radius: 25px;
+  background: #F78E29;
+  padding: .5rem;
+  color: beige;
+  float: left;
+  width: 9rem;
+}
 

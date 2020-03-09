@@ -9,6 +9,7 @@ module.exports = function(app) {
     const price = req.query.price || "2";
     const categories = req.query.category || "";
     const location = req.query.location || "usa";
+    const transactions = req.query.location || "";
 
     axios
       .get("https://api.yelp.com/v3/businesses/search?&limit=50", {
@@ -23,7 +24,7 @@ module.exports = function(app) {
           hours: "is_open_now",
           rating: "5",
           price,
-          transactions: "delivery"
+          transactions,
         }
       })
       .then(response => {
