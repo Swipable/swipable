@@ -29,7 +29,6 @@ function Search() {
     "italian"
   ];
 
-
   useEffect(() => {
     loadRestaurants();
   }, [price, category, location]);
@@ -98,10 +97,11 @@ function Search() {
 
   return (
     <Wrapper>
-  
-      <h1 className= 'd-flex justify-content-center'>Welcome {user.first_name}! </h1>
-      
-  <br></br>
+      <h1 className="d-flex justify-content-center">
+        Welcome {user.first_name}!{" "}
+      </h1>
+
+      <br></br>
 
       <div className="d-flex justify-content-center">
         <form onSubmit={loadRestaurants}>
@@ -146,7 +146,6 @@ function Search() {
           link={restaurant.link}
           image={restaurant.image}
           handleBtnClick={handleBtnClick}
-
         />
       </div>
     </Wrapper>
