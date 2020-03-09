@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Wrapper from "../components/Wrapper";
 import { Input, InputReadOnly, FormBtn } from "../components/PageComponents";
 import API from "../utils/API";
 import MainCard from "../components/MainCard";
 import Title from "../components/Title";
-import axios from "axios";
+import UserContext from "../context/UserContext";
 
 function EditProfile() {
-  const [user, setUser] = useState({});
+  const { isLoggedIn, user } = useContext(UserContext);
+  console.log({ isLoggedIn });
+  const [profile, setProfile] = useState({});
 
   //function to grab one authenticated user and console.log
   useEffect(() => {
-    API.fetchUser()
-      .then(user => {
-        setUser(user);
+    API.fetchUser(user)
+      .then(profile => {
+        setProfile(profile);
       })
       .catch(err => console.log(err));
   }, []);
@@ -21,33 +23,22 @@ function EditProfile() {
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { name, value } = event.target;
-    setUser({ ...user, [name]: value });
+    setProfile({ ...profile, [name]: value });
   }
 
   // When the form is submitted, use the API.saveUser method to save the book data
   // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log("user");
-    console.log({
-      user
-    });
-    axios
-      .put(`/api/put/userprofile/1`, {
-        first_name: user.first_name,
-        last_name: user.last_name,
-        email: user.email,
-        zip_code: user.zip_code,
-        updatedAt: new Date()
-      })
-      //.then(res => console.log(" has been updated in your db"));
+    API.editUser(profile)
       .then(res => {
+        console.log("res");
         console.log(res);
-        if (res.data === 0) {
+        if (res === 0) {
           alert("No updates were made to profile");
           window.location = "/profile";
-        } else if (res.data === 1) {
-          console.log("user successfully updated");
+        } else if (res === 1) {
+          alert("user successfully updated");
           window.location = "/profile";
         }
       })
@@ -60,31 +51,31 @@ function EditProfile() {
       <MainCard
         form={
           <form>
-            <InputReadOnly label="User Name" value={user.username} />
+            <InputReadOnly label="User Name" value={profile.username} />
             <Input
               onChange={handleInputChange}
               type="text"
               label="First Name"
               name="first_name"
-              defaultValue={user.first_name}
+              defaultValue={profile.first_name}
             />
             <Input
               onChange={handleInputChange}
               label="Last Name"
               name="last_name"
-              defaultValue={user.last_name}
+              defaultValue={profile.last_name}
             />
             <Input
               label="Email"
               onChange={handleInputChange}
               name="email"
-              defaultValue={user.email}
+              defaultValue={profile.email}
             />
             <Input
               label="Zip Code"
               onChange={handleInputChange}
               name="zip_code"
-              defaultValue={user.zip_code}
+              defaultValue={profile.zip_code}
             />
             <FormBtn onClick={handleFormSubmit}>Update</FormBtn>
           </form>
