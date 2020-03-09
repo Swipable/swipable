@@ -81,47 +81,51 @@ module.exports = function(app) {
 
   //add to favourites on swipe right
   app.post("/api/post/favoritestodb", (req, res) => {
-<<<<<<< HEAD
     console.log(req.session.passport.user.id)
     const restName = req.body.name
     const loggedIn = req.session.passport.user.id
 
     //  FUNCTION TO CHECK IF THERE IS ALREADY AN ENTRY IN DB ASSOCIATED WITH LOGGED IN USER'S ID
 
-    updateOrCreate(db.Favorites, Sequelize.and 
-      ( [
-        { name: restName ,
-         UserID: loggedIn}
+    updateOrCreate(db.Favorites, Sequelize.and
+      ([
+        {
+          name: restName,
+          UserID: loggedIn
+        }
       ])
       
-    , { 
-=======
-    console.log(req.session.passport.user.id);
-    db.Favorites.create({
->>>>>>> 1028a31a5c6d54c10dd9282b2601d49786ec56a9
-      name: req.body.name,
-      rating: req.body.rating,
-      price: req.body.price,
-      image: req.body.image,
-      link: req.body.link,
-      is_closed: req.body.is_closed,
-      restaurant_id: req.body.restaurant_id,
-      display_phone: req.body.display_phone,
-<<<<<<< HEAD
-      latitude: req.body.latitude,
-      longitude: req.body.longitude,
-      distance: req.body.distance,
-      UserId: req.session.passport.user.id
-     })
+      , {
+        name: req.body.name,
+        rating: req.body.rating,
+        price: req.body.price,
+        image: req.body.image,
+        link: req.body.link,
+        is_closed: req.body.is_closed,
+        restaurant_id: req.body.restaurant_id,
+        display_phone: req.body.display_phone,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        distance: req.body.distance,
+        UserId: req.session.passport.user.id
+      })
       .then(function (favorite) {
         if (!favorite) {
-          console.log('no favorite - already in DB')
+          console.log('cannot favorite - already in DB')
           return;
+        } else if (favorite) {
+          db.Feeds.create({
+            user_id: req.session.passport.user.id,
+            username: req.session.passport.user.username,
+            activity_type: "added to favourites",
+            restaurant_name: req.body.name
+            // favourites_id: req.body.name
+          }).then(feeds => {
+            res.json({ favorite: favorite, feeds: feeds });
+          });
         }
-
-    })
-    
-    
+      });
+  })
   //   db.Favorites.create({
   //     name: req.body.name,
   //     rating: req.body.rating,
@@ -148,28 +152,26 @@ module.exports = function(app) {
   //       res.json({ favorite: favorite, feeds: feeds });
   //     });
   //  });
-=======
       //  display_address: req.body.display_address,
       // category: req.body.categories,
-      latitude: req.body.latitude,
-      longitude: req.body.longitude,
-      distance: req.body.distance,
+      // latitude: req.body.latitude,
+      // longitude: req.body.longitude,
+      // distance: req.body.distance,
       //  transactions: req.body.transactions,
       //Deb's change
-      UserId: req.session.passport.user.id
-    }).then(function(favorite) {
-      db.Feeds.create({
-        user_id: req.session.passport.user.id,
-        username: req.session.passport.user.username,
-        activity_type: "added to favourites",
-        restaurant_name: req.body.name
-        // favourites_id: req.body.name
-      }).then(feeds => {
-        res.json({ favorite: favorite, feeds: feeds });
-      });
-    });
->>>>>>> 1028a31a5c6d54c10dd9282b2601d49786ec56a9
-  });
+     // UserId: req.session.passport.user.id
+  //   }).then(function(favorite) {
+  //     db.Feeds.create({
+  //       user_id: req.session.passport.user.id,
+  //       username: req.session.passport.user.username,
+  //       activity_type: "added to favourites",
+  //       restaurant_name: req.body.name
+  //       // favourites_id: req.body.name
+  //     }).then(feeds => {
+  //       res.json({ favorite: favorite, feeds: feeds });
+  //     });
+  //   });
+  // });
 
   app.delete("/api/delete/favorite/:id", (req, res) => {
     console.log(req.params.id);
@@ -218,4 +220,5 @@ module.exports = function(app) {
         console.log(err);
       };
   });
-};
+  };
+  
