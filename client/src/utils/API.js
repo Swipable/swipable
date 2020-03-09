@@ -61,14 +61,28 @@ export default {
 
   fetchUser: function(user) {
     return axios
-      .get("/api/get/userprofile", user)
+      .get(`/api/get/userprofile/${user.username}`)
       .then(res => {
-        console.log(res);
         return res.data;
       })
       .catch(function(error) {
         console.log(error);
       });
+  },
+
+  editUser: function(user) {
+    return axios
+      .put(`/api/put/userprofile/${user.id}`, {
+        first_name: user.first_name,
+        last_name: user.last_name,
+        email: user.email,
+        zip_code: user.zip_code,
+        updatedAt: new Date()
+      })
+      .then(res => {
+        return res.data[0];
+      })
+      .catch(err => console.log(err));
   },
 
   fetchFavorites: function() {
