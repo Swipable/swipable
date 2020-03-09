@@ -63,25 +63,22 @@ module.exports = function(app) {
   //   });
   // });
 
- // Deb changes:
+  // Deb changes:
 
-  app.get("/api/get/favoritesfromdb", function (req, res) {
-   const userID = req.session.passport.user.id
+  app.get("/api/get/favoritesfromdb", function(req, res) {
+    const userID = req.session.passport.user.id;
     db.Favorites.findAll({
       where: {
         UserId: userID
       }
-    }).then(function (data) {
-      res.json(data)
-    })
+    }).then(function(data) {
+      res.json(data);
+    });
   });
-
-
-
 
   //add to favourites on swipe right
   app.post("/api/post/favoritestodb", (req, res) => {
-    console.log(req.session.passport.user.id)
+    console.log(req.session.passport.user.id);
     db.Favorites.create({
       name: req.body.name,
       rating: req.body.rating,
@@ -91,19 +88,20 @@ module.exports = function(app) {
       is_closed: req.body.is_closed,
       restaurant_id: req.body.restaurant_id,
       display_phone: req.body.display_phone,
-    //  display_address: req.body.display_address,
+      //  display_address: req.body.display_address,
       // category: req.body.categories,
       latitude: req.body.latitude,
       longitude: req.body.longitude,
       distance: req.body.distance,
-    //  transactions: req.body.transactions,
+      //  transactions: req.body.transactions,
       //Deb's change
       UserId: req.session.passport.user.id
     }).then(function(favorite) {
       db.Feeds.create({
-        user_id: req.body.name,
-        activity_type: "favourite added",
-        restaurant_id: req.body.restaurant_id
+        user_id: req.session.passport.user.id,
+        username: req.session.passport.user.username,
+        activity_type: "added to favourites",
+        restaurant_name: req.body.name
         // favourites_id: req.body.name
       }).then(feeds => {
         res.json({ favorite: favorite, feeds: feeds });
@@ -118,19 +116,17 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(data) {
-      console.log("level1");
       db.Favorites.destroy({
         where: {
           id: data.id
         }
       }).then(function(response) {
-        console.log("level2");
         db.Feeds.create({
-          user_id: data.name,
-          activity_type: "deleted"
+          user_id: req.session.passport.user.id,
+          username: req.session.passport.user.username,
+          activity_type: "removed from favourites",
+          restaurant_name: data.name
         }).then(feeds => {
-          console.log("level3");
-          console.log(feeds);
           res.json({ response: response, feeds: feeds });
         });
       });
