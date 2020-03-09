@@ -104,6 +104,24 @@ export default {
       });
   },
 
+  fetchFeeds: function() {
+    return axios
+      .get("/api/get/feedsfromdb", {})
+      .then(res => {
+        const feeds = res.data;
+        return feeds.map(feed => {
+          return {
+            id: feed.id,
+            user_id: feed.user_id,
+            activity_type: feed.activity_type,
+            restaurant_id: feed.restaurant_id
+          };
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  },
   //debra's change
   saveUser: userData => {
     return axios.post("/api/signup", userData);
@@ -111,7 +129,7 @@ export default {
   getUsers: () => {
     return axios.get("/api/signup");
   },
-  getOneUser: function (userData) {
+  getOneUser: function(userData) {
     console.log(userData);
     return axios.post("/api/login", userData);
   }
