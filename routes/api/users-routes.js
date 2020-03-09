@@ -22,6 +22,7 @@ module.exports = function (app) {
     console.log('login in user-routes hit')
     let { username, password } = req.body;
     console.log({ username, password })
+    console.log(req.session.passport.user.dataValues.id)
 
     res.send(req.user);
 

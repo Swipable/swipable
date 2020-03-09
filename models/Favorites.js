@@ -25,9 +25,9 @@ module.exports = (sequelize, DataTypes) => {
     display_phone: {
       type: DataTypes.STRING
     },
-    display_address: {
-      type: DataTypes.JSON
-    },
+    // display_address: {
+    //   type: DataTypes.JSON
+    // },
     // category: {
     //   type: DataTypes.JSON
     // },
@@ -40,9 +40,9 @@ module.exports = (sequelize, DataTypes) => {
     distance: {
       type: DataTypes.INTEGER
     },
-    transactions: {
-      type: DataTypes.JSON
-    },
+    // transactions: {
+    //   type: DataTypes.JSON
+    // },
     createdAt: {
       allowNull: true,
       defaultValue: new Date(),

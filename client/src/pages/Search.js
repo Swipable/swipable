@@ -12,7 +12,9 @@ function Search() {
   const [restaurants, setRestaurants] = useState([]);
   const [location, setInput] = useState("");
   const [restaurantIndex, setRestaurantIndex] = useState(0);
+
   const { isLoggedIn, user } = useContext(UserContext);
+
   const [price, setPrice] = React.useState("");
   const [category, setCategory] = React.useState("Categories");
   const categories = [

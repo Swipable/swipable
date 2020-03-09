@@ -57,14 +57,31 @@ module.exports = function(app) {
   });
 
   //get favorites list from db
-  app.get("/api/get/favoritesfromdb", function(req, res) {
-    db.Favorites.findAll({}).then(function(data) {
-      res.json(data);
-    });
+  // app.get("/api/get/favoritesfromdb", function(req, res) {
+  //   db.Favorites.findAll({}).then(function(data) {
+  //     res.json(data);
+  //   });
+  // });
+
+ // Deb changes:
+
+  app.get("/api/get/favoritesfromdb", function (req, res) {
+   const userID = req.session.passport.user.id
+    db.Favorites.findAll({
+      where: {
+        UserId: userID
+      }
+    }).then(function (data) {
+      res.json(data)
+    })
   });
+
+
+
 
   //add to favourites on swipe right
   app.post("/api/post/favoritestodb", (req, res) => {
+    console.log(req.session.passport.user.id)
     db.Favorites.create({
       name: req.body.name,
       rating: req.body.rating,
@@ -74,12 +91,14 @@ module.exports = function(app) {
       is_closed: req.body.is_closed,
       restaurant_id: req.body.restaurant_id,
       display_phone: req.body.display_phone,
-      display_address: req.body.display_address,
+    //  display_address: req.body.display_address,
       // category: req.body.categories,
       latitude: req.body.latitude,
       longitude: req.body.longitude,
       distance: req.body.distance,
-      transactions: req.body.transactions
+    //  transactions: req.body.transactions,
+      //Deb's change
+      UserId: req.session.passport.user.id
     }).then(function(favorite) {
       db.Feeds.create({
         user_id: req.body.name,

@@ -9,6 +9,7 @@ function FeedCard(props) {
           // alt={props.username}
           // src={props.image}
           src="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1445&q=80"
+          alt = 'Some Picture'
         />
       </div>
       <div className="content">
