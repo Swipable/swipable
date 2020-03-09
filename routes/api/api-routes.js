@@ -87,23 +87,50 @@ module.exports = function(app) {
       longitude: req.body.longitude,
       distance: req.body.distance,
       transactions: req.body.transactions
-    }).then(function(dbUsers) {
-      res.json(dbUsers);
+    }).then(function(favorite) {
+      db.Feeds.create({
+        user_id: req.body.name,
+        activity_type: "favourite added",
+        restaurant_id: req.body.restaurant_id
+        // favourites_id: req.body.name
+      }).then(feeds => {
+        res.json({ favorite: favorite, feeds: feeds });
+      });
     });
   });
 
   app.delete("/api/delete/favorite/:id", (req, res) => {
     console.log(req.params.id);
-    db.Favorites.destroy({
+    db.Favorites.findOne({
       where: {
         id: req.params.id
       }
-    }).then(function(response) {
-      res.json(response);
-    }),
-      function(err) {
-        console.log(err);
-      };
+    }).then(function(data) {
+      console.log("level1");
+      db.Favorites.destroy({
+        where: {
+          id: data.id
+        }
+      }).then(function(response) {
+        console.log("level2");
+        db.Feeds.create({
+          user_id: data.name,
+          activity_type: "deleted"
+        }).then(feeds => {
+          console.log("level3");
+          console.log(feeds);
+          res.json({ response: response, feeds: feeds });
+        });
+      });
+    });
+  });
+
+  app.get("/api/get/feedsfromdb", function(req, res) {
+    db.Feeds.findAll({ order: [["id", "DESC"]], limit: 10 }).then(function(
+      data
+    ) {
+      res.json(data);
+    });
   });
 
   app.put("/api/put/userprofile/:id", (req, res) => {
