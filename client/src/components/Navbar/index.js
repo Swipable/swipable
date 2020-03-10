@@ -44,25 +44,25 @@ function Navbar(props) {
                     <li className="nav-item active">
                       <Link to="/profile" className="nav-link">
                         {" "}
-                        Profile <span class="sr-only">(current)</span>
+                        Profile <span className="sr-only">(current)</span>
                       </Link>
                     </li>
                     <li className="nav-item active">
                       <Link to="/favorites" className="nav-link">
                         {" "}
-                        Favorites <span class="sr-only">(current)</span>
+                        Favorites <span className="sr-only">(current)</span>
                       </Link>
                     </li>
                     <li className="nav-item active">
-                      <Link to="/newsfeed" class="nav-link">
+                      <Link to="/newsfeed" className="nav-link">
                         {" "}
-                        Newsfeed <span class="sr-only">(current)</span>
+                        Newsfeed <span className="sr-only">(current)</span>
                       </Link>
                     </li>
                     <li className="nav-item active">
                       <Link to="/team" className="nav-link">
                         {" "}
-                        Team <span class="sr-only">(current)</span>
+                        Team <span className="sr-only">(current)</span>
                       </Link>
                     </li>
                   </>

@@ -16,10 +16,11 @@ function Search() {
 
   const { isLoggedin, user } = useContext(UserContext);
 
+  const [transactions, setTransactions] = React.useState("");
   const [price, setPrice] = React.useState("");
-  const [category, setCategory] = React.useState("Categories");
+  const [category, setCategory] = React.useState("");
   const categories = [
-    "Categories",
+    "Category",
     "bbq",
     "burgers",
     "cajun",
@@ -32,7 +33,7 @@ function Search() {
 
   useEffect(() => {
     loadRestaurants();
-  }, [price, category, location]);
+  }, [price, category, location, transactions]);
 
   const nextRestaurant = restaurantIndex => {
     // Ensure that the restaurant index stays within our range of restaurants
@@ -89,8 +90,8 @@ function Search() {
       e.preventDefault();
     }
     console.log(location);
-    API.fetchRestaurants(price, category, location)
-    
+
+    API.fetchRestaurants(price, category, location, transactions)
       .then(r => {
         if (r[0].name !== "undefined") {
           console.log(r[0].name);
@@ -120,8 +121,21 @@ function Search() {
           {/* </div> */}
           <br />
           <div className="d-flex justify-content-center">
-            <div className="col-lg-3">
-              <select
+
+          <div className="dropdown">
+              <select className="dropdown-content"
+                name="category"
+                value={category}
+                onChange={event => setCategory(event.target.value)}
+              >
+                {categories.map(c => {
+                  return <option value={c}> {c} </option>;
+                })}
+              </select>
+            </div>
+
+            <div className="dropdown">
+              <select className="dropdown-content"
                 name="price"
                 value={price}
                 onChange={event => setPrice(event.target.value)}
@@ -133,17 +147,18 @@ function Search() {
                 <option value="4"> $$$$ </option>
               </select>
             </div>
-            <div className="col-lg-3">
-              <select
-                name="category"
-                value={category}
-                onChange={event => setCategory(event.target.value)}
+
+            <div className="dropdown">
+              <select className="dropdown-content"
+                name="transactions"
+                value={transactions}
+                onChange={event => setTransactions(event.target.value)}
               >
-                {categories.map(c => {
-                  return <option value={c}> {c} </option>;
-                })}
+                <option value="delivery"> Delivery </option>
+                <option value="pickup"> Pickup </option>
               </select>
             </div>
+
           </div>
         </form>
       </div>
