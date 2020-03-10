@@ -19,7 +19,7 @@
 }
 
 .back::after {
-  content: "\f00d";
+  content: url(./dislike.png);
 }
 
 .next {
@@ -29,7 +29,7 @@
 }
 
 .next::after {
-  content: "\f004";
+  content: url(./fav.png)
 }
 
 .next:hover::after,
