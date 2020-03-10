@@ -52,11 +52,11 @@ function Search() {
           }
         })
         .then(setRestaurant(restaurants[restaurantIndex]))
-        .then(setRestaurantIndex(restaurantIndex + 1));
+        .then(setRestaurantIndex(restaurantIndex));
     } else {
       axios
-        .post("/api/post/favoritestodb", restaurants[restaurantIndex - 1])
-        .then((res) => {
+        .post("/api/post/favoritestodb", restaurants[restaurantIndex -1])
+        .then(res =>
           alert(res.data.favorite.name + " has been added to your favorites <3")
         })
         .then(alert("There are no more results! Please refine your search."));
@@ -67,6 +67,7 @@ function Search() {
     if (restaurantIndex <= 49) {
       setRestaurant(restaurants[restaurantIndex]);
       setRestaurantIndex(restaurantIndex);
+      console.log(restaurantIndex);
     } else {
       alert("There are no more results! Please refine your search.");
     }
@@ -76,11 +77,11 @@ function Search() {
     // Get the title of the clicked button
     const btnName = event.target.getAttribute("data-value");
     if (btnName === "next") {
-      const newRestaurantIndex = restaurantIndex + 1;
+      const newRestaurantIndex = restaurantIndex +1;
       nextRestaurant(newRestaurantIndex);
       console.log(restaurantIndex);
     } else {
-      const newRestaurantIndex = restaurantIndex + 1;
+      const newRestaurantIndex = restaurantIndex +1;
       dislikeRestaurant(newRestaurantIndex);
     }
   };
