@@ -2,8 +2,7 @@ import React from 'react';
 
  const UserContext = React.createContext({
     user: '',
-    isLoggedIn: false,
-    isLoading: false
+    isLoggedIn: false
 });
 
 export default UserContext;
