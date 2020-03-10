@@ -6,7 +6,7 @@ import MainCard from "../components/MainCard";
 import Title from "../components/Title";
 import UserContext from "../context/UserContext";
 
-function EditProfile() {
+function EditProfile(props) {
   const { isLoggedIn, user } = useContext(UserContext);
   console.log({ isLoggedIn });
   const [profile, setProfile] = useState({});

@@ -1,14 +1,17 @@
 import React from "react";
 import "./usercard.css";
 
+
 function UserCard(props) {
+  
   return (
+
     <div className="user-card">
       <div className="img-container">
         <img
           alt={props.username}
-          // src={props.image}
-          src="https://images.unsplash.com/photo-1551410224-699683e15636?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=80"
+          // src={image}
+          src= {`https://api.adorable.io/avatars/285/${props.username}.png`}
         />
       </div>
       <div className="content">
@@ -24,9 +27,6 @@ function UserCard(props) {
           </li>
         </ul>
       </div>
-      <span onClick={() => props.removeFriend(props.id)} className="remove">
-        𝘅
-      </span>
     </div>
   );
 }

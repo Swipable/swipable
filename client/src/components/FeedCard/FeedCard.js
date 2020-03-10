@@ -2,6 +2,7 @@ import React from "react";
 import "./feedcard.css";
 
 function FeedCard(props) {
+
   return (
     <div className="feedcard-wrapper">
       <div className="feedcard-card row">
@@ -9,7 +10,7 @@ function FeedCard(props) {
           <img
             // alt={props.username}
             // src={props.image}
-            src="https://images.unsplash.com/photo-1551410224-699683e15636?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=80"
+            src= {`https://api.adorable.io/avatars/285/${props.username}.png`}
             alt="Some Picture"
           />
         </div>
