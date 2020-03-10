@@ -26,7 +26,7 @@ const Team = () => {
 
   return (
     <Wrapper>
-      <Title>Team</Title>
+      <Title>Other swipers near you!</Title>
       {users.map(user => (
         <UserCard
           username={user.username}
