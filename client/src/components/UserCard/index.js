@@ -4,7 +4,6 @@ import "./usercard.css";
 
 function UserCard(props) {
   
-
   return (
 
     <div className="user-card">
@@ -28,7 +27,6 @@ function UserCard(props) {
           </li>
         </ul>
       </div>
-
     </div>
   );
 }

@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 import UserCard from "../components/UserCard";
 import Title from "../components/Title";
+import UserContext from "../context/UserContext";
 
 const Team = () => {
   // const [user, setUser] = useState({});
+  const { isLoggedIn, user } = useContext(UserContext);
   const [users, setUsers] = useState([]);
   // const [userIndex, setUserIndex] = useState(0);
   useEffect(() => {
+    console.log({ isLoggedIn, user })
     loadUsers();
   }, []);
 

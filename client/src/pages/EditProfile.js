@@ -6,7 +6,7 @@ import MainCard from "../components/MainCard";
 import Title from "../components/Title";
 import UserContext from "../context/UserContext";
 
-function EditProfile() {
+function EditProfile(props) {
   const { isLoggedIn, user } = useContext(UserContext);
   console.log({ isLoggedIn });
   const [profile, setProfile] = useState({});
@@ -36,10 +36,9 @@ function EditProfile() {
         console.log(res);
         if (res === 0) {
           alert("No updates were made to profile");
-          window.location = "/profile";
         } else if (res === 1) {
           alert("user successfully updated");
-          window.location = "/profile";
+          props.history.push('/profile')
         }
       })
       .catch(err => console.log(err));

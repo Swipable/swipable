@@ -27,7 +27,7 @@ function App() {
         <div>
           <Navbar />
           <Wrapper>
-            <Route exact path="/" component={Search} />
+            <Route exact path="/" component={Login} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/logout" component={Logout} />
             <Route exact path="/signup" component={Signup} />

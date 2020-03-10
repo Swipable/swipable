@@ -55,12 +55,11 @@ function Search() {
         .then(setRestaurantIndex(restaurantIndex));
     } else {
       axios
-        .post("/api/post/favoritestodb", restaurants[restaurantIndex -1])
-        .then(res =>
+        .post("/api/post/favoritestodb", restaurants[restaurantIndex - 1])
+        .then((res) => {
           alert(res.data.favorite.name + " has been added to your favorites <3")
-        )
-        .then(alert("There are no more results! Please refine your search."))
-    }
+        })
+      }
   };
 
   const dislikeRestaurant = restaurantIndex => {
@@ -92,7 +91,7 @@ function Search() {
     }
     console.log(location);
 
-    API.fetchRestaurants(price, category, location, transactions)
+    API.fetchRestaurants(price, category, user.zip_code, transactions)
       .then(r => {
         if (r[0].name !== "undefined") {
           console.log(r[0].name);
