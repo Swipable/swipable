@@ -9,14 +9,14 @@ import UserContext from "../context/UserContext";
 //import ReactSpinner from "react-bootstrap-spinner";
 
 function Search() {
-  const [restaurant, setRestaurant] = useState({});
-  const [restaurants, setRestaurants] = useState([]);
-  const [location, setInput] = useState("");
-  const [restaurantIndex, setRestaurantIndex] = useState(0);
-
   const { isLoggedin, user } = useContext(UserContext);
 
-  const [transactions, setTransactions] = React.useState("");
+  const [restaurant, setRestaurant] = useState({});
+  const [restaurants, setRestaurants] = useState([]);
+  const [location, setInput] = useState(`${user.zip_code}`);
+  const [restaurantIndex, setRestaurantIndex] = useState(0);
+
+  const [transactions, setTransactions] = React.useState("delivery");
   const [price, setPrice] = React.useState("");
   const [category, setCategory] = React.useState("");
   const categories = [
@@ -33,7 +33,7 @@ function Search() {
 
   useEffect(() => {
     loadRestaurants();
-  }, [price, category, location, transactions]);
+  }, [price, category, location, transactions, user.zip_code]);
 
   const nextRestaurant = restaurantIndex => {
     // Ensure that the restaurant index stays within our range of restaurants
@@ -58,7 +58,6 @@ function Search() {
         .post("/api/post/favoritestodb", restaurants[restaurantIndex - 1])
         .then((res) => {
           alert(res.data.favorite.name + " has been added to your favorites <3")
-          .then(alert("There are no more results! Please refine your search."))	
         })
       }
   };
@@ -92,7 +91,7 @@ function Search() {
     }
     console.log(location);
 
-    API.fetchRestaurants(price, category, user.zip_code, transactions)
+    API.fetchRestaurants(price, category, location, user.zip_code, transactions)
       .then(r => {
         if (r[0].name !== "undefined") {
           console.log(r[0].name);
