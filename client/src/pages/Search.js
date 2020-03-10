@@ -91,7 +91,7 @@ function Search() {
     }
     console.log(location);
 
-    API.fetchRestaurants(price, category, location, transactions)
+    API.fetchRestaurants(price, category, user.zip_code, transactions)
       .then(r => {
         if (r[0].name !== "undefined") {
           console.log(r[0].name);
