@@ -36,10 +36,9 @@ function EditProfile() {
         console.log(res);
         if (res === 0) {
           alert("No updates were made to profile");
-          window.location = "/profile";
         } else if (res === 1) {
           alert("user successfully updated");
-          window.location = "/profile";
+          props.history.push('/profile')
         }
       })
       .catch(err => console.log(err));
