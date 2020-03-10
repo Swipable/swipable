@@ -55,7 +55,7 @@ function Signup() {
 
   return (
     <Wrapper>
-      <Title>Sign Up</Title>
+      <Title>Don't have an account? Sign up to find your perfect restaurant match.</Title>
       <MainCard
         form={
           <form>
@@ -103,7 +103,7 @@ function Signup() {
               placeholder="Confirm Password"
             />
             <FormBtn onClick={handleFormSubmit}>Sign up</FormBtn>
-            <Link to="/login">Sign in</Link>
+            <Link to="/login">I already have an accout</Link>
           </form>
         }
       />

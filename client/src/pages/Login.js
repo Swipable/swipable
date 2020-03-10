@@ -62,7 +62,7 @@ const Login = props => {
 
   return (
       <Wrapper>
-        <Title>Login</Title>
+        <Title>Login to find your perfect restaurant match!</Title>
         <MainCard
           form={
             <form>
