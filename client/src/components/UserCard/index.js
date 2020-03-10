@@ -11,19 +11,16 @@ function UserCard(props) {
         <img
           alt={props.username}
           // src={image}
-          src= {`https://api.adorable.io/avatars/285/${props.username}.png`}
+          src= {`https://api.adorable.io/avatars/200/${props.username}.png`}
         />
       </div>
       <div className="content">
         <ul>
           <li>
-            <strong>Name:</strong> {props.username}
+            <strong>Username:</strong> {props.username}
           </li>
           <li>
-            <strong>First Name:</strong> {props.first_name}
-          </li>
-          <li>
-            <strong>Last Name:</strong> {props.last_name}
+            <strong>Name:</strong> {props.first_name} {props.last_name}
           </li>
         </ul>
       </div>
