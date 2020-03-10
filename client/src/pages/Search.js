@@ -16,7 +16,7 @@ function Search() {
   const [location, setInput] = useState(`${user.zip_code}`);
   const [restaurantIndex, setRestaurantIndex] = useState(0);
 
-  const [transactions, setTransactions] = React.useState("delivery");
+  const [transactions, setTransactions] = React.useState("");
   const [price, setPrice] = React.useState("");
   const [category, setCategory] = React.useState("");
   const categories = [
@@ -125,7 +125,6 @@ function Search() {
           <SearchBar location={location} setInput={setInput}></SearchBar>
           {/* </div> */}
           <br />
-          <div className="d-flex justify-content-center">
 
           <div className="dropdown">
               <select className="dropdown-content"
@@ -137,9 +136,8 @@ function Search() {
                   return <option value={c}> {c} </option>;
                 })}
               </select>
-            </div>
+            
 
-            <div className="dropdown">
               <select className="dropdown-content"
                 name="price"
                 value={price}
@@ -151,20 +149,19 @@ function Search() {
                 <option value="3"> $$$ </option>
                 <option value="4"> $$$$ </option>
               </select>
-            </div>
 
-            <div className="dropdown">
+            
               <select className="dropdown-content"
                 name="transactions"
                 value={transactions}
                 onChange={event => setTransactions(event.target.value)}
               >
+                <option value=""> Pickup/Delivery </option>
                 <option value="delivery"> Delivery </option>
                 <option value="pickup"> Pickup </option>
               </select>
             </div>
 
-          </div>
         </form>
       </div>
 
