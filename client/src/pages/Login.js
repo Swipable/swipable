@@ -41,7 +41,6 @@ const Login = props => {
           if (res.data.username) {
             setUser(res.data)
             setIsLoggedIn(true)
-            // window.location = '/search'
             console.log("searched for one user")
             props.history.push("/search")
           } else if (!res.data.username) {
