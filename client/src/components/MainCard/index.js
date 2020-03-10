@@ -8,7 +8,7 @@ function MainCard(props) {
         <div className="col-lg-9 mx-auto">
           <div className="card card-signin flex-row my-5">
             <div className="card-img d-none d-md-flex">
-              <div className="card-img-profile d-none d-md-flex" src={`https://api.adorable.io/avatars/285/${props.username}.png`}>
+              <div className="card-img-profile d-none d-md-flex">
             
               </div>
             </div>
