@@ -7,11 +7,11 @@ const Sequelize = require('sequelize')
 
 //michelle's change
 
-module.exports = function(app) {
+module.exports = function(app, user) {
   app.get("/api/restaurants", (req, res) => {
     const price = req.query.price || "2";
     const categories = req.query.category || "";
-    const location = req.query.location || "usa";
+    const location = req.query.location || user.zip_code;
     const transactions = req.query.location || "";
 
     axios
