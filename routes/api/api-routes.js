@@ -111,9 +111,9 @@ module.exports = function(app) {
         UserId: req.session.passport.user.id
       })
       .then(function (favorite) {
-        if (!favorite) {
+        if (!favorite.created) {
           console.log('cannot favorite - already in DB')
-          return;
+          return res.json(null);
         } else if (favorite) {
           db.Feeds.create({
             user_id: req.session.passport.user.id,
@@ -122,6 +122,7 @@ module.exports = function(app) {
             restaurant_name: req.body.name
             // favourites_id: req.body.name
           }).then(feeds => {
+            console.log('added to Feeds')
             res.json({ favorite: favorite, feeds: feeds });
           });
         }

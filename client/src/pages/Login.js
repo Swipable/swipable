@@ -8,13 +8,6 @@ import MainCard from "../components/MainCard";
 import Title from "../components/Title";
 import UserContext from '../context/UserContext';
 
-
-//PAGE IS SETUP TO HANDLE LOG IN
-
-// after successful signup, redirected to login
-// if unsuccessful, show error and reload signup
-// after signup and login, redirected to search page
-
 const Login = props => {
   //set initial state
   const [formLogin, setFormLogin] = useState(null);
@@ -24,7 +17,6 @@ const Login = props => {
   //executes loadUser and populates array w/res data
   useEffect(() => {
     console.log({ LoginPage: isLoggedIn }) //initially is false, true after correct credentials
-
     console.log(user); //Initially empty array, user data after correct credentials
   }, [user])            
 
@@ -36,8 +28,8 @@ const Login = props => {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-
     if (formLogin && formLogin.username && formLogin.password) {
+      
       if (!formLogin.username || !formLogin.password) {
         console.log("no username or password entered");
       }
@@ -46,21 +38,21 @@ const Login = props => {
         password: formLogin.password
       })
         .then(res => {
-          console.log({ res: res.data });
           if (res.data.username) {
-            setIsLoggedIn(true);
             setUser(res.data)
+            setIsLoggedIn(true)
             // window.location = '/search'
             console.log("searched for one user")
             props.history.push("/search")
           } else if (!res.data.username) {
             alert('No user found - check credentials or sign up')
-            // window.location.reload()
           } 
         })
         .catch(err => {
           if (err.response.status === 401) {
             alert('Incorrect credentials')
+          } else {
+            console.log(err)
           }
           console.log("Sucker. " + err.response.status)
         });
