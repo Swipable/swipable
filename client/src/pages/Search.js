@@ -37,7 +37,7 @@ function Search() {
 
   const nextRestaurant = restaurantIndex => {
     // Ensure that the restaurant index stays within our range of restaurants
-    if (restaurantIndex <= 49) {
+    if (restaurantIndex < restaurants.length) {
 
       axios
         .post("/api/post/favoritestodb", restaurants[restaurantIndex - 1])
@@ -63,7 +63,8 @@ function Search() {
   };
 
   const dislikeRestaurant = restaurantIndex => {
-    if (restaurantIndex <= 49) {
+    
+    if (restaurantIndex < restaurants.length) {
       setRestaurant(restaurants[restaurantIndex]);
       setRestaurantIndex(restaurantIndex);
       console.log(restaurantIndex);
@@ -77,19 +78,19 @@ function Search() {
     const btnName = event.target.getAttribute("data-value");
     if (btnName === "next") {
       const newRestaurantIndex = restaurantIndex +1;
-      nextRestaurant(newRestaurantIndex);
+      nextRestaurant(newRestaurantIndex, restaurants.length);
       console.log(restaurantIndex);
     } else {
       const newRestaurantIndex = restaurantIndex +1;
-      dislikeRestaurant(newRestaurantIndex);
+      dislikeRestaurant(newRestaurantIndex, restaurants.length);
     }
   };
 
   const loadRestaurants = e => {
+
     if (e) {
       e.preventDefault();
     }
-    console.log(location);
 
     API.fetchRestaurants(price, category, location, user.zip_code, transactions)
       .then(r => {
@@ -97,13 +98,17 @@ function Search() {
           console.log(r[0].name);
           setRestaurants(r);
           setRestaurant(r[0]);
-          console.log(r);
-          return restaurants;
+          setRestaurantIndex(0)
+          console.log(r.length);
+          return r;
+
         }
       })
       .catch((err) => {
           alert("Sorry, there are no results! Please change your search.")
         });
+
+
   };
 
   return (
