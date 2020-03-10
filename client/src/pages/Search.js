@@ -38,9 +38,16 @@ function Search() {
     if (restaurantIndex <= 49) {
       axios
         .post("/api/post/favoritestodb", restaurants[restaurantIndex - 1])
-        .then(res =>
-          alert(res.data.favorite.name + " has been added to your favorites <3")
-        )
+        .then((res) => {
+          console.log(res)
+          if (res.data === null) {
+            //MODAL POPUP HERE
+            console.log('Search page - no response received, already in DB')
+          } else {
+            //MODAL POPUP HERE
+            console.log('Search page - was added to DB')
+          }
+        })
         .then(setRestaurant(restaurants[restaurantIndex]))
         .then(setRestaurantIndex(restaurantIndex + 1));
     } else {
