@@ -17,7 +17,6 @@ import UserContext from './context/UserContext';
 
 
 function App() {
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({})
 

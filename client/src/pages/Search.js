@@ -6,6 +6,7 @@ import API from "../utils/API";
 import SearchBar from "../components/SearchBar";
 import RestaurantCard from "../components/RestaurantCard";
 import UserContext from "../context/UserContext";
+//import ReactSpinner from "react-bootstrap-spinner";
 
 function Search() {
   const [restaurant, setRestaurant] = useState({});
@@ -13,7 +14,7 @@ function Search() {
   const [location, setInput] = useState("");
   const [restaurantIndex, setRestaurantIndex] = useState(0);
 
-  const { isLoggedIn, user } = useContext(UserContext);
+  const { isLoggedin, user } = useContext(UserContext);
 
   const [transactions, setTransactions] = React.useState("");
   const [price, setPrice] = React.useState("");
@@ -37,11 +38,19 @@ function Search() {
   const nextRestaurant = restaurantIndex => {
     // Ensure that the restaurant index stays within our range of restaurants
     if (restaurantIndex <= 49) {
+
       axios
-        .post("/api/post/favoritestodb", restaurants[restaurantIndex -1])
-        .then(res =>
-          alert(res.data.favorite.name + " has been added to your favorites <3")
-        )
+        .post("/api/post/favoritestodb", restaurants[restaurantIndex - 1])
+        .then((res) => {
+          console.log(res)
+          if (res.data === null) {
+            //MODAL POPUP HERE
+            console.log('Search page - no response received, already in DB')
+          } else {
+            //MODAL POPUP HERE
+            console.log('Search page - was added to DB')
+          }
+        })
         .then(setRestaurant(restaurants[restaurantIndex]))
         .then(setRestaurantIndex(restaurantIndex));
     } else {
@@ -49,7 +58,7 @@ function Search() {
         .post("/api/post/favoritestodb", restaurants[restaurantIndex -1])
         .then(res =>
           alert(res.data.favorite.name + " has been added to your favorites <3")
-        )
+        })
         .then(alert("There are no more results! Please refine your search."));
     }
   };
@@ -82,6 +91,7 @@ function Search() {
       e.preventDefault();
     }
     console.log(location);
+
     API.fetchRestaurants(price, category, location, transactions)
       .then(r => {
         if (r[0].name !== "undefined") {
@@ -92,9 +102,9 @@ function Search() {
           return restaurants;
         }
       })
-      .catch(err =>
-        alert("Sorry, there are no results! Please change your search.")
-      );
+      .catch((err) => {
+          alert("Sorry, there are no results! Please change your search.")
+        });
   };
 
   return (
