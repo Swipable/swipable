@@ -1,68 +1,83 @@
 * {
-    box-sizing: border-box;
-    font-family: sans-serif;
-  }
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 
 .team-container {
-    padding-top: 50px;
-    height: 100%;
-    display: flex;
-    /* width:1200px; */
-    flex-flow: row wrap;
-    padding: 20px;
-    justify-content: center;
-    align-content: stretch;
-    overflow: auto;
-  }
-  
+  padding-top: 50px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width:1200px; */
+  flex-flow: row wrap;
+  padding: 20px;
+  justify-content: center;
+  align-content: stretch;
+  overflow: auto;
+}
+
+.user-wrapper{
+  margin-right: auto; /* 1 */
+  margin-left:  auto; /* 1 */
+
+  max-width: 960px; /* 2 */
+
+  padding-right: 10px; /* 3 */
+  padding-left:  10px; /* 3 */
+}
 
 .user-card {
-    background: #fff;
-    border-radius: 2px;
-    height: 325px;
-    margin: 1rem;
-    position: relative;
-    width: 325px;
-    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
-    text-align: left;
-    border-radius: 1rem;
-  }
+  background: #fff;
+  border-radius: 2px;
+  height: 325px;
+  margin: 1rem;
+  position: relative;
+  width: 250px;
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  text-align: left;
+  border-radius: 1rem;
+  float: left;
   
-  .user-card > .img-container {
-    height: 60%;
-    overflow: hidden;
-    text-align: center;
-    border-radius: 1rem;
-    
-  }
-  .user-card > .img-container > img {
-    width: 60%
-  }
+}
+
+.user-card > .img-container {
+  height: 80%;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 1rem;
+}
+.user-card > .img-container > img {
+  width: 100%;
+}
+
+.favorite-card > .content {
+  padding-right: 1rem;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-card > .content > ul {
+  list-style-type: none;
+}
+
+.favorite-card > .content > ul > li {
+  margin-top: 10px;
+}
+
+.favorite-card > .remove {
+  color: #F68E29;
+  font-size: 48px;
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  cursor: pointer;
   
-  .user-card > .content {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    font-size: 15px;
-  }
-  
-  .user-card > .content > ul {
-    list-style-type: none;
-  }
-  
-  .user-card > .content > ul > li {
-    margin-top: 18px;
-  }
-  
-  .user-card > .remove {
-    color: #0967cb;
-    font-size: 48px;
-    position: absolute;
-    top: -20px;
-    right: 5px;
-    cursor: pointer;
-  }
-  
-  .user-card > .remove:hover {
-    color: #d50000;
-  }
-  
+}
+
+.favorite-card > .remove:hover {
+  color: #d50000;
+}
+
