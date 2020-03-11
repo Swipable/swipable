@@ -4,10 +4,6 @@ const bcrypt = require('bcrypt');
 //const isAuthenticated = require('../passport/middleware/isAuthenticated');
 
 module.exports = {
-    test: (req, res) => {
-        console.log('back and front end talking - test hit')
-        console.log(res)
-    },
     findAll: function (req, res) {
         db.Users
             .findAll({})
@@ -24,11 +20,13 @@ module.exports = {
             .then((data) => {
                 req.session.data = data.dataValues;
                 console.log(req.session.data.username);
-                res.json(data);
+                const created = true;
+                res.json(created && data);
                 return;
             })
             .catch(err => {
-                res.status(422).json(err)
+                const created = false;
+                return res.json(err && created)
             })
     },
     //Below are set up for handling login

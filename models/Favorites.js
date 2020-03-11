@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
     Favorites.associate = function(models) {
       Favorites.belongsTo(models.Users, {
         foreignKey: {
-          allowNull: true
+          allowNull: false
         }
       });
     };
