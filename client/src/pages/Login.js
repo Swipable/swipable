@@ -7,17 +7,16 @@ import { Input, FormBtn } from "../components/PageComponents";
 import MainCard from "../components/MainCard";
 import Title from "../components/Title";
 import UserContext from '../context/UserContext';
+import Spinner from '../components/Spinner';
 
 const Login = props => {
   //set initial state
   const [formLogin, setFormLogin] = useState(null);
 
-  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(UserContext)
+  const { user, setUser, isLoggedIn, setIsLoggedIn, loading, setLoading } = useContext(UserContext)
 
   //executes loadUser and populates array w/res data
   useEffect(() => {
-    console.log({ LoginPage: isLoggedIn }) //initially is false, true after correct credentials
-    console.log(user); //Initially empty array, user data after correct credentials
   }, [user])            
 
   // Handles updating component state when the user types into the input field
@@ -27,6 +26,7 @@ const Login = props => {
   }
 
   function handleFormSubmit(event) {
+    setLoading(true);
     event.preventDefault();
     if (formLogin && formLogin.username && formLogin.password) {
       
@@ -38,6 +38,7 @@ const Login = props => {
         password: formLogin.password
       })
         .then(res => {
+          setLoading(false);
           if (res.data.username) {
             setUser(res.data)
             setIsLoggedIn(true)
@@ -61,31 +62,34 @@ const Login = props => {
   }
 
   return (
-      <Wrapper>
-        <Title>Login</Title>
-        <MainCard
-          form={
-            <form>
-              <Input
-                label="Username"
-                onChange={handleInputChange}
-                id="username"
-                name="username"
-                placeholder="Username"
-              />
-              <Input
-                label="Password"
-                onChange={handleInputChange}
-                id="password"
-                name="password"
-                placeholder="Password"
-              />
-              <FormBtn onClick={handleFormSubmit}>Log in</FormBtn>
-              <Link to="/signup">Sign Up</Link>
-            </form>
-          }
-        />
-      </Wrapper>
+    <Wrapper>
+      <Title>Login</Title>
+      <MainCard
+        form={
+          <form>
+            <Input
+              label="Username"
+              onChange={handleInputChange}
+              id="username"
+              name="username"
+              placeholder="Username"
+            />
+            <Input
+              label="Password"
+              onChange={handleInputChange}
+              id="password"
+              name="password"
+              placeholder="Password"
+            />
+            {loading ? [<Spinner></Spinner>] :
+            <FormBtn onClick={handleFormSubmit}>Log in</FormBtn>
+              }
+            <Link to="/signup">Sign Up</Link>
+            <br></br>
+          </form>
+        }
+      />
+    </Wrapper>
   );
 };
 

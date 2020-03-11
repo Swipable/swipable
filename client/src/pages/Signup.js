@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, Redirect } from "react-router-dom";
 import "../index.css";
 //import Form from "../components/Form";
@@ -7,8 +7,11 @@ import { Input, FormBtn } from "../components/PageComponents";
 import API from "../utils/API";
 import MainCard from "../components/MainCard";
 import Title from "../components/Title";
+import UserContext from "../context/UserContext";
+import Spinner from "../components/Spinner";
 
-function Signup() {
+function Signup(props) {
+  const { loading, setLoading } = useContext(UserContext);
   const [user, setUser] = useState({});
   const [formObject, setFormObject] = useState({});
 
@@ -28,6 +31,7 @@ function Signup() {
   // When the form is submitted, use the API.saveUser method to save the book data
   // Then reload books from the database
   function handleFormSubmit(event) {
+    setLoading(true);
     event.preventDefault();
     if (formObject.inputUsername && formObject.inputPassword) {
       API.saveUser({
@@ -39,9 +43,10 @@ function Signup() {
         password: formObject.inputPassword
       })
         .then(res => {
+          setLoading(false);
           if (res.data) {
             console.log("user posted to DB");
-            window.location = '/login';
+            props.history.push('/login')
           } else if (!res.data) {
             alert('no user found')
             //This redirect does not work
@@ -59,51 +64,55 @@ function Signup() {
       <MainCard
         form={
           <form>
-            <Input
-              onChange={handleInputChange}
-              label="First Name"
-              name="inputFirstName"
-              placeholder="First Name"
-            />
-            <Input
-              onChange={handleInputChange}
-              label="Last Name"
-              name="inputLastName"
-              placeholder="Last Name"
-            />
-            <Input
-              onChange={handleInputChange}
-              label="User Name"
-              name="inputUsername"
-              placeholder="Username"
-            />
-            <Input
-              onChange={handleInputChange}
-              label="Email"
-              name="inputEmail"
-              placeholder="Email"
-            />
-            <Input
-              label="Zip Code"
-              onChange={handleInputChange}
-              name="inputZipCode"
-              placeholder="Zip Code"
-            />
-            <hr></hr>
-            <Input
-              label="Password"
-              onChange={handleInputChange}
-              name="inputPassword"
-              placeholder="Password"
-            />
-            <Input
-              label="Confirm Password"
-              onChange={handleInputChange}
-              name="inputConfirmPassword"
-              placeholder="Confirm Password"
-            />
-            <FormBtn onClick={handleFormSubmit}>Sign up</FormBtn>
-            <Link to="/login">Sign in</Link>
+            
+              <Input
+                onChange={handleInputChange}
+                label="First Name"
+                name="inputFirstName"
+                placeholder="First Name"
+              />
+              <Input
+                onChange={handleInputChange}
+                label="Last Name"
+                name="inputLastName"
+                placeholder="Last Name"
+              />
+              <Input
+                onChange={handleInputChange}
+                label="User Name"
+                name="inputUsername"
+                placeholder="Username"
+              />
+              <Input
+                onChange={handleInputChange}
+                label="Email"
+                name="inputEmail"
+                placeholder="Email"
+              />
+              <Input
+                label="Zip Code"
+                onChange={handleInputChange}
+                name="inputZipCode"
+                placeholder="Zip Code"
+              />
+              <hr></hr>
+              <Input
+                label="Password"
+                onChange={handleInputChange}
+                name="inputPassword"
+                placeholder="Password"
+              />
+              <Input
+                label="Confirm Password"
+                onChange={handleInputChange}
+                name="inputConfirmPassword"
+                placeholder="Confirm Password"
+              />
+              {loading ? [<Spinner></Spinner>] :
+              <FormBtn onClick={handleFormSubmit}>Sign up</FormBtn>
+              }
+              <Link to="/login">Sign in</Link>
+            
           </form>
         }
       />

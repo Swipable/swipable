@@ -6,10 +6,10 @@ import API from "../utils/API";
 import SearchBar from "../components/SearchBar";
 import RestaurantCard from "../components/RestaurantCard";
 import UserContext from "../context/UserContext";
-//import ReactSpinner from "react-bootstrap-spinner";
+import Spinner from "../components/Spinner";
 
 function Search() {
-  const { isLoggedin, user } = useContext(UserContext);
+  const { isLoggedin, user, loading, setLoading } = useContext(UserContext);
 
   const [restaurant, setRestaurant] = useState({});
   const [restaurants, setRestaurants] = useState([]);
@@ -32,6 +32,7 @@ function Search() {
   ];
 
   useEffect(() => {
+    setLoading(true);
     loadRestaurants();
   }, [price, category, location, transactions, user.zip_code]);
 
@@ -94,6 +95,7 @@ function Search() {
 
     API.fetchRestaurants(price, category, location, user.zip_code, transactions)
       .then(r => {
+        setLoading(false);
         if (r[0].name !== "undefined") {
           console.log(r[0].name);
           setRestaurants(r);
@@ -107,8 +109,6 @@ function Search() {
       .catch((err) => {
           alert("Sorry, there are no results! Please change your search.")
         });
-
-
   };
 
   return (
@@ -118,7 +118,6 @@ function Search() {
       </h1>
 
       <br></br>
-
       <div className="d-flex justify-content-center">
         <form onSubmit={loadRestaurants}>
           {/* <div className="row d-inline-flex"> */}
@@ -127,45 +126,46 @@ function Search() {
           <br />
 
           <div className="dropdown">
-              <select className="dropdown-content"
-                name="category"
-                value={category}
-                onChange={event => setCategory(event.target.value)}
-              >
-                {categories.map(c => {
-                  return <option value={c}> {c} </option>;
-                })}
-              </select>
-            
+            <select
+              className="dropdown-content"
+              name="category"
+              value={category}
+              onChange={event => setCategory(event.target.value)}
+            >
+              {categories.map(c => {
+                return <option value={c}> {c} </option>;
+              })}
+            </select>
 
-              <select className="dropdown-content"
-                name="price"
-                value={price}
-                onChange={event => setPrice(event.target.value)}
-              >
-                <option value=""> Price </option>
-                <option value="1"> $ </option>
-                <option value="2"> $$ </option>
-                <option value="3"> $$$ </option>
-                <option value="4"> $$$$ </option>
-              </select>
+            <select
+              className="dropdown-content"
+              name="price"
+              value={price}
+              onChange={event => setPrice(event.target.value)}
+            >
+              <option value=""> Price </option>
+              <option value="1"> $ </option>
+              <option value="2"> $$ </option>
+              <option value="3"> $$$ </option>
+              <option value="4"> $$$$ </option>
+            </select>
 
-            
-              <select className="dropdown-content"
-                name="transactions"
-                value={transactions}
-                onChange={event => setTransactions(event.target.value)}
-              >
-                <option value=""> Pickup/Delivery </option>
-                <option value="delivery"> Delivery </option>
-                <option value="pickup"> Pickup </option>
-              </select>
-            </div>
-
+            <select
+              className="dropdown-content"
+              name="transactions"
+              value={transactions}
+              onChange={event => setTransactions(event.target.value)}
+            >
+              <option value=""> Pickup/Delivery </option>
+              <option value="delivery"> Delivery </option>
+              <option value="pickup"> Pickup </option>
+            </select>
+          </div>
         </form>
       </div>
 
       <div className="d-flex justify-content-center">
+        {loading ? [<Spinner></Spinner>] : 
         <RestaurantCard
           name={restaurant.name}
           rating={restaurant.rating}
@@ -173,7 +173,7 @@ function Search() {
           link={restaurant.link}
           image={restaurant.image}
           handleBtnClick={handleBtnClick}
-        />
+        />}
       </div>
     </Wrapper>
   );
