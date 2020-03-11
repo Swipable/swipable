@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import "../components/Form/form.css";
+// import "../components/Form/form.css";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 import SearchBar from "../components/SearchBar";
 import RestaurantCard from "../components/RestaurantCard";
 import UserContext from "../context/UserContext";
+// import CustomModal from "../components/CustomModal/custommodal";
 //import ReactSpinner from "react-bootstrap-spinner";
 
 function Search() {
@@ -38,17 +39,16 @@ function Search() {
   const nextRestaurant = restaurantIndex => {
     // Ensure that the restaurant index stays within our range of restaurants
     if (restaurantIndex < restaurants.length) {
-
       axios
         .post("/api/post/favoritestodb", restaurants[restaurantIndex - 1])
-        .then((res) => {
-          console.log(res)
+        .then(res => {
+          console.log(res);
           if (res.data === null) {
             //MODAL POPUP HERE
-            console.log('Search page - no response received, already in DB')
+            console.log("Search page - no response received, already in DB");
           } else {
             //MODAL POPUP HERE
-            console.log('Search page - was added to DB')
+            console.log("Search page - was added to DB");
           }
         })
         .then(setRestaurant(restaurants[restaurantIndex]))
@@ -56,14 +56,15 @@ function Search() {
     } else {
       axios
         .post("/api/post/favoritestodb", restaurants[restaurantIndex - 1])
-        .then((res) => {
-          alert(res.data.favorite.name + " has been added to your favorites <3")
-        })
-      }
+        .then(res => {
+          alert(
+            res.data.favorite.name + " has been added to your favorites <3"
+          );
+        });
+    }
   };
 
   const dislikeRestaurant = restaurantIndex => {
-    
     if (restaurantIndex < restaurants.length) {
       setRestaurant(restaurants[restaurantIndex]);
       setRestaurantIndex(restaurantIndex);
@@ -77,17 +78,16 @@ function Search() {
     // Get the title of the clicked button
     const btnName = event.target.getAttribute("data-value");
     if (btnName === "next") {
-      const newRestaurantIndex = restaurantIndex +1;
+      const newRestaurantIndex = restaurantIndex + 1;
       nextRestaurant(newRestaurantIndex, restaurants.length);
       console.log(restaurantIndex);
     } else {
-      const newRestaurantIndex = restaurantIndex +1;
+      const newRestaurantIndex = restaurantIndex + 1;
       dislikeRestaurant(newRestaurantIndex, restaurants.length);
     }
   };
 
   const loadRestaurants = e => {
-
     if (e) {
       e.preventDefault();
     }
@@ -98,17 +98,14 @@ function Search() {
           console.log(r[0].name);
           setRestaurants(r);
           setRestaurant(r[0]);
-          setRestaurantIndex(0)
+          setRestaurantIndex(0);
           console.log(r.length);
           return r;
-
         }
       })
-      .catch((err) => {
-          alert("Sorry, there are no results! Please change your search.")
-        });
-
-
+      .catch(err => {
+        alert("Sorry, there are no results! Please change your search.");
+      });
   };
 
   return (
@@ -127,41 +124,41 @@ function Search() {
           <br />
 
           <div className="dropdown">
-              <select className="dropdown-content"
-                name="category"
-                value={category}
-                onChange={event => setCategory(event.target.value)}
-              >
-                {categories.map(c => {
-                  return <option value={c}> {c} </option>;
-                })}
-              </select>
-            
+            <select
+              className="dropdown-content"
+              name="category"
+              value={category}
+              onChange={event => setCategory(event.target.value)}
+            >
+              {categories.map(c => {
+                return <option value={c}> {c} </option>;
+              })}
+            </select>
 
-              <select className="dropdown-content"
-                name="price"
-                value={price}
-                onChange={event => setPrice(event.target.value)}
-              >
-                <option value=""> Price </option>
-                <option value="1"> $ </option>
-                <option value="2"> $$ </option>
-                <option value="3"> $$$ </option>
-                <option value="4"> $$$$ </option>
-              </select>
+            <select
+              className="dropdown-content"
+              name="price"
+              value={price}
+              onChange={event => setPrice(event.target.value)}
+            >
+              <option value=""> Price </option>
+              <option value="1"> $ </option>
+              <option value="2"> $$ </option>
+              <option value="3"> $$$ </option>
+              <option value="4"> $$$$ </option>
+            </select>
 
-            
-              <select className="dropdown-content"
-                name="transactions"
-                value={transactions}
-                onChange={event => setTransactions(event.target.value)}
-              >
-                <option value=""> Pickup/Delivery </option>
-                <option value="delivery"> Delivery </option>
-                <option value="pickup"> Pickup </option>
-              </select>
-            </div>
-
+            <select
+              className="dropdown-content"
+              name="transactions"
+              value={transactions}
+              onChange={event => setTransactions(event.target.value)}
+            >
+              <option value=""> Pickup/Delivery </option>
+              <option value="delivery"> Delivery </option>
+              <option value="pickup"> Pickup </option>
+            </select>
+          </div>
         </form>
       </div>
 
