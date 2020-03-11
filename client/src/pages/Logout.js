@@ -77,6 +77,7 @@ const Logout = props => {
             />
             <Input
               label="Password"
+              type="password"
               onChange={handleInputChange}
               id="password"
               name="password"
