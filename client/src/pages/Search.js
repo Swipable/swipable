@@ -22,15 +22,7 @@ function Search() {
   const [price, setPrice] = React.useState("");
   const [category, setCategory] = React.useState("");
   const categories = [
-    "Category",
-    "bbq",
-    "burgers",
-    "cajun",
-    "chinese",
-    "french",
-    "greek",
-    "halal",
-    "italian"
+    "Categories", "afghani", "african", "argentine", "austrian", "bbq", "pancakes", "british", "buffets", "burgers", "cafes", "cafeteria", "cajun", "caribbean", "chinese", "comfortfood", "cuban", "czech", "delis", "diners", "french", "german", "gluten_free", "greek", "halal", "honduran", "hotdog", "italian", "japanese", "ramen", "kebab", "korean", "kosher", "latin", "colombian", "mediterranean", "falafel", "mexican", "noodles", "persian", "pizza", "polish", "polynesian", "portuguese", "salad", "sandwiches", "seafood", "singaporean", "slovakian", "somali", "soulfood", "soup", "southern", "spanish", "steak", "sushi", "syrian", "taiwanese", "tapas", "tex-mex", "thai", "turkish", "ukrainian", "vegan", "vegetarian", "vietnamese", "waffles", "wraps"
   ];
 
   useEffect(() => {
