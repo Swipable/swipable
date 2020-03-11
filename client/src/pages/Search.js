@@ -121,7 +121,7 @@ function Search() {
       <div className="d-flex justify-content-center">
         <form onSubmit={loadRestaurants}>
           {/* <div className="row d-inline-flex"> */}
-          <SearchBar location={location} setInput={setInput}></SearchBar>
+          <SearchBar setInput={setInput}></SearchBar>
           {/* </div> */}
           <br />
 
