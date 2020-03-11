@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import "../index.css";
-//import Form from "../components/Form";
 import Wrapper from "../components/Wrapper";
 import { Input, FormBtn } from "../components/PageComponents";
 import API from "../utils/API";
-import MainCard from "../components/MainCard";
+import FormCard from "../components/FormCard";
 import Title from "../components/Title";
 
 function Signup() {
@@ -41,11 +40,11 @@ function Signup() {
         .then(res => {
           if (res.data) {
             console.log("user posted to DB");
-            window.location = '/login';
+            window.location = "/login";
           } else if (!res.data) {
-            alert('no user found')
+            alert("no user found");
             //This redirect does not work
-            return <Redirect to='/login'></Redirect>
+            return <Redirect to="/login"></Redirect>;
           }
           loadUsers(user);
         })
@@ -55,8 +54,10 @@ function Signup() {
 
   return (
     <Wrapper>
-      <Title>Don't have an account? Sign up to find your perfect restaurant match.</Title>
-      <MainCard
+      <Title>
+        Don't have an account? Sign up to find your perfect restaurant match.
+      </Title>
+      <FormCard
         form={
           <form>
             <Input
@@ -103,7 +104,7 @@ function Signup() {
               placeholder="Confirm Password"
             />
             <FormBtn onClick={handleFormSubmit}>Sign up</FormBtn>
-            <Link to="/login">I already have an accout</Link>
+            <Link to="/login">I already have an account</Link>
           </form>
         }
       />
