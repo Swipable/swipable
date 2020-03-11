@@ -6,11 +6,12 @@ import API from "../utils/API";
 import SearchBar from "../components/SearchBar";
 import RestaurantCard from "../components/RestaurantCard";
 import UserContext from "../context/UserContext";
+import Spinner from "../components/Spinner";
+
 // import CustomModal from "../components/CustomModal/custommodal";
-//import ReactSpinner from "react-bootstrap-spinner";
 
 function Search() {
-  const { isLoggedin, user } = useContext(UserContext);
+  const { isLoggedin, user, loading, setLoading } = useContext(UserContext);
 
   const [restaurant, setRestaurant] = useState({});
   const [restaurants, setRestaurants] = useState([]);
@@ -33,6 +34,7 @@ function Search() {
   ];
 
   useEffect(() => {
+    setLoading(true);
     loadRestaurants();
   }, [price, category, location, transactions, user.zip_code]);
 
@@ -94,6 +96,7 @@ function Search() {
 
     API.fetchRestaurants(price, category, location, user.zip_code, transactions)
       .then(r => {
+        setLoading(false);
         if (r[0].name !== "undefined") {
           console.log(r[0].name);
           setRestaurants(r);
@@ -110,12 +113,11 @@ function Search() {
 
   return (
     <Wrapper>
-      <h1 className="d-flex justify-content-center">
+      <h1 className="d-flex justify-content-center header">
         Welcome {user.first_name}!{" "}
       </h1>
 
       <br></br>
-
       <div className="d-flex justify-content-center">
         <form onSubmit={loadRestaurants}>
           {/* <div className="row d-inline-flex"> */}
@@ -163,6 +165,7 @@ function Search() {
       </div>
 
       <div className="d-flex justify-content-center">
+        {loading ? [<Spinner></Spinner>] : 
         <RestaurantCard
           name={restaurant.name}
           rating={restaurant.rating}
@@ -170,7 +173,7 @@ function Search() {
           link={restaurant.link}
           image={restaurant.image}
           handleBtnClick={handleBtnClick}
-        />
+        />}
       </div>
     </Wrapper>
   );

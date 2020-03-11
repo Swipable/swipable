@@ -5,11 +5,12 @@ import API from "../utils/API";
 import FormCard from "../components/FormCard";
 import Title from "../components/Title";
 import UserContext from "../context/UserContext";
+import Spinner from "../components/Spinner";
 // import CustomModal from "../components/CustomModal/custommodal";
 
+
 function EditProfile(props) {
-  const { isLoggedIn, user } = useContext(UserContext);
-  console.log({ isLoggedIn });
+  const { isLoggedIn, user, setUser, loading, setLoading } = useContext(UserContext);
   const [profile, setProfile] = useState({});
 
   //function to grab one authenticated user and console.log
@@ -17,6 +18,7 @@ function EditProfile(props) {
     API.fetchUser(user)
       .then(profile => {
         setProfile(profile);
+        console.log(user)
       })
       .catch(err => console.log(err));
   }, []);
@@ -25,11 +27,13 @@ function EditProfile(props) {
   function handleInputChange(event) {
     const { name, value } = event.target;
     setProfile({ ...profile, [name]: value });
+    setUser({ ...profile, [name]: value });
   }
 
   // When the form is submitted, use the API.saveUser method to save the book data
   // Then reload books from the database
   function handleFormSubmit(event) {
+    setLoading(true);
     event.preventDefault();
     API.editUser(profile)
       .then(res => {
@@ -41,6 +45,7 @@ function EditProfile(props) {
           alert("user successfully updated");
           props.history.push("/profile");
         }
+        setLoading(false);
       })
       .catch(err => console.log(err));
   }
@@ -77,7 +82,9 @@ function EditProfile(props) {
               name="zip_code"
               defaultValue={profile.zip_code}
             />
-            <FormBtn onClick={handleFormSubmit}>Update</FormBtn>
+            {loading ? [<Spinner></Spinner>] :
+              <FormBtn onClick={handleFormSubmit}>Update</FormBtn>
+            }
           </form>
         }
       />

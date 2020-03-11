@@ -4,23 +4,42 @@ import "./feedcard.css";
 function FeedCard(props) {
 
   return (
-    <div className="feedcard-wrapper">
-      <div className="feedcard-card row">
-        <div className="img-container col-4">
-          <img
-            // alt={props.username}
-            // src={props.image}
-            src= {`https://api.adorable.io/avatars/285/${props.username}.png`}
-            alt="Some Picture"
-          />
+    <>
+
+    <div className="feedcard-container">
+
+<div className="feed-card">
+   
+      <div className="content">
+      <div className="avatar-container">
+              <img className="avatar-image"
+              src= {`https://api.adorable.io/avatars/130/${props.username}.png`}
+              alt= {`${props.username}'s avatar`}
+              />
+            
         </div>
-        <div className="content col-8">
-          <h3>
-            {props.username} {props.activity_type} {props.restaurant_name}
-          </h3>
-        </div>
+        <ul>
+          <li>
+          <strong>{props.username}</strong> {props.activity_type}
+          </li>
+          <li>
+          <a className="linkedContent" href={`${props.link}`}> {props.restaurant_name} </a>
+          </li>
+      
+        </ul>
       </div>
+
+      <div className="img-container">
+        <img alt={props.name} src={props.image} />
+      </div>
+ 
     </div>
+
+
+       </div>
+  
+        
+</>
   );
 }
 
