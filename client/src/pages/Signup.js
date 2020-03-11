@@ -98,12 +98,14 @@ function Signup(props) {
               <hr></hr>
               <Input
                 label="Password"
+                type="password"
                 onChange={handleInputChange}
                 name="inputPassword"
                 placeholder="Password"
               />
               <Input
                 label="Confirm Password"
+                type="password"
                 onChange={handleInputChange}
                 name="inputConfirmPassword"
                 placeholder="Confirm Password"
