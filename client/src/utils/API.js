@@ -128,7 +128,9 @@ export default {
             user_id: feed.user_id,
             username: feed.username,
             activity_type: feed.activity_type,
-            restaurant_name: feed.restaurant_name
+            restaurant_name: feed.restaurant_name,
+            link: feed.link,
+            image: feed.image
           };
         });
       })

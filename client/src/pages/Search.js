@@ -113,7 +113,7 @@ function Search() {
 
   return (
     <Wrapper>
-      <h1 className="d-flex justify-content-center">
+      <h1 className="d-flex justify-content-center header">
         Welcome {user.first_name}!{" "}
       </h1>
 

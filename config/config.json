@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password":"DebbieDoo",
+    "password": "mqMQ123#",
     "database": "swipable_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
@@ -9,7 +9,7 @@
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "mqMQ123#",
     "database": "swipable_db_test",
     "host": "127.0.0.1",
     "dialect": "mysql",

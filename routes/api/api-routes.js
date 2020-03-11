@@ -119,7 +119,9 @@ module.exports = function(app, user) {
             user_id: req.session.passport.user.id,
             username: req.session.passport.user.username,
             activity_type: "added to favourites",
-            restaurant_name: req.body.name
+            restaurant_name: req.body.name,
+            image: req.body.image,
+            link: req.body.link
             // favourites_id: req.body.name
           }).then(feeds => {
             console.log('added to Feeds')
@@ -191,8 +193,10 @@ module.exports = function(app, user) {
           user_id: req.session.passport.user.id,
           username: req.session.passport.user.username,
           activity_type: "removed from favourites",
-          restaurant_name: data.name
-        }).then(feeds => {
+          restaurant_name: data.name,
+          image: req.body.image,
+          link: req.body.link
+                }).then(feeds => {
           res.json({ response: response, feeds: feeds });
         });
       });
