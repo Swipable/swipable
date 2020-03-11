@@ -7,7 +7,7 @@ import SearchBar from "../components/SearchBar";
 import RestaurantCard from "../components/RestaurantCard";
 import UserContext from "../context/UserContext";
 import Spinner from "../components/Spinner";
-
+import { ToastContainer, toast } from "react-toastify";
 // import CustomModal from "../components/CustomModal/custommodal";
 
 function Search() {
@@ -25,6 +25,7 @@ function Search() {
     "Categories", "afghani", "african", "argentine", "austrian", "bbq", "pancakes", "british", "buffets", "burgers", "cafes", "cafeteria", "cajun", "caribbean", "chinese", "comfortfood", "cuban", "czech", "delis", "diners", "french", "german", "gluten_free", "greek", "halal", "honduran", "hotdog", "italian", "japanese", "ramen", "kebab", "korean", "kosher", "latin", "colombian", "mediterranean", "falafel", "mexican", "noodles", "persian", "pizza", "polish", "polynesian", "portuguese", "salad", "sandwiches", "seafood", "singaporean", "slovakian", "somali", "soulfood", "soup", "southern", "spanish", "steak", "sushi", "syrian", "taiwanese", "tapas", "tex-mex", "thai", "turkish", "ukrainian", "vegan", "vegetarian", "vietnamese", "waffles", "wraps"
   ];
 
+
   useEffect(() => {
     setLoading(true);
     loadRestaurants();
@@ -36,13 +37,16 @@ function Search() {
       axios
         .post("/api/post/favoritestodb", restaurants[restaurantIndex - 1])
         .then(res => {
-          console.log(res);
-          if (res.data === null) {
-            //MODAL POPUP HERE
-            console.log("Search page - no response received, already in DB");
-          } else {
-            //MODAL POPUP HERE
-            console.log("Search page - was added to DB");
+          console.log(res.data)
+          console.log(res.data.favorite)
+          if (res.data.created === false) {
+            toast.error("Psst... This restaurant is already in your favorites!", {
+              position: toast.POSITION.BOTTOM_RIGHT
+            });
+          } else if(res.data.favorite) {
+            toast.success(`${res.data.favorite.item.name} was added to your favorites`, {
+              position: toast.POSITION.BOTTOM_RIGHT
+            });
           }
         })
         .then(setRestaurant(restaurants[restaurantIndex]))
@@ -51,9 +55,12 @@ function Search() {
       axios
         .post("/api/post/favoritestodb", restaurants[restaurantIndex - 1])
         .then(res => {
-          alert(
-            res.data.favorite.name + " has been added to your favorites <3"
-          );
+            toast.success(
+              `${res.data.favorite.name} was added to your favorites`,
+              {
+                position: toast.POSITION.BOTTOM_RIGHT
+              }
+            );
         });
     }
   };
@@ -64,7 +71,12 @@ function Search() {
       setRestaurantIndex(restaurantIndex);
       console.log(restaurantIndex);
     } else {
-      alert("There are no more results! Please refine your search.");
+        toast.error(
+          "There are no more results! Please refine your search.",
+          {
+            position: toast.POSITION.BOTTOM_RIGHT
+          }
+        );
     }
   };
 
@@ -99,7 +111,13 @@ function Search() {
         }
       })
       .catch(err => {
-        alert("Sorry, there are no results! Please change your search.");
+        console.log(err);
+          toast.error(
+            "Sorry, there are no results! Please change your search.",
+            {
+              position: toast.POSITION.BOTTOM_RIGHT
+            }
+          );
       });
   };
 
@@ -157,6 +175,7 @@ function Search() {
       </div>
 
       <div className="d-flex justify-content-center">
+        <br></br>
         {loading ? [<Spinner></Spinner>] : 
         <RestaurantCard
           name={restaurant.name}
@@ -167,6 +186,9 @@ function Search() {
           handleBtnClick={handleBtnClick}
         />}
       </div>
+
+      <ToastContainer
+        autoClose={3000}/>
     </Wrapper>
   );
 }

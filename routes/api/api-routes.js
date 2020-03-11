@@ -1,7 +1,7 @@
 const axios = require("axios");
 var db = require("../../models");
 const isAuthenticated = require("../../passport/middleware/isAuthenticated");
-const updateOrCreate = require('../helpers');
+const checkOrCreate = require('../helpers');
 //const Sequelize = require('../../models/index')
 const Sequelize = require('sequelize')
 
@@ -88,7 +88,7 @@ module.exports = function(app, user) {
 
     //  FUNCTION TO CHECK IF THERE IS ALREADY AN ENTRY IN DB ASSOCIATED WITH LOGGED IN USER'S ID
 
-    updateOrCreate(db.Favorites, Sequelize.and
+    checkOrCreate(db.Favorites, Sequelize.and
       ([
         {
           name: restName,
@@ -113,7 +113,7 @@ module.exports = function(app, user) {
       .then(function (favorite) {
         if (!favorite.created) {
           console.log('cannot favorite - already in DB')
-          return res.json(null);
+          return res.json(favorite);
         } else if (favorite) {
           db.Feeds.create({
             user_id: req.session.passport.user.id,
@@ -122,60 +122,13 @@ module.exports = function(app, user) {
             restaurant_name: req.body.name,
             image: req.body.image,
             link: req.body.link
-            // favourites_id: req.body.name
           }).then(feeds => {
             console.log('added to Feeds')
-            res.json({ favorite: favorite, feeds: feeds });
+            return res.json({ favorite: favorite, feeds: feeds });
           });
         }
       });
-  })
-  //   db.Favorites.create({
-  //     name: req.body.name,
-  //     rating: req.body.rating,
-  //     price: req.body.price,
-  //     image: req.body.image,
-  //     link: req.body.link,
-  //     is_closed: req.body.is_closed,
-  //     restaurant_id: req.body.restaurant_id,
-  //     display_phone: req.body.display_phone,
-  //   // display_address: req.body.display_address,
-  //     // category: req.body.categories,
-  //     latitude: req.body.latitude,
-  //     longitude: req.body.longitude,
-  //     distance: req.body.distance,
-  // //   transactions: req.body.transactions,
-  //     UserId: req.session.passport.user.id
-  //   }).then(function(favorite) {
-  //     db.Feeds.create({
-  //       user_id: req.body.name,
-  //       activity_type: "favourite added",
-  //       restaurant_id: req.body.restaurant_id
-  //       // favourites_id: req.body.name
-  //     }).then(feeds => {
-  //       res.json({ favorite: favorite, feeds: feeds });
-  //     });
-  //  });
-      //  display_address: req.body.display_address,
-      // category: req.body.categories,
-      // latitude: req.body.latitude,
-      // longitude: req.body.longitude,
-      // distance: req.body.distance,
-      //  transactions: req.body.transactions,
-      //Deb's change
-     // UserId: req.session.passport.user.id
-  //   }).then(function(favorite) {
-  //     db.Feeds.create({
-  //       user_id: req.session.passport.user.id,
-  //       username: req.session.passport.user.username,
-  //       activity_type: "added to favourites",
-  //       restaurant_name: req.body.name
-  //       // favourites_id: req.body.name
-  //     }).then(feeds => {
-  //       res.json({ favorite: favorite, feeds: feeds });
-  //     });
-  //   });
-  // });
+  });
 
   app.delete("/api/delete/favorite/:id", (req, res) => {
     console.log(req.params.id);
