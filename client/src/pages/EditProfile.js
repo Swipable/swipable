@@ -2,9 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import Wrapper from "../components/Wrapper";
 import { Input, InputReadOnly, FormBtn } from "../components/PageComponents";
 import API from "../utils/API";
-import MainCard from "../components/MainCard";
+import FormCard from "../components/FormCard";
 import Title from "../components/Title";
 import UserContext from "../context/UserContext";
+// import CustomModal from "../components/CustomModal/custommodal";
 
 function EditProfile(props) {
   const { isLoggedIn, user } = useContext(UserContext);
@@ -38,7 +39,7 @@ function EditProfile(props) {
           alert("No updates were made to profile");
         } else if (res === 1) {
           alert("user successfully updated");
-          props.history.push('/profile')
+          props.history.push("/profile");
         }
       })
       .catch(err => console.log(err));
@@ -47,7 +48,7 @@ function EditProfile(props) {
   return (
     <Wrapper>
       <Title>Edit Profile</Title>
-      <MainCard
+      <FormCard
         form={
           <form>
             <InputReadOnly label="User Name" value={profile.username} />
