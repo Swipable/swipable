@@ -5,11 +5,9 @@ import API from "../utils/API";
 import FormCard from "../components/FormCard";
 import Title from "../components/Title";
 import UserContext from "../context/UserContext";
-<<<<<<< HEAD
 import Spinner from "../components/Spinner";
-=======
 // import CustomModal from "../components/CustomModal/custommodal";
->>>>>>> 67bde66764375a9ce3637854ee01751e367e9724
+
 
 function EditProfile(props) {
   const { isLoggedIn, user, setUser, loading, setLoading } = useContext(UserContext);
