@@ -18,12 +18,13 @@ import UserContext from './context/UserContext';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(false);
 
 
   return (
     <Router>
-      <UserContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn }}>
+      <UserContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn, loading, setLoading }}>
         <div>
           <Navbar />
           <Wrapper>

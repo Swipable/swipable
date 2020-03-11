@@ -6,19 +6,19 @@ import API from "../utils/API";
 import { Input, FormBtn } from "../components/PageComponents";
 import FormCard from "../components/FormCard";
 import Title from "../components/Title";
-import UserContext from "../context/UserContext";
+import UserContext from '../context/UserContext';
+import Spinner from '../components/Spinner';
+
 
 const Login = props => {
   //set initial state
   const [formLogin, setFormLogin] = useState(null);
-
-  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+  const { user, setUser, isLoggedIn, setIsLoggedIn, loading, setLoading } = useContext(UserContext)
 
   //executes loadUser and populates array w/res data
   useEffect(() => {
-    console.log({ LoginPage: isLoggedIn }); //initially is false, true after correct credentials
-    console.log(user); //Initially empty array, user data after correct credentials
-  }, [user]);
+  }, [user])            
+
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -27,6 +27,7 @@ const Login = props => {
   }
 
   function handleFormSubmit(event) {
+    setLoading(true);
     event.preventDefault();
     if (formLogin && formLogin.username && formLogin.password) {
       if (!formLogin.username || !formLogin.password) {
@@ -37,6 +38,7 @@ const Login = props => {
         password: formLogin.password
       })
         .then(res => {
+          setLoading(false);
           if (res.data.username) {
             setUser(res.data);
             setIsLoggedIn(true);
@@ -79,7 +81,9 @@ const Login = props => {
               name="password"
               placeholder="Password"
             />
+            {loading ? [<Spinner></Spinner>] :
             <FormBtn onClick={handleFormSubmit}>Log in</FormBtn>
+              }
             <Link to="/signup">Sign Up</Link>
           </form>
         }
