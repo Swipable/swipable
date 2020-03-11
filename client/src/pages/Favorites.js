@@ -73,7 +73,7 @@ const Favorites = () => {
           </div>
         );
         case true:
-        return <p>You haven't saved any favorites!</p>
+        return <p className="noFav">You haven't saved any favorites yet! When you do, they will populate here.</p>
       default:
         return null;
     }
