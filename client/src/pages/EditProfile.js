@@ -6,6 +6,7 @@ import FormCard from "../components/FormCard";
 import Title from "../components/Title";
 import UserContext from "../context/UserContext";
 import Spinner from "../components/Spinner";
+import { ToastContainer, toast } from "react-toastify";
 // import CustomModal from "../components/CustomModal/custommodal";
 
 
@@ -37,15 +38,18 @@ function EditProfile(props) {
     event.preventDefault();
     API.editUser(profile)
       .then(res => {
+        setLoading(false)
         console.log("res");
         console.log(res);
         if (res === 0) {
-          alert("No updates were made to profile");
+            toast.error(
+              "No changes were made to your profile",
+              {position: toast.POSITION.BOTTOM_RIGHT}
+            );
         } else if (res === 1) {
-          alert("user successfully updated");
-          props.history.push("/profile");
+          console.log('updated the user')
+          props.history.push("/profile")
         }
-        setLoading(false);
       })
       .catch(err => console.log(err));
   }
@@ -82,12 +86,15 @@ function EditProfile(props) {
               name="zip_code"
               defaultValue={profile.zip_code}
             />
-            {loading ? [<Spinner></Spinner>] :
+            {loading ? (
+              [<Spinner></Spinner>]
+            ) : (
               <FormBtn onClick={handleFormSubmit}>Update</FormBtn>
-            }
+            )}
           </form>
         }
       />
+      <ToastContainer autoClose={3000} />
     </Wrapper>
   );
 }

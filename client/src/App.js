@@ -14,6 +14,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import UserContext from './context/UserContext';
+import "react-toastify/dist/ReactToastify.min.css";
 
 
 function App() {

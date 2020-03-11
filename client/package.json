@@ -9,11 +9,10 @@
     "bootstrap": "^4.4.1",
     "cors": "^2.8.5",
     "react": "^16.6.3",
-    "react-bootstrap-spinner": "^1.0.0",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.1",
-    "use-async-effect": "^2.2.2"
+    "react-toastify": "^5.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
