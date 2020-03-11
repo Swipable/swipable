@@ -32,16 +32,17 @@ function Navbar(props) {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <Link to="/search" className="nav-link">
-                {" "}
-                Search <span className="sr-only">(current)</span>
-              </Link>
-            </li>
+          
             {/*TERNARY OPERATOR TO SHOW NAV LINKS ONLY IF A USER IS LOGGED IN -- NO ACCESSING PROFILE/TEAM IF NOT LOGGED IN*/}
             {isLoggedIn === true
               ? [
                   <>
+                    <li className="nav-item active">
+                      <Link to="/search" className="nav-link">
+                        {" "}
+                       Search <span className="sr-only">(current)</span>
+                      </Link>
+            </li>
                     <li className="nav-item active">
                       <Link to="/profile" className="nav-link">
                         {" "}
