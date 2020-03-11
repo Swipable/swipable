@@ -23,7 +23,7 @@ const Newsfeed = () => {
 
   return (
     <Wrapper>
-      <Title>News Feeds</Title>
+      <Title>Swipes near you!</Title>
       {feeds.map(feed => (
         <FeedCard
           id={feed.id}
@@ -32,6 +32,8 @@ const Newsfeed = () => {
           activity_type={feed.activity_type}
           restaurant_name={feed.restaurant_name}
           key={feed.id}
+          link={feed.link}
+          image={feed.image}
         />
       ))}
     </Wrapper>
