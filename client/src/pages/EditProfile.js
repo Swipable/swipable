@@ -2,10 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import Wrapper from "../components/Wrapper";
 import { Input, InputReadOnly, FormBtn } from "../components/PageComponents";
 import API from "../utils/API";
-import MainCard from "../components/MainCard";
+import FormCard from "../components/FormCard";
 import Title from "../components/Title";
 import UserContext from "../context/UserContext";
+<<<<<<< HEAD
 import Spinner from "../components/Spinner";
+=======
+// import CustomModal from "../components/CustomModal/custommodal";
+>>>>>>> 67bde66764375a9ce3637854ee01751e367e9724
 
 function EditProfile(props) {
   const { isLoggedIn, user, setUser, loading, setLoading } = useContext(UserContext);
@@ -41,7 +45,7 @@ function EditProfile(props) {
           alert("No updates were made to profile");
         } else if (res === 1) {
           alert("user successfully updated");
-          props.history.push('/profile')
+          props.history.push("/profile");
         }
         setLoading(false);
       })
@@ -51,7 +55,7 @@ function EditProfile(props) {
   return (
     <Wrapper>
       <Title>Edit Profile</Title>
-      <MainCard
+      <FormCard
         form={
           <form>
             <InputReadOnly label="User Name" value={profile.username} />

@@ -57,8 +57,20 @@ const Team = () => {
 
   return (
     <Wrapper>
+<<<<<<< HEAD
       <Title>Team</Title>
       {mapTeam()}
+=======
+      <Title>Other swipers near you!</Title>
+      {users.map(user => (
+        <UserCard
+          username={user.username}
+          key={user.id}
+          first_name={user.first_name}
+          last_name={user.last_name}
+        />
+      ))}
+>>>>>>> 67bde66764375a9ce3637854ee01751e367e9724
     </Wrapper>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import "../Form/form.css";
+import "./form.css";
 
 function MainCard(props) {
 
