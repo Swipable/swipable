@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "../FormCard/form.css";
 import "./searchbar.css";
 
 function SearchBar(props) {
+  const [currentValue, setCurrentValue] = useState('')
+
   return (
     <div className="searchContainer">
       <input
@@ -10,8 +12,8 @@ function SearchBar(props) {
         id="cssform"
         type="text"
         placeholder="City, state, or zip code"
-        value={props.location}
-        onChange={e => props.setInput(e.target.value)}
+        onKeyDown={e => e.key === 'Enter' ? props.setInput(currentValue) : null}
+        onChange={e => setCurrentValue(e.target.value)}
       />
       {/* <input type="submit" value="Submit" /> */}
     </div>
