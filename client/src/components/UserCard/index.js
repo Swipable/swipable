@@ -5,7 +5,7 @@ import "./usercard.css";
 function UserCard(props) {
   
   return (
-
+    <div className="user-wrapper">
     <div className="user-card">
       <div className="img-container">
         <img
@@ -24,6 +24,7 @@ function UserCard(props) {
           </li>
         </ul>
       </div>
+    </div>
     </div>
   );
 }
