@@ -36,7 +36,7 @@ const Favorites = () => {
     return axios
       .delete(`/api/delete/favorite/${id}`)
       .then(res => {
-        console.log(res.data.response);
+        // console.log(res.data.response);
         if (res.data.response === 1) {
           loadFavorites();
         }

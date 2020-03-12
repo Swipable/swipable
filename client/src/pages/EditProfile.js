@@ -19,7 +19,7 @@ function EditProfile(props) {
     API.fetchUser(user)
       .then(profile => {
         setProfile(profile);
-        console.log(user)
+        // console.log(user)
       })
       .catch(err => console.log(err));
   }, []);
@@ -39,8 +39,8 @@ function EditProfile(props) {
     API.editUser(profile)
       .then(res => {
         setLoading(false)
-        console.log("res");
-        console.log(res);
+        // console.log("res");
+        // console.log(res);
         if (res === 0) {
             toast.error(
               "No changes were made to your profile",
