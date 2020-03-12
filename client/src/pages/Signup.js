@@ -43,7 +43,7 @@ function Signup(props) {
         .then(res => {
           setLoading(false);
           if (res.data.username) {
-            console.log("user posted to DB");
+            // console.log("user posted to DB");
             props.history.push('/login')
           } else if (res.data.created === false) {
           //Currently not working as expected

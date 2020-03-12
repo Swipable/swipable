@@ -37,8 +37,8 @@ function Search() {
       axios
         .post("/api/post/favoritestodb", restaurants[restaurantIndex - 1])
         .then(res => {
-          console.log(res.data)
-          console.log(res.data.favorite)
+          // console.log(res.data)
+          // console.log(res.data.favorite)
           if (res.data.created === false) {
             toast.error("Psst... This restaurant is already in your favorites!", {
               position: toast.POSITION.BOTTOM_RIGHT
@@ -69,7 +69,7 @@ function Search() {
     if (restaurantIndex < restaurants.length) {
       setRestaurant(restaurants[restaurantIndex]);
       setRestaurantIndex(restaurantIndex);
-      console.log(restaurantIndex);
+      // console.log(restaurantIndex);
     } else {
         toast.error(
           "There are no more results! Please refine your search.",
@@ -86,7 +86,7 @@ function Search() {
     if (btnName === "next") {
       const newRestaurantIndex = restaurantIndex + 1;
       nextRestaurant(newRestaurantIndex, restaurants.length);
-      console.log(restaurantIndex);
+      // console.log(restaurantIndex);
     } else {
       const newRestaurantIndex = restaurantIndex + 1;
       dislikeRestaurant(newRestaurantIndex, restaurants.length);
@@ -102,11 +102,11 @@ function Search() {
       .then(r => {
         setLoading(false);
         if (r[0].name !== "undefined") {
-          console.log(r[0].name);
+          // console.log(r[0].name);
           setRestaurants(r);
           setRestaurant(r[0]);
           setRestaurantIndex(0);
-          console.log(r.length);
+          // console.log(r.length);
           return r;
         }
       })

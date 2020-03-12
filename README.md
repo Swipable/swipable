@@ -1,29 +1,35 @@
-# Create React Express App
+# Cravings
 
-## About This Boilerplate
+## About This App
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+Scroll through images of dishes from nearby restaurants based on what you are craving that night. Just filter for preferences and location, and your ready to find your perfect match. Think Tinder meets Yelp.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+Once you like a restaurant, it gets added to your favorites making it easy to narrow down your search to find the one. Also, check out when other people are liking on your newsfeed to plan an outing with friends.
 
-## Starting the app locally
+## Technologies Used
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+APIs- Yelp Fusion, Adorable Avatars
+axios
+Bcrypt
+Passport JS
+cookie-parser
+dotenv
+Express, express-session       
+mysql   
+React, React-router-dom and react-dom
+react-toastify
+sequelize
+Bootstrap
 
-```
-npm install
-```
+## Future Enhancements
 
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+Restaurant details page with map integration
+Realtime Push Notifications
+Ability to add restaurant reviews
+Enhance user interaction e.g. create groups/subscribe and follow people
+Have our own API in future instead of relying on Yelp API for data
+Scheduling dinners with friends
+Newsfeed to show users who have also saved a restaurant
 
 ## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+https://swipable.herokuapp.com/

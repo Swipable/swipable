@@ -21,15 +21,15 @@ module.exports = function (app) {
   app.post('/api/login', passport.authenticate('local'), function (req, res) {
     console.log('login in user-routes hit')
     let { username, password } = req.body;
-    console.log({ username, password })
-    console.log(req.session.passport.user.dataValues.id)
+    // console.log({ username, password })
+    // console.log(req.session.passport.user.dataValues.id)
     return res.send(req.user);
   });
 
   // //GET logout to stop session
   app.get('/logout', (req, res) => {
     req.logOut();
-    console.log('logout hit')
+    // console.log('logout hit')
     res.send(req);
   })
 
