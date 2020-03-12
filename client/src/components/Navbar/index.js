@@ -5,8 +5,8 @@ import UserContext from "../../context/UserContext";
 
 function Navbar(props) {
   const { isLoggedIn, loading } = useContext(UserContext);
-  console.log({ isLoggedIn });
-  console.log( 'Navbar ' + loading )
+  // console.log({ isLoggedIn });
+  // console.log( 'Navbar ' + loading )
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

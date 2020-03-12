@@ -112,7 +112,7 @@ module.exports = function(app, user) {
       })
       .then(function (favorite) {
         if (!favorite.created) {
-          console.log('cannot favorite - already in DB')
+          // console.log('cannot favorite - already in DB')
           return res.json(favorite);
         } else if (favorite) {
           db.Feeds.create({
@@ -123,7 +123,7 @@ module.exports = function(app, user) {
             image: req.body.image,
             link: req.body.link
           }).then(feeds => {
-            console.log('added to Feeds')
+            // console.log('added to Feeds')
             return res.json({ favorite: favorite, feeds: feeds });
           });
         }
@@ -131,7 +131,7 @@ module.exports = function(app, user) {
   });
 
   app.delete("/api/delete/favorite/:id", (req, res) => {
-    console.log(req.params.id);
+    // console.log(req.params.id);
     db.Favorites.findOne({
       where: {
         id: req.params.id
@@ -165,14 +165,14 @@ module.exports = function(app, user) {
   });
 
   app.put("/api/put/userprofile/:id", (req, res) => {
-    console.log("req body");
-    console.log(req.body);
+    // console.log("req body");
+    // console.log(req.body);
     db.Users.update(req.body, {
       where: { id: req.params.id }
       // returning: true
     }).then(function(response) {
-      console.log("updated user");
-      console.log(response);
+      // console.log("updated user");
+      // console.log(response);
       res.json(response);
     }),
       function(err) {

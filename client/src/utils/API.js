@@ -3,7 +3,7 @@ import axios from "axios";
 // Export an object containing methods we'll use for accessing the random user API
 export default {
   fetchRestaurants: (price, category, location, transactions) => {
-    console.log("Fetching restaurants...");
+    // console.log("Fetching restaurants...");
     return axios
       .get("api/restaurants", {
         params: {
@@ -14,7 +14,7 @@ export default {
         }
       })
       .then(res => {
-        console.log("Returning from call with price=" + price);
+        // console.log("Returning from call with price=" + price);
 
         const restaurants = res.data.businesses;
         return restaurants.map(restaurant => {
@@ -146,7 +146,7 @@ export default {
     return axios.get("/api/signup");
   },
   getOneUser: function(userData) {
-    console.log(userData);
+    // console.log(userData);
     return axios.post("/api/login", userData);
   }
 };
