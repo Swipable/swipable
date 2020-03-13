@@ -37,12 +37,17 @@ function Search() {
       axios
         .post("/api/post/favoritestodb", restaurants[restaurantIndex - 1])
         .then(res => {
-          // console.log(res.data)
-          // console.log(res.data.favorite)
-          if (res.data.created === false) {
+          if (!res.data) {
             toast.error("Psst... This restaurant is already in your favorites!", {
               position: toast.POSITION.BOTTOM_RIGHT
             });
+          } else if (res.data.count) {
+              toast.warning(
+                `You and ${res.data.count} other(s) already have ${res.data.name} added to your favorites!`,
+                {
+                  position: toast.POSITION.BOTTOM_RIGHT
+                }
+              );
           } else if(res.data.favorite) {
             toast.success(`${res.data.favorite.item.name} was added to your favorites`, {
               position: toast.POSITION.BOTTOM_RIGHT

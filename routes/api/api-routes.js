@@ -110,8 +110,23 @@ module.exports = function(app, user) {
       })
       .then(function (favorite) {
         if (!favorite.created) {
-          // console.log('cannot favorite - already in DB')
-          return res.json(favorite);
+          //console.log('if not favorite created');
+          const restName = favorite.found.name
+          db.Favorites.findAndCountAll({
+            where : { name: restName }
+          }).then(count => {;
+            //console.log(count.count)
+            if (count.count === 1) {
+              //console.log('only one person saved to favorites')
+              return res.json(null);
+            } else if (count.count > 1) {
+              //console.log('more than one person saved to db')
+              const others = count.count - 1;
+              return res.json({ count: others, name: restName });
+            }
+            
+          })
+          //return res.json(favorite);
         } else if (favorite) {
           db.Feeds.create({
             user_id: req.session.passport.user.id,
