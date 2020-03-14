@@ -1,7 +1,5 @@
 const db = require('../models');
 const bcrypt = require('bcrypt');
-//const passport = require('../passport/localStrategy');
-//const isAuthenticated = require('../passport/middleware/isAuthenticated');
 
 module.exports = {
     findAll: function (req, res) {
@@ -42,7 +40,6 @@ module.exports = {
                 if (user) {
                     console.log('got user data back from findOne call')
                     if (user.validPassword(password, user.password)) {
-                        // console.log('we have a valid user')
                    //     req.session.user = user.dataValues;
                         // console.log(req.session)
                         res.json(user)

@@ -33,7 +33,6 @@ const Login = props => {
     if (formLogin && formLogin.username && formLogin.password) {
       setLoading(true);
       if (!formLogin.username || !formLogin.password) {
-        console.log("no username or password entered");
       }
       API.getOneUser({
         username: formLogin.username,
@@ -64,9 +63,8 @@ const Login = props => {
                 }
               );
           } else {
-            console.log(err);
+            //console.log(err);
           }
-          console.log("Sucker. " + err.response.status);
         });
     } else {
       toast.error(
@@ -75,7 +73,7 @@ const Login = props => {
           position: toast.POSITION.BOTTOM_RIGHT
         }
       );
-      console.log("there is no formLogin info");
+      //console.log("there is no formLogin info");
     }
   }
 

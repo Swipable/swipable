@@ -5,7 +5,7 @@ const checkOrCreate = function (model, where, addNew) {
     return model
         .findOne({ where: where })
         .then((found) => {
-            console.log('found')
+            //console.log('found')
             if (!found) {
                 return model
                     .create(addNew)
@@ -17,8 +17,9 @@ const checkOrCreate = function (model, where, addNew) {
                 })
             }
             if (found) {
-                console.log('already in DB')
+                //console.log('already in DB')
                 return {
+                    found: found,
                     created: false
                 };
             }

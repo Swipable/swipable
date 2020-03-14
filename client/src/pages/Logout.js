@@ -66,7 +66,6 @@ const Logout = props => {
           } else {
             console.log(err);
           }
-          console.log("Sucker. " + err.response.status);
         });
     } else {
       toast.error(
